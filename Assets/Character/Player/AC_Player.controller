@@ -225,10 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05add5026275c2b4cbd5d0aa2653a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolName: lockVelocity
-  updateOnState: 1
-  updateOnStateMachine: 0
-  valueOnEnter: 1
+  floatName: 
+  updateOnStateExit: 0
+  updateOnStateEnter: 0
+  updateOnStateMachineEnter: 0
+  updateOnStateMachineExit: 0
+  valueOnEnter: 0
   valueOnExit: 0
 --- !u!1102 &-5641128541462990381
 AnimatorState:
@@ -291,14 +293,14 @@ AnimatorStateMachine:
   - {fileID: -5011808142686699135}
   m_EntryTransitions: []
   m_StateMachineTransitions:
+  - first: {fileID: 891080164306582338}
+    second:
+    - {fileID: -7269821594874513705}
   - first: {fileID: 1934924543051390384}
     second:
     - {fileID: 7186796522920284906}
     - {fileID: 3838665916317437736}
     - {fileID: 7009513764301561928}
-  - first: {fileID: 891080164306582338}
-    second:
-    - {fileID: -7269821594874513705}
   - first: {fileID: 7024603811851527302}
     second:
     - {fileID: -8034815692989530033}
@@ -825,11 +827,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05add5026275c2b4cbd5d0aa2653a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolName: canMove
-  updateOnState: 1
-  updateOnStateMachine: 0
+  floatName: 
+  updateOnStateExit: 0
+  updateOnStateEnter: 0
+  updateOnStateMachineEnter: 0
+  updateOnStateMachineExit: 0
   valueOnEnter: 0
-  valueOnExit: 1
+  valueOnExit: 0
 --- !u!1107 &1934924543051390384
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1139,11 +1143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05add5026275c2b4cbd5d0aa2653a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolName: canMove
-  updateOnState: 1
-  updateOnStateMachine: 0
+  floatName: 
+  updateOnStateExit: 0
+  updateOnStateEnter: 0
+  updateOnStateMachineEnter: 0
+  updateOnStateMachineExit: 0
   valueOnEnter: 0
-  valueOnExit: 1
+  valueOnExit: 0
 --- !u!1101 &7844708398536897624
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1231,11 +1237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05add5026275c2b4cbd5d0aa2653a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolName: canMove
-  updateOnState: 0
-  updateOnStateMachine: 1
+  floatName: 
+  updateOnStateExit: 0
+  updateOnStateEnter: 0
+  updateOnStateMachineEnter: 0
+  updateOnStateMachineExit: 0
   valueOnEnter: 0
-  valueOnExit: 1
+  valueOnExit: 0
 --- !u!1101 &9196209726007571926
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

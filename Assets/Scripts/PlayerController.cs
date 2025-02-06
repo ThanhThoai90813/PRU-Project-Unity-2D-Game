@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,9 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 10f;
-    public float runSpeed = 13f;
-    public float airWalkSpeed = 3f;
-	private float jumpImpulse = 10f;
+    public float runSpeed = 7f;
+    public float airWalkSpeed = 5f;
+	private float jumpImpulse = 8f;
 	Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
@@ -186,5 +187,12 @@ public class PlayerController : MonoBehaviour
     {
         
         rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
+        StartCoroutine(UnlockVelocityAfterHit());
+
+    }
+    private IEnumerator UnlockVelocityAfterHit()
+    {
+        yield return new WaitForSeconds(0.5f); // Thời gian chờ sau khi bị đánh
+        animator.SetBool("lockVelocity", false);
     }
 }
