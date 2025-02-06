@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D),typeof(TouchingDirections),typeof(Damageable))]
@@ -68,8 +69,6 @@ public class Knight : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
-        AttackCooldown = 2f; // Thử gán thủ công
-        Debug.Log("Test AttackCooldown: " + AttackCooldown);
     }
     void Update()
     {
@@ -79,7 +78,6 @@ public class Knight : MonoBehaviour
         {
             AttackCooldown -= Time.deltaTime;
         }
-        Debug.Log("AttackCooldown: " + AttackCooldown);
     }
 
 
@@ -119,6 +117,13 @@ public class Knight : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback) {
         
         rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
+        StartCoroutine(ResetLockVelocity()); // fix lỗi npc sau khi bị đánh thì bị lockvelocity
+    }
+
+    private IEnumerator ResetLockVelocity()
+    {
+        yield return new WaitForSeconds(0.5f); // Đợi 0.5 giây
+        damageable.LockVelocity = false;
     }
 
     //quay dau khi ko gap dat nua
