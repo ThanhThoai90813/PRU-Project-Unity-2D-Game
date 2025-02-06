@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Emeny
+  - PlayerHitbox
+  - EnemyHitbox
+  - GroundDetection
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 2172902547
+    locked: 0
+  - name: Ground
+    uniqueID: 339199799
     locked: 0
   - name: Default
     uniqueID: 0
