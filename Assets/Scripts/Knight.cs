@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D),typeof(TouchingDirections),typeof(Damageable))]
 public class Knight : MonoBehaviour
 {
-    public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3f;
     public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
@@ -68,8 +70,6 @@ public class Knight : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
-        AttackCooldown = 2f; // Thử gán thủ công
-        Debug.Log("Test AttackCooldown: " + AttackCooldown);
     }
     void Update()
     {
@@ -79,7 +79,6 @@ public class Knight : MonoBehaviour
         {
             AttackCooldown -= Time.deltaTime;
         }
-        Debug.Log("AttackCooldown: " + AttackCooldown);
     }
 
 
@@ -94,7 +93,10 @@ public class Knight : MonoBehaviour
         if (!damageable.LockVelocity)
         {
             if (CanMove)
-                rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.linearVelocity.y);
+                //Accelerate towards max speed
+                rb.linearVelocity = new Vector2(
+                    Mathf.Clamp(rb.linearVelocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed),
+                    rb.linearVelocity.y);
             else
                 rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
         }
@@ -119,6 +121,13 @@ public class Knight : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback) {
         
         rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
+        StartCoroutine(ResetLockVelocity()); // fix lỗi npc sau khi bị đánh thì bị lockvelocity
+    }
+
+    private IEnumerator ResetLockVelocity()
+    {
+        yield return new WaitForSeconds(0.5f); // Đợi 0.5 giây
+        damageable.LockVelocity = false;
     }
 
     //quay dau khi ko gap dat nua
