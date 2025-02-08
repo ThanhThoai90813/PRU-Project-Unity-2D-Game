@@ -1,43 +1,45 @@
-using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
-public class SetFloatBehaviour : StateMachineBehaviour
+public class SetBoolBehaviour : StateMachineBehaviour
 {
-    public string floatName;
-    public bool updateOnStateExit, updateOnStateEnter;
+    public string boolName;
+    public bool updateOnStateEnter, updateOnStateExit;
     public bool updateOnStateMachineEnter, updateOnStateMachineExit;
-    public float valueOnEnter, valueOnExit;
+    public bool valueOnEnter, valueOnExit;
 
-    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
+    // OnStateEnter: Gán giá trị bool khi vào state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (updateOnStateEnter)
         {
-            animator.SetFloat(floatName, valueOnEnter);
+            animator.SetBool(boolName, valueOnEnter);
         }
     }
 
-    //OnStateExit is called before OnStateExit is called on any state inside this state machine
+    // OnStateExit: Gán giá trị bool khi thoát state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (updateOnStateExit)
         {
-            animator.SetFloat(floatName, valueOnExit);
+            animator.SetBool(boolName, valueOnExit);
         }
     }
 
-    // OnStateMachineEnter is called when entering a state machine via its Entry Node
+    // OnStateMachineEnter: Gán giá trị bool khi vào state machine
     override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
-        if(updateOnStateMachineEnter)
-            animator.SetFloat(floatName, valueOnEnter);
+        if (updateOnStateMachineEnter)
+        {
+            animator.SetBool(boolName, valueOnEnter);
+        }
     }
 
-    // OnStateMachineExit is called when exiting a state machine via its Exit Node
+    // OnStateMachineExit: Gán giá trị bool khi thoát state machine
     override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
     {
         if (updateOnStateMachineExit)
-            animator.SetFloat(floatName, valueOnExit);
+        {
+            animator.SetBool(boolName, valueOnExit);
+        }
     }
 }
