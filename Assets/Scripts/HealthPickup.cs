@@ -5,18 +5,29 @@ public class HealthPickup : MonoBehaviour
     public int healthRestore = 20;
     public Vector3 spinRotationSpeed = new Vector3(0, 180, 0);
 
+    AudioSource pickupSource;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	private void Awake()
+	{
+		pickupSource = GetComponent<AudioSource>();
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         Damageable damageable = collision.GetComponent<Damageable>();
 
         //kiểm tra nếu đầy máu thì ko ăn item
-        if (damageable)
+        if (damageable && damageable.Health < damageable.MaxHealth)
         {
             bool wasHealed = damageable.Heal(healthRestore);
 
             if (wasHealed)
-                Destroy(gameObject);
+            {
+				if (pickupSource)
+					AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
+				Destroy(gameObject);
+			}
+                
         }
     }
 
