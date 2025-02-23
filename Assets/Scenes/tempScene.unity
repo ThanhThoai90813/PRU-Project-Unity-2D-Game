@@ -4347,10 +4347,6 @@ PrefabInstance:
       propertyPath: noCollidersRemain.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 6727608784431582994, guid: 08f3d7432707ca1409a7c5a0458f6a2c, type: 3}
-      propertyPath: castFilter.useNormalAngle
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7019452477841713743, guid: 08f3d7432707ca1409a7c5a0458f6a2c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0068458
