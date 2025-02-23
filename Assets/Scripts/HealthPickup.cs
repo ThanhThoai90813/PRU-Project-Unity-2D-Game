@@ -35,6 +35,6 @@ public class HealthPickup : MonoBehaviour
     private void Update()
     {
         //giúp item xoay 180 độ
-        transform.eulerAngles += spinRotationSpeed * Time.deltaTime;
+        //transform.eulerAngles += spinRotationSpeed * Time.deltaTime;
     }
 }
