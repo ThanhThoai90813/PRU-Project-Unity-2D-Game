@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+namespace Inventory.Model
+{
+    [CreateAssetMenu]
     public class ItemSO : ScriptableObject
     {
         [field: SerializeField]
@@ -25,4 +27,6 @@ using UnityEngine;
         public Sprite ItemImage { get; set; }
 
     }
+}
+
 
