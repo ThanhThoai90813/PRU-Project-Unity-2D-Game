@@ -178,7 +178,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.1777706, y: 2.3391843}
+  m_Size: {x: 3, y: 2.3}
   m_EdgeRadius: 0
 --- !u!114 &3202035359033849558
 MonoBehaviour:
@@ -192,6 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ff908b2a301cc4ebbe49bb538403a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noCollidersRemain:
+    m_PersistentCalls:
+      m_Calls: []
   detectedColliders: []
 --- !u!1 &5219916960529223015
 GameObject:
@@ -226,7 +229,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.186915, y: -3.23, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0068458, y: 0.96926385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3028408919843882414}
@@ -419,9 +422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246b1af15523be345bc2eb6f8b920e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  walkStopRate: 0.2
+  walkAcceleration: 50
+  maxSpeed: 3
+  walkStopRate: 0.05
   attackZone: {fileID: 3202035359033849558}
+  cliffDetectionZone: {fileID: 6259619092351579859}
   _hasTarget: 0
 --- !u!114 &7184477708711343105
 MonoBehaviour:
@@ -437,9 +442,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageableHit:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5338235786068320676}
+        m_TargetAssemblyTypeName: Knight, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  damageableDeath:
+    m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 200
+  _health: 200
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -470,7 +493,7 @@ Transform:
   m_GameObject: {fileID: 8272289534683734369}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: -1.75, z: 0}
+  m_LocalPosition: {x: 1.48, y: -1.86, z: 0}
   m_LocalScale: {x: 1, y: 1.04, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -488,6 +511,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ff908b2a301cc4ebbe49bb538403a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noCollidersRemain:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5338235786068320676}
+        m_TargetAssemblyTypeName: Knight, Assembly-CSharp
+        m_MethodName: OnCliffDetected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   detectedColliders: []
 --- !u!61 &7323877700943719220
 BoxCollider2D:
