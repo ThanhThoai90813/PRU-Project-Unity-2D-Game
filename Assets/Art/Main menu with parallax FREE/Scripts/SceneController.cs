@@ -11,11 +11,11 @@ public class SceneController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        mainMenu = FindObjectOfType<MenuController>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        mainMenu = FindAnyObjectByType<MenuController>();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (gameObject.transform.GetSiblingIndex() == 0 && !MenuController.instance.backgroundsController.GetComponent<Animation>().isPlaying)
         {
 
