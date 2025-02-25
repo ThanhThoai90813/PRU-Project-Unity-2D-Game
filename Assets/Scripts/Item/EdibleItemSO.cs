@@ -13,11 +13,18 @@ namespace Inventory.Model
 
         public string ActionName => "Consume";
 
-        //[field: SerializeField]
+        [field: SerializeField]
         public AudioClip actionSFX { get; private set; }
 
         public bool PerformAction(GameObject character)
         {
+            // Phát âm thanh khi sử dụng vật phẩm
+            if (actionSFX != null)
+            {
+                AudioSource.PlayClipAtPoint(actionSFX, character.transform.position);
+            }
+
+            // Áp dụng hiệu ứng hồi máu hoặc buff
             foreach (ModifierData data in modifiersData)
             {
                 data.statModifier.AffectChararacter(character, data.value);

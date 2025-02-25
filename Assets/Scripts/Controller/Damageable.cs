@@ -66,7 +66,7 @@ public class Damageable : MonoBehaviour
             {
                 damageableDeath.Invoke();
 
-                Knight knight = GetComponent<Knight>();
+                EnemyScript knight = GetComponent<EnemyScript>();
                 if (knight != null)
                 {
                     knight.SpawnHealthPickup();
