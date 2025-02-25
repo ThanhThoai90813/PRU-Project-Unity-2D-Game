@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 10f;
     public float runSpeed = 7f;
     public float airWalkSpeed = 5f;
-	private float jumpImpulse = 8f;
+	public float jumpImpulse = 9f;
 	Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
@@ -126,6 +126,15 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.linearVelocity.y);
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.linearVelocity.y);
+
+        if (rb.velocity.y > 0)
+        {
+            rb.gravityScale = 1.1f;  // Nhảy lên, trọng lực nhẹ hơn
+        }
+        else if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = 1.5f;  // Rơi xuống nhanh hơn
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
