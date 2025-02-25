@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2829517252760978993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.28, y: -0.13, z: 0}
+  m_LocalPosition: {x: 1.28, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -353,6 +353,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 50
   _health: 50
   _isAlive: 1
@@ -395,7 +398,11 @@ MonoBehaviour:
   flightSpeed: 2
   biteDetectionZone: {fileID: 2601749887965489389}
   deathCollider: {fileID: 484631317126237814}
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _hasTarget: 0
 --- !u!1 &8490478926751407830
 GameObject:
@@ -424,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 8490478926751407830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1, y: -0.2, z: 0}
+  m_LocalPosition: {x: 1.21, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,8 +471,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.19506216, y: -0.24472809}
-  m_Size: {x: 0.8479481, y: 0.95338774}
+  m_Offset: {x: 0.10125446, y: -0.24472809}
+  m_Size: {x: 1.4405813, y: 1.4405813}
   m_Direction: 0
 --- !u!114 &3155460531835316243
 MonoBehaviour:
@@ -479,5 +486,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 20
+  attackDamage: 10
   knockback: {x: 0, y: 0}
