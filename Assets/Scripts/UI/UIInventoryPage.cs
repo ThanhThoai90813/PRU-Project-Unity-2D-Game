@@ -55,6 +55,8 @@ namespace Inventory.UI
 
         internal void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
         {
+            if (itemIndex < 0 || itemIndex >= listOfUIItems.Count || listOfUIItems[itemIndex] == null)
+                return;
             itemDescription.SetDescription(itemImage, name, description);
             DeselectAllItems();
             listOfUIItems[itemIndex].Select();
@@ -63,10 +65,10 @@ namespace Inventory.UI
         public void UpdateData(int itemIndex,
                Sprite itemImage, int itemQuantity)
         {
-            if (listOfUIItems.Count > itemIndex)
-            {
-                listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
-            }
+            if (itemIndex < 0 || itemIndex >= listOfUIItems.Count || listOfUIItems[itemIndex] == null)
+                return;
+
+            listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
         }
 
         private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
@@ -80,13 +82,14 @@ namespace Inventory.UI
         }
         private void HandleSwap(UIInventoryItem inventoryItemUI)
         {
-            int index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (index == -1)
-            {
-                return;
-            }
-            OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+            if (inventoryItemUI == null) return;
 
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+            if (index == -1 || currentlyDraggedItemIndex < 0 || currentlyDraggedItemIndex >= listOfUIItems.Count)
+                return;
+
+            OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+            HandleItemSelection(inventoryItemUI);
         }
 
         private void ResetDraggtedItem()
@@ -132,7 +135,8 @@ namespace Inventory.UI
         {
             foreach (UIInventoryItem item in listOfUIItems)
             {
-                item.Deselect();
+                if (item != null)
+                    item.Deselect();
             }
         }
 
@@ -142,5 +146,16 @@ namespace Inventory.UI
             ResetDraggtedItem();
         }
 
+        internal void ResetAllItems()
+        {
+            foreach (var item in listOfUIItems)
+            {
+                if (item != null)
+                {
+                    item.ResetData();
+                    item.Deselect();
+                }         
+            }
+        }
     }
 }
