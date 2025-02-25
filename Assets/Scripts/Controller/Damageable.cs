@@ -61,11 +61,16 @@ public class Damageable : MonoBehaviour
         {
             _isAlive = value;
             animator.SetBool(AnimationStrings.isAlive, value);
-            Debug.Log("IsAlive set" + value);
 
-            if(value == false)
+            if (value == false)
             {
                 damageableDeath.Invoke();
+
+                Knight knight = GetComponent<Knight>();
+                if (knight != null)
+                {
+                    knight.SpawnHealthPickup();
+                }
             }
         }
     }

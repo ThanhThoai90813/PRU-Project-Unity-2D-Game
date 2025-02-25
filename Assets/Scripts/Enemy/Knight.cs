@@ -10,6 +10,7 @@ public class Knight : MonoBehaviour
     public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
+    public GameObject healthPickupPrefab;
     
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
@@ -138,5 +139,14 @@ public class Knight : MonoBehaviour
             FlipDirection();
         }
     }
-   
+    public void SpawnHealthPickup()
+    {
+        if (healthPickupPrefab != null)
+        {
+            Instantiate(healthPickupPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        }
+    }
+
+
+
 }

@@ -19,6 +19,8 @@ public class Attack : MonoBehaviour
             {
                 Debug.Log(collision.name + " hit for " + attackDamage);
             }
+
         }
+
     }
 }
