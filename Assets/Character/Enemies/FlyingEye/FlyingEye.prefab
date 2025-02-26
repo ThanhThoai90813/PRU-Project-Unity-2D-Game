@@ -356,8 +356,8 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 50
-  _health: 50
+  _maxHealth: 100
+  _health: 100
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0523bdc4bfad89446ba696f6447098ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: 2
+  flightSpeed: 3.5
   biteDetectionZone: {fileID: 2601749887965489389}
   deathCollider: {fileID: 484631317126237814}
   waypoints:

@@ -59,13 +59,17 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
+           
             IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null)
-            {
-                itemAction.PerformAction(gameObject);
-            }
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-            if (destroyableItem != null)
+
+            bool shouldDestroy = false;
+
+            if (itemAction != null)
+            {
+                shouldDestroy = itemAction.PerformAction(gameObject);
+            }
+            if (destroyableItem != null && destroyableItem.ShouldBeDestroyed())
             {
                 inventoryData.RemoveItem(itemIndex, 1);
             }

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Inventory.UI
 {
@@ -19,6 +20,9 @@ namespace Inventory.UI
 
         [SerializeField]
         private MouseFollower mouseFollower;
+
+        [SerializeField]
+        private PlayerInput PlayerInput;
 
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
@@ -132,6 +136,10 @@ namespace Inventory.UI
         {
             gameObject.SetActive(true);
             ResetSelection();
+            if (PlayerInput != null)
+            {
+                PlayerInput.enabled = false; 
+            }
         }
         public void ResetSelection()
         {
@@ -151,6 +159,10 @@ namespace Inventory.UI
         {
             gameObject.SetActive(false);
             ResetDraggtedItem();
+            if (PlayerInput != null)
+            {
+                PlayerInput.enabled = true;
+            }
         }
 
         internal void ResetAllItems()
