@@ -1,3 +1,7 @@
+using Inventory;
+using Inventory.Model;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject LoadSlotMenuUI;
 
     public Transform player;
+    public InventoryController inventoryController;
     public int selectedSlot = 1; //defaut
 
     void Start()
@@ -78,7 +83,13 @@ public class PauseMenu : MonoBehaviour
     {
         Damageable damageable = player.GetComponent<Damageable>();
         int playerHealth = damageable.Health;
-        SaveSystem.SavePlayerData(player.position, selectedSlot, playerHealth);
+        
+        List<InventoryItem> inventoryItems = new List<InventoryItem>(inventoryController
+            .inventoryData.GetCurrentInventoryState().Values);
+        
+        SaveSystem.SavePlayerData(
+            player.position, selectedSlot, playerHealth, inventoryItems);
+        
         Debug.Log("Saved to Slot " + selectedSlot);
 
         CloseSlotMenus();
@@ -90,11 +101,15 @@ public class PauseMenu : MonoBehaviour
     public void LoadGame()
     {
 
-        var (position, health) = SaveSystem.LoadPlayerData(selectedSlot);
+        var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
         player.position = position.Value;
         Damageable damageable = player.GetComponent<Damageable>();
         damageable.Health = health.Value;
-
+        inventoryController.inventoryData.Initialize();
+        foreach (InventoryItem item in inventoryItems)
+        {
+            inventoryController.inventoryData.AddItem(item);
+        }
         Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
 
         CloseSlotMenus();
