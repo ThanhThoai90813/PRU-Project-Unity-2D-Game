@@ -205,20 +205,4 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("lockVelocity", false);
     }
 
-    //save load
-    public void SaveGame(int slot)
-    {
-        SaveSystem.SavePosition(transform.position, slot);
-    }
-
-    public void LoadGame(int slot)
-    {
-        Vector3? loadedPosition = SaveSystem.LoadPosition(slot);
-        if (loadedPosition.HasValue)
-        {
-            transform.position = loadedPosition.Value;
-            Debug.Log("Loaded position from slot " + slot);
-        }
-    }
-
 }

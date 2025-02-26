@@ -73,35 +73,35 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    // ==== GỌI HÀM SAVE & LOAD ====
+    // ==== GỌI HÀM SAVE & LOAD ===================================================
     public void SaveGame()
     {
-        if (player != null)
-        {
-            SaveSystem.SavePosition(player.position, selectedSlot);
-            Debug.Log("Saved to Slot " + selectedSlot);
-        }
+        Damageable damageable = player.GetComponent<Damageable>();
+        int playerHealth = damageable.Health;
+        SaveSystem.SavePlayerData(player.position, selectedSlot, playerHealth);
+        Debug.Log("Saved to Slot " + selectedSlot);
+
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
     }
 
+
     public void LoadGame()
     {
-        Vector3? loadedPosition = SaveSystem.LoadPosition(selectedSlot);
-        if (loadedPosition.HasValue && player != null)
-        {
-            player.position = loadedPosition.Value;
-            Debug.Log("Loaded from Slot " + selectedSlot);
-        }
-        else
-        {
-            Debug.LogWarning("No save data found in Slot " + selectedSlot);
-        }
+
+        var (position, health) = SaveSystem.LoadPlayerData(selectedSlot);
+        player.position = position.Value;
+        Damageable damageable = player.GetComponent<Damageable>();
+        damageable.Health = health.Value;
+
+        Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
+
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
     }
+
 
     public void OpenSaveSlotMenu()
     {
