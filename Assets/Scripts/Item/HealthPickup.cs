@@ -3,6 +3,7 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
     public int healthRestore = 20;
+    public bool isHealing = true;
     public Vector3 spinRotationSpeed = new Vector3(0, 180, 0);
 
     AudioSource pickupSource;
@@ -16,19 +17,26 @@ public class HealthPickup : MonoBehaviour
     {
         Damageable damageable = collision.GetComponent<Damageable>();
 
-        //kiểm tra nếu đầy máu thì ko ăn item
-        if (damageable && damageable.Health < damageable.MaxHealth)
-        {
-            bool wasHealed = damageable.Heal(healthRestore);
 
-            if (wasHealed)
+        if (damageable)
+        {
+            bool effetApplied = false;
+            if(isHealing)
             {
-				if (pickupSource)
-					AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
-				Destroy(gameObject);
-			}
-                
+                    effetApplied = damageable.Heal(healthRestore);       
+            }
+            else
+            {
+                effetApplied = damageable.Hit(healthRestore, Vector2.zero);
+            }
+            if (effetApplied)
+            {
+                if(pickupSource)
+                    AudioSource.PlayClipAtPoint(pickupSource.clip, transform.position, pickupSource.volume);
+                Destroy(gameObject);
+            }
         }
+
     }
 
 
