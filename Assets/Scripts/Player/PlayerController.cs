@@ -204,4 +204,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Thời gian chờ sau khi bị đánh
         animator.SetBool("lockVelocity", false);
     }
+
 }
