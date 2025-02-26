@@ -15,27 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Guidebook
-  <Description>k__BackingField: " A spoken or written representation or account of
-    a person, object, or event.\n\"people who had seen him were able to give a description\".
-    \n A spoken or written representation or account of a person, object, or event.\n\"people
-    who had seen him were able to give a description\". \n A spoken or written representation
-    or account of a person, object, or event.\n\"people who had seen him were able
-    to give a description\". \n A spoken or written representation or account of
-    a person, object, or event.\n\"people who had seen him were able to give a description\".
-    \n A spoken or written representation or account of a person, object, or event.\n\"people
-    who had seen him were able to give a description\". \n A spoken or written representation
-    or account of a person, object, or event.\n\"people who had seen him were able
-    to give a description\". \n A spoken or written representation or account of
-    a person, object, or event.\n\"people who had seen him were able to give a description\".
-    \n A spoken or written representation or account of a person, object, or event.\n\"people
-    who had seen him were able to give a description\". \n A spoken or written representation
-    or account of a person, object, or event.\n\"people who had seen him were able
-    to give a description\". \n A spoken or written representation or account of
-    a person, object, or event.\n\"people who had seen him were able to give a description\".
-    \n A spoken or written representation or account of a person, object, or event.\n\"people
-    who had seen him were able to give a description\". \n A spoken or written representation
-    or account of a person, object, or event.\n\"people who had seen him were able
-    to give a description\". "
+  <Description>k__BackingField: "Move: \r\n   \u2022 Up \u2013 W or Up Arrow Key\r\n  
+    \u2022 Down \u2013 S or Down Arrow Key\r\n   \u2022 Left \u2013 A or Left Arrow
+    Key\r\n   \u2022 Right \u2013 D or Right Arrow Key\r\n\nRun: \r\n   \u2022 Hold
+    Shift to run\n\nJump:\n   \u2022 Press Space to jump\n\nAttack:\n   \u2022 Press
+    Left click to hit\n   \u2022 Jump + Left Mouse to hit in the air\n   \u2022 Triple
+    left click to combo\n\nUI:\n   \u2022 Press I to open Inventory\n   \u2022 Right
+    click in Inventory to use item\n   \u2022 Press Esc to Pause the game\n"
   <ItemImage>k__BackingField: {fileID: 957522715996299834, guid: 21cdc51288bef8647a25034843312118, type: 3}
   modifiersData: []
   isConsumable: 0

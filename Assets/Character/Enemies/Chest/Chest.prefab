@@ -324,7 +324,7 @@ MonoBehaviour:
   walkStopRate: 0.05
   attackZone: {fileID: 6995578118251530206}
   cliffDetectionZone: {fileID: 0}
-  healthPickupPrefab: {fileID: 7221909226235203633, guid: e9508f4fb939ee945a2740dc2ab29a90, type: 3}
+  healthPickupPrefab: {fileID: 7221909226235203633, guid: 69607d74dbfb23244ba893ac38589a9f, type: 3}
   _hasTarget: 0
 --- !u!114 &217168897718995156
 MonoBehaviour:
