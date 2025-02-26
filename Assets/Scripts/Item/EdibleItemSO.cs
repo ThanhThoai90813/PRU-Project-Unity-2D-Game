@@ -11,6 +11,8 @@ namespace Inventory.Model
         [SerializeField]
         private List<ModifierData> modifiersData = new List<ModifierData>();
 
+        [SerializeField]
+        private bool isConsumable = true;
         public string ActionName => "Consume";
 
         [field: SerializeField]
@@ -18,23 +20,27 @@ namespace Inventory.Model
 
         public bool PerformAction(GameObject character)
         {
-            // Phát âm thanh khi sử dụng vật phẩm
             if (actionSFX != null)
             {
                 AudioSource.PlayClipAtPoint(actionSFX, character.transform.position);
             }
 
-            // Áp dụng hiệu ứng hồi máu hoặc buff
             foreach (ModifierData data in modifiersData)
             {
                 data.statModifier.AffectChararacter(character, data.value);
             }
-            return true;
+            return isConsumable;
+        }
+
+        public bool ShouldBeDestroyed()
+        {
+            return isConsumable;
         }
     }
 
     public interface IDestroyableItem
     {
+        bool ShouldBeDestroyed(); // Xác định xem vật phẩm có bị hủy sau khi sử dụng không
 
     }
 
