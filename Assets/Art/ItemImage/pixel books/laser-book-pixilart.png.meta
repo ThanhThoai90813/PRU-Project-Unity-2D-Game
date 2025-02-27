@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      laser-book-pixilart_0: 957522715996299834
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

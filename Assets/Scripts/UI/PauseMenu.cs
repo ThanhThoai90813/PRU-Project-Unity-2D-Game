@@ -13,10 +13,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject SaveSlotMenuUI;
     public GameObject LoadSlotMenuUI;
 
-    public Transform player;
-    public InventoryController inventoryController;
-    public int selectedSlot = 1; //defaut
-
     void Start()
     {
         PauseMenuUI.SetActive(false);
@@ -38,8 +34,6 @@ public class PauseMenu : MonoBehaviour
                 Pause();
         }
     }
-
-
 
     public void Resume()
     {
@@ -77,46 +71,23 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    // ==== GỌI HÀM SAVE & LOAD ===================================================
+    /// <summary>
+    /// /
+    /// </summary>
     public void SaveGame()
     {
-        Damageable damageable = player.GetComponent<Damageable>();
-        int playerHealth = damageable.Health;
-        
-        List<InventoryItem> inventoryItems = new List<InventoryItem>(inventoryController
-            .inventoryData.GetCurrentInventoryState().Values);
-        
-        SaveSystem.SavePlayerData(
-            player.position, selectedSlot, playerHealth, inventoryItems);
-        
-        Debug.Log("Saved to Slot " + selectedSlot);
-
+        GameSaveManager.Instance.SaveGame();
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
     }
-
-
     public void LoadGame()
     {
-
-        var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
-        player.position = position.Value;
-        Damageable damageable = player.GetComponent<Damageable>();
-        damageable.Health = health.Value;
-        inventoryController.inventoryData.Initialize();
-        foreach (InventoryItem item in inventoryItems)
-        {
-            inventoryController.inventoryData.AddItem(item);
-        }
-        Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
-
+        GameSaveManager.Instance.LoadGame();
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
     }
-
 
     public void OpenSaveSlotMenu()
     {
@@ -136,8 +107,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void SelectSlot(int slot)
     {
-        selectedSlot = slot;
-        Debug.Log("Selected Slot: " + slot);
+        GameSaveManager.Instance.SelectSlot(slot);
     }
 
 }
