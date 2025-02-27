@@ -1,7 +1,9 @@
 using Inventory;
 using Inventory.Model;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSaveManager : MonoBehaviour
 {
@@ -18,6 +20,11 @@ public class GameSaveManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    public void SelectSlot(int slot)
+    {
+        selectedSlot = slot;
+        Debug.Log("Selected Slot: " + slot);
+    }
 
     public void SaveGame()
     {
@@ -33,23 +40,43 @@ public class GameSaveManager : MonoBehaviour
         Debug.Log("Saved to Slot " + selectedSlot);
     }
 
+    //public void LoadGame()
+    //{
+    //    if (player == null || inventoryController == null) return;
+
+    //    var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
+    //    if (position.HasValue && health.HasValue)
+    //    {
+    //        player.position = position.Value;
+    //        Damageable damageable = player.GetComponent<Damageable>();
+    //        damageable.Health = health.Value;
+    //        inventoryController.inventoryData.Initialize();
+
+    //        foreach (InventoryItem item in inventoryItems)
+    //        {
+    //            inventoryController.inventoryData.AddItem(item);
+    //        }
+    //        Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Load failed! No data found.");
+    //    }
+    //}
+
     public void LoadGame()
     {
-        if (player == null || inventoryController == null) return;
-
-        var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
-        if (position.HasValue && health.HasValue)
+        GameData data = SaveSystem.LoadPlayerData(selectedSlot);
+        if (data != null)
         {
-            player.position = position.Value;
-            Damageable damageable = player.GetComponent<Damageable>();
-            damageable.Health = health.Value;
-            inventoryController.inventoryData.Initialize();
-
-            foreach (InventoryItem item in inventoryItems)
+            if (SceneManager.GetActiveScene().name != data.sceneName)
             {
-                inventoryController.inventoryData.AddItem(item);
+                StartCoroutine(LoadSceneAndApplyData(data)); // Load scene trước
             }
-            Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
+            else
+            {
+                ApplyLoadedData(data); // Nếu đang ở đúng scene, chỉ cần gán dữ liệu
+            }
         }
         else
         {
@@ -57,9 +84,28 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    public void SelectSlot(int slot)
+    private IEnumerator LoadSceneAndApplyData(GameData data)
     {
-        selectedSlot = slot;
-        Debug.Log("Selected Slot: " + slot);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(data.sceneName);
+        while (!asyncLoad.isDone) yield return null; // Chờ scene load xong
+
+        yield return new WaitForSeconds(1f); // Chờ scene khởi tạo xong
+
+        ApplyLoadedData(data);
     }
+
+    private void ApplyLoadedData(GameData data)
+    {
+        player.position = new Vector3(data.posX, data.posY, 0);
+        Damageable damageable = player.GetComponent<Damageable>();
+        damageable.Health = data.playerHealth;
+        inventoryController.inventoryData.Initialize();
+
+        foreach (InventoryItem item in data.inventoryItems)
+        {
+            inventoryController.inventoryData.AddItem(item);
+        }
+        Debug.Log($"Loaded from Slot {selectedSlot} | Scene: {data.sceneName} | Position: {data.posX}, {data.posY} | Health: {data.playerHealth}");
+    }
+
 }
