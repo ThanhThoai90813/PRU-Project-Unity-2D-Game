@@ -78,6 +78,7 @@ public class EnemyScript : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        WalkDirection = WalkableDirection.Left;
     }
     void Update()
     {
@@ -101,11 +102,6 @@ public class EnemyScript : MonoBehaviour
             {
                 isChasing= false;
             }
-
-            //if (distanceToPlayer > attackRange) // Nếu chưa tới gần, đuổi theo
-            //{
-            //    ChasePlayer();
-            //}
         }
         else
         {
@@ -144,9 +140,8 @@ public class EnemyScript : MonoBehaviour
     {
         if (target != null)
         {
-            float direction = Mathf.Sign(target.position.x - transform.position.x); // Xác định hướng
+            float direction = Mathf.Sign(target.position.x - transform.position.x); 
 
-            // Cập nhật hướng di chuyển
             rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
 
             if (direction > 0)
@@ -168,16 +163,14 @@ public class EnemyScript : MonoBehaviour
     }
 
     public void OnHit(int damage, Vector2 knockback) {
-        Debug.Log("Enemy bị đánh, knockback: " + knockback);
         isKnockedBack = true;
         rb.linearVelocity = knockback;
         StartCoroutine(ResetKnockback());
-        //rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
     }
     private IEnumerator ResetKnockback()
     {
         yield return new WaitForSeconds(knockbackTime);
-        isKnockedBack = false;  // Reset trạng thái knockback
+        isKnockedBack = false;  
     }
     //quay dau khi ko gap dat nua
     public void OnCliffDetected()

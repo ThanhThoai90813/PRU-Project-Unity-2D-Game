@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 45bb3863b6d39b84da6c8aa98ee229eb, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 0f5e822385600504599127e8cd4ca73f, type: 3}
   volume: 0.8
   playOnEnter: 1
   playOnExit: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 1a943e9059768504ab9bfdfa96065fba, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 806e3d230e62f7b41a26e909c5f429ba, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
@@ -611,12 +611,12 @@ AnimatorStateMachine:
   - {fileID: -1858050657455032215}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -3985752727599199621}
-    second:
-    - {fileID: 4666472772624972251}
   - first: {fileID: -2119452053478808792}
     second:
     - {fileID: -3515625384969904971}
+  - first: {fileID: -3985752727599199621}
+    second:
+    - {fileID: 4666472772624972251}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 580, y: 260, z: 0}
   m_EntryPosition: {x: 40, y: 160, z: 0}
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 0a224d4c6df2f9c47885babd6b1e2927, type: 3}
+  soundToPlay: {fileID: 8300000, guid: ab118774a44c008419b5389f405fa13a, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
