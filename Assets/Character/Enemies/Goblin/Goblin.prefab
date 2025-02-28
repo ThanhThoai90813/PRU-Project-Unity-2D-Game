@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 918829273135006986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: -1.86, z: 0}
+  m_LocalPosition: {x: 1.3, y: -1.57, z: 0}
   m_LocalScale: {x: 1, y: 1.04, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.5326424, y: -0.0070478916}
+  m_Offset: {x: 3.0812516, y: -0.007047415}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -184,7 +184,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 2.3}
+  m_Size: {x: 10.91203, y: 3.5386176}
   m_EdgeRadius: 0
 --- !u!114 &6995578118251530206
 MonoBehaviour:
@@ -416,7 +416,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -532,11 +532,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkAcceleration: 50
-  maxSpeed: 3.5
+  maxSpeed: 2.5
   walkStopRate: 0.05
   attackZone: {fileID: 6995578118251530206}
   cliffDetectionZone: {fileID: 5808118319653049050}
   healthPickupPrefab: {fileID: 7221909226235203633, guid: e9508f4fb939ee945a2740dc2ab29a90, type: 3}
+  chaseSpeed: 3.5
+  attackRange: 1.5
   _hasTarget: 0
 --- !u!114 &217168897718995156
 MonoBehaviour:
@@ -571,8 +573,8 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 200
-  _health: 200
+  _maxHealth: 100
+  _health: 100
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25

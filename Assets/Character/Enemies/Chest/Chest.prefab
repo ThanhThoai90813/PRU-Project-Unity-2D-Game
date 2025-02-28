@@ -63,7 +63,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -325,6 +325,8 @@ MonoBehaviour:
   attackZone: {fileID: 6995578118251530206}
   cliffDetectionZone: {fileID: 0}
   healthPickupPrefab: {fileID: 7221909226235203633, guid: 69607d74dbfb23244ba893ac38589a9f, type: 3}
+  chaseSpeed: 4
+  attackRange: 1.5
   _hasTarget: 0
 --- !u!114 &217168897718995156
 MonoBehaviour:

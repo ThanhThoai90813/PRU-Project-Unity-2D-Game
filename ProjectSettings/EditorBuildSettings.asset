@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Map1_JungleMap.unity
     guid: e4ffdb43d971cda418f5ab6a2c56a6c5
   - enabled: 1
+    path: Assets/Scenes/Map2_GoblinCave.unity
+    guid: ec1e06a997e23b84095009ce0ff1a286
+  - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: a1ac28cf5e438e94f93dd87145e64f56
   - enabled: 0

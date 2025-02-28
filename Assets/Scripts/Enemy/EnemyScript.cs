@@ -11,7 +11,11 @@ public class EnemyScript : MonoBehaviour
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
     public GameObject healthPickupPrefab;
-    
+    private Transform target; 
+    public float chaseSpeed = 4f; 
+    public float attackRange = 1.5f; 
+
+
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
     Animator animator;
@@ -80,28 +84,58 @@ public class EnemyScript : MonoBehaviour
         {
             AttackCooldown -= Time.deltaTime;
         }
-    }
 
+        if (HasTarget) // Nếu phát hiện Player
+        {
+            target = attackZone.detectedColliders[0].transform; // Lấy vị trí Player
+            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+            if (distanceToPlayer > attackRange) // Nếu chưa tới gần, đuổi theo
+            {
+                ChasePlayer();
+            }
+        }
+        else
+        {
+            target = null; // Không có Player, reset target
+        }
+    }
 
     private void FixedUpdate()
     {
-       
-        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        if (target != null) // Nếu phát hiện Player
         {
-            FlipDirection();
-        }
+            float direction = Mathf.Sign(target.position.x - transform.position.x); // Xác định hướng
+            rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
 
-        if (!damageable.LockVelocity)
-        {
-            if (CanMove)
-                //Accelerate towards max speed
-                rb.linearVelocity = new Vector2(
-                    Mathf.Clamp(rb.linearVelocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed),
-                    rb.linearVelocity.y);
+            if (direction > 0)
+                WalkDirection = WalkableDirection.Right;
             else
-                rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
+                WalkDirection = WalkableDirection.Left;
         }
-        
+        else if (CanMove) // Nếu không có Player, đi tuần bình thường
+        {
+            rb.linearVelocity = new Vector2(Mathf.Clamp(rb.linearVelocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed), rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
+        }
+    }
+    private void ChasePlayer()
+    {
+        if (target != null)
+        {
+            float direction = Mathf.Sign(target.position.x - transform.position.x); // Xác định hướng
+
+            // Cập nhật hướng di chuyển
+            rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
+
+            if (direction > 0)
+                WalkDirection = WalkableDirection.Right;
+            else if (direction < 0)
+                WalkDirection = WalkableDirection.Left;
+        }
     }
 
     private void FlipDirection()
@@ -113,21 +147,16 @@ public class EnemyScript : MonoBehaviour
         {
             WalkDirection = WalkableDirection.Left;
         }
-        else
-        {
-            Debug.LogError("Current walkable direction is not set to legal values of right or left");
-        }
     }
 
     public void OnHit(int damage, Vector2 knockback) {
-        
         rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
-        StartCoroutine(ResetLockVelocity()); // fix lỗi npc sau khi bị đánh thì bị lockvelocity
+        StartCoroutine(ResetLockVelocity()); 
     }
 
     private IEnumerator ResetLockVelocity()
     {
-        yield return new WaitForSeconds(0.5f); // Đợi 0.5 giây
+        yield return new WaitForSeconds(0.5f); 
         damageable.LockVelocity = false;
     }
 
