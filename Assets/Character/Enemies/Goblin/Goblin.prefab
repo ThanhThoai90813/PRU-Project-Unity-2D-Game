@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 5, y: 2}
+  knockback: {x: -3, y: 2}
 --- !u!1 &8242379824898746510
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -532,13 +532,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkAcceleration: 50
-  maxSpeed: 2.5
+  maxSpeed: 2
   walkStopRate: 0.05
   attackZone: {fileID: 6995578118251530206}
   cliffDetectionZone: {fileID: 5808118319653049050}
   healthPickupPrefab: {fileID: 7221909226235203633, guid: e9508f4fb939ee945a2740dc2ab29a90, type: 3}
-  chaseSpeed: 3.5
-  attackRange: 1.5
+  chaseSpeed: 1
+  attackRange: 2
   _hasTarget: 0
 --- !u!114 &217168897718995156
 MonoBehaviour:
