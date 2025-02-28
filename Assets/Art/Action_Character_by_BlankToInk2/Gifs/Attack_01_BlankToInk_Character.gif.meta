@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Attack_01_BlankToInk_Character_0: 1961539008476960546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

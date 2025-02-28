@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66a29aca8d2a3c44ea68f6bbb33267c2, type: 3}
   m_Name: 
@@ -16,28 +16,9 @@ MonoBehaviour:
   updateOnStateEnter: 0
   updateOnStateExit: 0
   updateOnStateMachineEnter: 1
-  updateOnStateMachineExit: 0
+  updateOnStateMachineExit: 1
   valueOnEnter: 0
   valueOnExit: 1
---- !u!114 &-7417979113147975454
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05add5026275c2b4cbd5d0aa2653a0a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatName: 
-  updateOnStateExit: 0
-  updateOnStateEnter: 0
-  updateOnStateMachineEnter: 0
-  updateOnStateMachineExit: 0
-  valueOnEnter: 0
-  valueOnExit: 0
 --- !u!114 &-6770227619948346565
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,7 +245,6 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours:
-  - {fileID: -7417979113147975454}
   - {fileID: -8558183192061259759}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -631,12 +611,12 @@ AnimatorStateMachine:
   - {fileID: -1858050657455032215}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -2119452053478808792}
-    second:
-    - {fileID: -3515625384969904971}
   - first: {fileID: -3985752727599199621}
     second:
     - {fileID: 4666472772624972251}
+  - first: {fileID: -2119452053478808792}
+    second:
+    - {fileID: -3515625384969904971}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 580, y: 260, z: 0}
   m_EntryPosition: {x: 40, y: 160, z: 0}
