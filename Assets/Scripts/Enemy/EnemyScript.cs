@@ -13,7 +13,10 @@ public class EnemyScript : MonoBehaviour
     public GameObject healthPickupPrefab;
     private Transform target; 
     public float chaseSpeed = 4f; 
-    public float attackRange = 1.5f; 
+    public float attackRange = 1.5f;
+    private bool isKnockedBack = false;
+    private float knockbackTime = 0.2f;
+    private bool isChasing = false;  
 
 
     Rigidbody2D rb;
@@ -75,6 +78,7 @@ public class EnemyScript : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        WalkDirection = WalkableDirection.Left;
     }
     void Update()
     {
@@ -90,20 +94,30 @@ public class EnemyScript : MonoBehaviour
             target = attackZone.detectedColliders[0].transform; // Lấy vị trí Player
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
-            if (distanceToPlayer > attackRange) // Nếu chưa tới gần, đuổi theo
+            if(distanceToPlayer > attackRange)
             {
-                ChasePlayer();
+                isChasing = true;
+            }
+            else
+            {
+                isChasing= false;
             }
         }
         else
         {
-            target = null; // Không có Player, reset target
+            target = null; 
+            isChasing=false;
         }
     }
 
     private void FixedUpdate()
     {
-        if (target != null) // Nếu phát hiện Player
+        if (isKnockedBack)
+        {
+            return; 
+        }
+
+        if (target != null && isChasing) 
         {
             float direction = Mathf.Sign(target.position.x - transform.position.x); // Xác định hướng
             rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
@@ -113,7 +127,7 @@ public class EnemyScript : MonoBehaviour
             else
                 WalkDirection = WalkableDirection.Left;
         }
-        else if (CanMove) // Nếu không có Player, đi tuần bình thường
+        else if (CanMove && target == null) // Nếu không có Player, đi tuần bình thường
         {
             rb.linearVelocity = new Vector2(Mathf.Clamp(rb.linearVelocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed), rb.linearVelocity.y);
         }
@@ -126,9 +140,8 @@ public class EnemyScript : MonoBehaviour
     {
         if (target != null)
         {
-            float direction = Mathf.Sign(target.position.x - transform.position.x); // Xác định hướng
+            float direction = Mathf.Sign(target.position.x - transform.position.x); 
 
-            // Cập nhật hướng di chuyển
             rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
 
             if (direction > 0)
@@ -150,16 +163,15 @@ public class EnemyScript : MonoBehaviour
     }
 
     public void OnHit(int damage, Vector2 knockback) {
-        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
-        StartCoroutine(ResetLockVelocity()); 
+        isKnockedBack = true;
+        rb.linearVelocity = knockback;
+        StartCoroutine(ResetKnockback());
     }
-
-    private IEnumerator ResetLockVelocity()
+    private IEnumerator ResetKnockback()
     {
-        yield return new WaitForSeconds(0.5f); 
-        damageable.LockVelocity = false;
+        yield return new WaitForSeconds(knockbackTime);
+        isKnockedBack = false;  
     }
-
     //quay dau khi ko gap dat nua
     public void OnCliffDetected()
     {
@@ -175,7 +187,14 @@ public class EnemyScript : MonoBehaviour
             Instantiate(healthPickupPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         }
     }
-
+    private void OnDrawGizmos()
+    {
+        if (target != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackRange);
+        }
+    }
 
 
 }

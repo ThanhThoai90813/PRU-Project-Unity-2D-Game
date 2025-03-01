@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Grass
-  - Wood
-  - Rock
+  - Ground
+  - Item
   layers:
   - Default
   - TransparentFX
