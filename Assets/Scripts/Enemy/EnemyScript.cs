@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+//quản lý toàn bộ quái vật
+
 [RequireComponent(typeof(Rigidbody2D),typeof(TouchingDirections),typeof(Damageable))]
 public class EnemyScript : MonoBehaviour
 {
@@ -96,19 +98,34 @@ public class EnemyScript : MonoBehaviour
 
             if(distanceToPlayer > attackRange)
             {
-                isChasing = true;
+                isChasing = true; // Bắt đầu đuổi
             }
             else
             {
                 isChasing= false;
+                if(AttackCooldown <= 0)
+                {
+                    PerformRandomAttack();
+                }
             }
         }
         else
         {
             target = null; 
             isChasing=false;
+            StartCoroutine(ResumePatrolling());
         }
     }
+
+    private IEnumerator ResumePatrolling()
+    {
+        yield return new WaitForSeconds(2f);
+        if (Mathf.Abs(rb.linearVelocity.x) < 0.1f)
+        {
+            FlipDirection();
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -189,11 +206,23 @@ public class EnemyScript : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if (target != null)
-        {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackRange);
-        }
+      
+    }
+    private void PerformRandomAttack()
+    {
+        int randomAttack = UnityEngine.Random.Range(1, 4); // Sinh số từ 1 đến 2
+        animator.SetInteger("attackType", randomAttack);
+        animator.SetTrigger("attack"); 
+        AttackCooldown = UnityEngine.Random.Range(1.5f, 3.0f); 
+    }
+    public void Die()
+    {
+        animator.SetTrigger("dead"); 
+        rb.linearVelocity = Vector2.zero; 
+        rb.bodyType = RigidbodyType2D.Static; 
+        this.enabled = false;
     }
 
 

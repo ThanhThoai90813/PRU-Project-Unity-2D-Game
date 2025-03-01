@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+//dùng để quản lý máu và trạng thái sống/chết của character
 public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
@@ -64,12 +65,12 @@ public class Damageable : MonoBehaviour
 
             if (value == false)
             {
-                damageableDeath.Invoke();
-
-                EnemyScript knight = GetComponent<EnemyScript>();
-                if (knight != null)
+                damageableDeath.Invoke(); // Gọi sự kiện chết
+                EnemyScript character = GetComponent<EnemyScript>();
+                if (character != null)
                 {
-                    knight.SpawnHealthPickup();
+                    character.Die();
+                    character.SpawnHealthPickup();
                 }
             }
         }
