@@ -130,11 +130,11 @@ public class PlayerController : MonoBehaviour
 
         if (rb.velocity.y > 0)
         {
-            rb.gravityScale = 1.1f;  // Nhảy lên, trọng lực nhẹ hơn
+            rb.gravityScale = 1.5f;  // Nhảy lên, trọng lực nhẹ hơn
         }
         else if (rb.velocity.y < 0)
         {
-            rb.gravityScale = 1.5f;  // Rơi xuống nhanh hơn
+            rb.gravityScale = 3f;  // Rơi xuống nhanh hơn
         }
     }
 

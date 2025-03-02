@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Grass
   - Enemy
+  - Bat
   layers:
   - Default
   - TransparentFX
