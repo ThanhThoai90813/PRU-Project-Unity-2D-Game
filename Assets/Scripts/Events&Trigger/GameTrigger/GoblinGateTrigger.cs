@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
+//Quản lí sự kiện bất ngờ
 public class GoblinGateTrigger : MonoBehaviour
 {
     public Transform[] spawnPoints;
@@ -18,7 +19,7 @@ public class GoblinGateTrigger : MonoBehaviour
                 GameObject randomMonster = monsters[Random.Range(0, monsters.Length)];
                 GameObject spawnedMonster = Instantiate(randomMonster, t.position, Quaternion.identity);
 
-                if (spawnedMonster.CompareTag("Bat")){
+                if (spawnedMonster.CompareTag("Bat_fly")){
                     Rigidbody2D rb = spawnedMonster.GetComponent<Rigidbody2D>();
                     if (rb != null)
                     {

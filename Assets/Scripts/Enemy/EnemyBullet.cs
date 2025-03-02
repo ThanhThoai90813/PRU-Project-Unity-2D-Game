@@ -35,7 +35,7 @@ public class EnemyBullet : MonoBehaviour
             Damageable dmg = other.gameObject.GetComponent<Damageable>();
             if (dmg != null)
             {
-                dmg.Hit(20, Vector2.zero);
+                dmg.Hit(7, Vector2.zero);
             }
             Destroy(gameObject);
         }

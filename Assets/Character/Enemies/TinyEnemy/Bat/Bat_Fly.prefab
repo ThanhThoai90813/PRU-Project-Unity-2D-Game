@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4191185735116014106}
   m_Layer: 0
   m_Name: Bat_Fly
-  m_TagString: Bat
+  m_TagString: Bat_fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flySpeed: 2
-  waveFrequency: 3.5
-  waveMagnitude: 2
+  waveFrequency: 2.5
+  waveMagnitude: 1
   destroyTime: 10

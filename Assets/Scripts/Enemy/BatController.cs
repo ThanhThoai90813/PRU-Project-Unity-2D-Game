@@ -3,8 +3,8 @@ using UnityEngine;
 public class BatController : MonoBehaviour
 {
     public float flySpeed = 2f; 
-    public float waveFrequency = 3.5f; 
-    public float waveMagnitude = 2f; 
+    public float waveFrequency = 2.5f; 
+    public float waveMagnitude = 1f; 
     public float destroyTime = 10f; 
 
     private Vector3 startPosition;
