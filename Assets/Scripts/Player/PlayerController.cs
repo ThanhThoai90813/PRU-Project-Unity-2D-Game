@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 	Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
+    private bool IsDead = false;
 
     public float CurrentMoveSpeed { get
         {
@@ -206,15 +207,33 @@ public class PlayerController : MonoBehaviour
     }
     public void OnHit(int damage,Vector2 knockback)
     {
-        
-        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
-        StartCoroutine(UnlockVelocityAfterHit());
-
+        if (!IsDead)
+        {
+            rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
+            StartCoroutine(UnlockVelocityAfterHit());
+            if (!IsALive)
+            {
+                Die();
+            }
+        }
     }
+
     private IEnumerator UnlockVelocityAfterHit()
     {
         yield return new WaitForSeconds(0.5f); // Thời gian chờ sau khi bị đánh
         animator.SetBool("lockVelocity", false);
     }
+    public void Die()
+    {
+        if (!IsDead)
+        {
+            IsDead = true;
+            animator.SetBool(AnimationStrings.isAlive, false); 
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 1f; 
+            this.enabled = false;
+        }
+    }
+
 
 }
