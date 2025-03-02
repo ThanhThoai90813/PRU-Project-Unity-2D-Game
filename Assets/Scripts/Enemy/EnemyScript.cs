@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //quản lý toàn bộ quái vật
@@ -13,17 +14,16 @@ public class EnemyScript : MonoBehaviour
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
     public GameObject healthPickupPrefab;
-    private Transform target; 
+    public Transform target; 
     public float chaseSpeed = 4f; 
     public float attackRange = 1.5f;
-    private bool isKnockedBack = false;
-    private float knockbackTime = 0.2f;
-    private bool isChasing = false;  
-
+    public bool isKnockedBack = false;
+    public float knockbackTime = 0.2f;
+    public bool isChasing = false;
 
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
-    Animator animator;
+    protected Animator animator;
     Damageable damageable;
     public enum WalkableDirection
     {
@@ -82,10 +82,9 @@ public class EnemyScript : MonoBehaviour
         damageable = GetComponent<Damageable>();
         WalkDirection = WalkableDirection.Left;
     }
-    void Update()
+    protected virtual void Update()
     {
         HasTarget = attackZone.detectedColliders.Count > 0;
-
         if (AttackCooldown > 0)
         {
             AttackCooldown -= Time.deltaTime;
@@ -127,7 +126,7 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (isKnockedBack)
         {
@@ -151,6 +150,8 @@ public class EnemyScript : MonoBehaviour
         else
         {
             rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
+            //rb.linearVelocity = Vector3.zero;
+
         }
     }
     private void ChasePlayer()
@@ -212,17 +213,33 @@ public class EnemyScript : MonoBehaviour
     }
     private void PerformRandomAttack()
     {
-        int randomAttack = UnityEngine.Random.Range(1, 4); // Sinh số từ 1 đến 2
+        int randomAttack = UnityEngine.Random.Range(1, 3); // Sinh số từ 1 đến 2
         animator.SetInteger("attackType", randomAttack);
         animator.SetTrigger("attack"); 
         AttackCooldown = UnityEngine.Random.Range(1.5f, 3.0f); 
     }
     public void Die()
     {
-        animator.SetTrigger("dead"); 
         rb.linearVelocity = Vector2.zero; 
-        rb.bodyType = RigidbodyType2D.Static; 
+        GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(FallDownAfterDeath());
         this.enabled = false;
+    }
+    private IEnumerator FallDownAfterDeath()
+    {
+        float elapsedTime = 0f;
+        float duration = 0.5f;
+        Vector2 startPos = transform.position;
+        Vector2 endPos = new Vector2(transform.position.x, transform.position.y - 0.51f);
+
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector2.Lerp(startPos, endPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = endPos;
+        rb.bodyType = RigidbodyType2D.Static;
     }
 
 
