@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
+//Quản lí sự kiện bất ngờ
 public class GoblinGateTrigger : MonoBehaviour
 {
     public Transform[] spawnPoints;
