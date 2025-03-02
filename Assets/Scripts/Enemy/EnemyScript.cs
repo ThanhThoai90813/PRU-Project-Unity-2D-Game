@@ -74,13 +74,20 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
         WalkDirection = WalkableDirection.Left;
+        // Ignore collision giữa Enemy và Player
+        Collider2D enemyCollider = GetComponent<Collider2D>();
+        Collider2D playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+        if (playerCollider != null)
+        {
+            Physics2D.IgnoreCollision(enemyCollider, playerCollider);
+        }
     }
     protected virtual void Update()
     {

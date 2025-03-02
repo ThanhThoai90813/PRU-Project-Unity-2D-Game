@@ -9,6 +9,7 @@ TagManager:
   - Grass
   - Enemy
   - Bat
+  - Bat_fly
   layers:
   - Default
   - TransparentFX
