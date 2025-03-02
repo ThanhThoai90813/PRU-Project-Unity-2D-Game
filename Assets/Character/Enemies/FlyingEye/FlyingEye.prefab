@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4208815291402736674}
   m_Layer: 8
   m_Name: FlyingEye
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _maxHealth: 100
-  _health: 100
+  _health: 50
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25

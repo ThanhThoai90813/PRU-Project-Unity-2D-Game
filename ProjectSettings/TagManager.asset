@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Item
+  - Grass
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - Emeny
+  - Enemy
   - PlayerHitbox
   - EnemyHitbox
   - GroundDetection

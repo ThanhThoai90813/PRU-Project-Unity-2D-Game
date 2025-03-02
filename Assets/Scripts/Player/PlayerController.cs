@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//quản lý Player
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections),typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
@@ -116,7 +117,6 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
     [System.Obsolete]
@@ -153,7 +153,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-	private void SetFacingDirection(Vector2 moveInput)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 knockbackDir = (transform.position - collision.transform.position).normalized;
+            Vector2 knockbackForce = new Vector2(knockbackDir.x * 4f, 6f);
+
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(knockbackForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void SetFacingDirection(Vector2 moveInput)
 	{
 		if(moveInput.x > 0 && !IsFacingRight)
         {
