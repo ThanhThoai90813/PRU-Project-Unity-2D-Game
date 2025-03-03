@@ -40,30 +40,6 @@ public class GameSaveManager : MonoBehaviour
         Debug.Log("Saved to Slot " + selectedSlot);
     }
 
-    //public void LoadGame()
-    //{
-    //    if (player == null || inventoryController == null) return;
-
-    //    var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
-    //    if (position.HasValue && health.HasValue)
-    //    {
-    //        player.position = position.Value;
-    //        Damageable damageable = player.GetComponent<Damageable>();
-    //        damageable.Health = health.Value;
-    //        inventoryController.inventoryData.Initialize();
-
-    //        foreach (InventoryItem item in inventoryItems)
-    //        {
-    //            inventoryController.inventoryData.AddItem(item);
-    //        }
-    //        Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Load failed! No data found.");
-    //    }
-    //}
-
     public void LoadGame()
     {
         GameData data = SaveSystem.LoadPlayerData(selectedSlot);

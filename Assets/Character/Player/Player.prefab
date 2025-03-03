@@ -555,7 +555,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1.1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -582,7 +582,7 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 7
   airWalkSpeed: 5
-  jumpImpulse: 9
+  jumpImpulse: 10
   _isMoving: 0
   _isRunning: 0
   _isFacingRight: 1
@@ -852,8 +852,8 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  _maxHealth: 1000
+  _health: 500
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 1
