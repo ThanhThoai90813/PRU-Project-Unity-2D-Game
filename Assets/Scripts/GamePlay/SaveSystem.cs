@@ -22,19 +22,6 @@ public static class SaveSystem
         Debug.Log("Saved position and heal to slot " + slot);
     }
     
-    //public static (Vector3?, int?, List<InventoryItem>) LoadPlayerData(int slot)
-    //{
-    //    string path = GetSavePath(slot);
-    //    if (File.Exists(path))
-    //    {
-    //        string json = File.ReadAllText(path);
-    //        GameData data = JsonUtility.FromJson<GameData>(json);
-    //        return (new Vector3(data.posX, data.posY, 0), data.playerHealth, data.inventoryItems);
-    //    }
-    //    Debug.LogWarning("No save data found in slot " + slot);
-    //    return (null, null, new List<InventoryItem>());
-    //}
-    
     public static GameData LoadPlayerData(int slot)
     {
         string path = GetSavePath(slot);

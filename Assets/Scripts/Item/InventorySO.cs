@@ -11,18 +11,33 @@ namespace Inventory.Model
     {
         [SerializeField]
         private List<InventoryItem> inventoryItems;
+        public List<InventoryItem> InventoryItems => inventoryItems;
 
         [field: SerializeField]
         public int Size { get; private set; } = 10;
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
+        private InventoryData _inventoryDB;
 
-        public void Initialize()
+        public void Initialize(InventoryData inventoryDB)
         {
+            _inventoryDB = inventoryDB;
             inventoryItems = new List<InventoryItem>();
             for (int i = 0; i < Size; i++)
             {
                 inventoryItems.Add(InventoryItem.GetEmptyItem());
+                if (_inventoryDB.itemDatas[i].ItemID != -1)
+                {
+                    ItemSO item = EdibleManager.Instance.GetEdibleItem(_inventoryDB.itemDatas[i].ItemID);
+                    if (item != null)
+                    {
+                        AddItem(item, _inventoryDB.itemDatas[i].ItemQuantity);
+                    }
+                    else
+                    {
+                        Debug.LogError("Can't find item based on the ID");
+                    }
+                }
             }
         }
 

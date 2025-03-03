@@ -555,7 +555,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -871,11 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 8733a82eebd41da49b1615f2003133df, type: 2}
-  initialItems:
-  - quantity: 2
-    item: {fileID: 11400000, guid: 2bff5bc96603cf949ba8dec81eb0d6fc, type: 2}
-  - quantity: 2
-    item: {fileID: 11400000, guid: 604abf9b446d5634597fff94a97bce9c, type: 2}
+  initialItems: []
 --- !u!114 &4941399804943417421
 MonoBehaviour:
   m_ObjectHideFlags: 0

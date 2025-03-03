@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 //quản lý Player
@@ -109,7 +110,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    public void OnHealthChange(int currentHealth,int maxHealth)
+    {
+        if (currentHealth >= maxHealth || currentHealth < 0) return;
+
+        DBController.Instance.PLAYERHEAL = currentHealth;
+    }
 
     private void Awake()
     {
@@ -117,6 +123,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
+        damageable.Health = DBController.Instance.PLAYERHEAL;
+        damageable.healthChanged.AddListener(OnHealthChange);
     }
 
 

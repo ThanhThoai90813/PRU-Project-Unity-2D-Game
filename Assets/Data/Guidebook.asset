@@ -23,6 +23,7 @@ MonoBehaviour:
     left click to combo\n\nUI:\n   \u2022 Press I to open Inventory\n   \u2022 Right
     click in Inventory to use item\n   \u2022 Press Esc to Pause the game\n"
   <ItemImage>k__BackingField: {fileID: 957522715996299834, guid: 21cdc51288bef8647a25034843312118, type: 3}
+  <ItemID>k__BackingField: 2
   modifiersData: []
   isConsumable: 0
   <actionSFX>k__BackingField: {fileID: 8300000, guid: 034b1adb0b036714ba69a0775e66261d, type: 3}

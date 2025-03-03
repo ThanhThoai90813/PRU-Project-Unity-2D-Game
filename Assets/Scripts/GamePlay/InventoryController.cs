@@ -17,22 +17,42 @@ namespace Inventory
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
+        InventoryData inventoryDB;
+
         private void Start()
         {
+            inventoryDB = DBController.Instance.INVENTORY_DATA;
             PrepareUI();
             PrepareInventoryData();
         }
 
         private void PrepareInventoryData()
         {
-            inventoryData.Initialize();
+            inventoryData.Initialize(inventoryDB);
             inventoryData.OnInventoryUpdated += UpdateInventoryUI;
-            foreach (InventoryItem item in initialItems)
+            inventoryData.OnInventoryUpdated += SaveInventoryDatabase;
+            SetInventoryData();
+        }
+
+        void SetInventoryData()
+        {
+            var items = inventoryData.InventoryItems;
+            for (int i = 0; i < items.Count; i++)
             {
-                if (item.IsEmpty)
-                    continue;
-                inventoryData.AddItem(item);
+                initialItems.Add(items[i]);
             }
+        }
+
+        private void SaveInventoryDatabase(Dictionary<int, InventoryItem> inventoryState)
+        {
+            for (int i = 0; i < inventoryDB.itemDatas.Count; i++)
+            {
+                if (inventoryState.TryGetValue(i,out InventoryItem inventoryItem))
+                {
+                    inventoryDB.SetItemQuantity(inventoryItem.item.ItemID, inventoryItem.quantity);
+                }
+            }
+            DBController.Instance.INVENTORY_DATA = inventoryDB;
         }
 
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
@@ -124,6 +144,14 @@ namespace Inventory
             }
         }
 
+
+        private void OnDestroy()
+        {
+            inventoryUI.OnDescriptionRequested -= HandleDescriptionRequest;
+            inventoryUI.OnSwapItems -= HandleSwapItems;
+            inventoryUI.OnStartDragging -= HandleDragging;
+            inventoryUI.OnItemActionRequested -= HandleItemActionRequest;
+        }
 
     }
 }
