@@ -12,5 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54745f36838a4c549a59150965ae750e, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  inventoryItems: []
-  <Size>k__BackingField: 10
+  inventoryItems:
+  - quantity: 2
+    item: {fileID: 11400000, guid: 3e47147418c074f428f83bd6fd0f8d73, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 9dfab82379652a749957a4a9f3e703bf, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: a1a13305852b7b64f90b19afd7c15ffb, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 2c54b083193a611458dfda82ab33f2f0, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 5763be5131faa9c4d85b8ffb909adbad, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 4d9b3eef9ece9ce4eaac7ce3208cc2c5, type: 2}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 2823670b503f25f46a58d99138534828, type: 2}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 1
+    item: {fileID: 11400000, guid: b2aa0f6b12b5563478373a5b02f74ee2, type: 2}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 2
+    item: {fileID: 11400000, guid: 3ef26093699be9241af0180d65e72319, type: 2}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  - quantity: 0
+    item: {fileID: 0}
+  <Size>k__BackingField: 20

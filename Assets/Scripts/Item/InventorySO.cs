@@ -11,18 +11,33 @@ namespace Inventory.Model
     {
         [SerializeField]
         private List<InventoryItem> inventoryItems;
+        public List<InventoryItem> InventoryItems => inventoryItems;
 
         [field: SerializeField]
-        public int Size { get; private set; } = 10;
+        public int Size { get; private set; } = 20;
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
+        private InventoryData _inventoryDB;
 
-        public void Initialize()
+        public void Initialize(InventoryData inventoryDB)
         {
+            _inventoryDB = inventoryDB;
             inventoryItems = new List<InventoryItem>();
             for (int i = 0; i < Size; i++)
             {
                 inventoryItems.Add(InventoryItem.GetEmptyItem());
+                if (_inventoryDB.itemDatas[i].ItemID != -1)
+                {
+                    ItemSO item = EdibleManager.Instance.GetEdibleItem(_inventoryDB.itemDatas[i].ItemID);
+                    if (item != null)
+                    {
+                        AddItem(item, _inventoryDB.itemDatas[i].ItemQuantity);
+                    }
+                    else
+                    {
+                        Debug.LogError("Can't find item based on the ID");
+                    }
+                }
             }
         }
 
@@ -147,12 +162,22 @@ namespace Inventory.Model
             {
                 if (inventoryItems[itemIndex].IsEmpty)
                     return;
-                int reminder = inventoryItems[itemIndex].quantity - amount;
-                if (reminder <= 0)
+                
+                int currentQuantity = inventoryItems[itemIndex].quantity;
+
+                int newQuantity = currentQuantity - amount;
+
+                if (newQuantity <= 0)
+                {
                     inventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                    _inventoryDB.itemDatas[itemIndex].ItemID = -1;
+                    _inventoryDB.itemDatas[itemIndex].ItemQuantity = 0;
+                }
                 else
-                    inventoryItems[itemIndex] = inventoryItems[itemIndex]
-                        .ChangeQuantity(reminder);
+                {
+                    inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(newQuantity);
+                    _inventoryDB.itemDatas[itemIndex].ItemQuantity = newQuantity;
+                }
 
                 InformAboutChange();
             }

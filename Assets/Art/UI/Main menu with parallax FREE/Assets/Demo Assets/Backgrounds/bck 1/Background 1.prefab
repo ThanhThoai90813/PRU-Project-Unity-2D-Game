@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 65d716d7d3a553940bed94b16f7aa6ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6286f87a892e2f34ab4786a47b616885, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 11423132}
   - component: {fileID: 11461946}
   m_Layer: 5
-  m_Name: Scene Name
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,8 +125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09848053, y: 0.9582218}
   m_AnchorMax: {x: 0.09848053, y: 0.9582218}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 386, y: 91.034}
+  m_AnchoredPosition: {x: 734, y: -78.71838}
+  m_SizeDelta: {x: 1236.1599, y: 248.4709}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &22216232
 CanvasRenderer:
@@ -169,7 +169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Scene 1
+  m_Text: PRU212 - Group 5 - Final Project
 --- !u!114 &11461946
 MonoBehaviour:
   m_ObjectHideFlags: 0

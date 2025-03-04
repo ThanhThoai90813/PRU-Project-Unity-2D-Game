@@ -76,14 +76,14 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        GameSaveManager.Instance.SaveGame();
+        SaveGameManager.Instance.SaveGame();
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
     }
     public void LoadGame()
     {
-        GameSaveManager.Instance.LoadGame();
+        SaveGameManager.Instance.LoadGame();
         CloseSlotMenus();
         Time.timeScale = 1f;
         isPaused = false;
@@ -107,7 +107,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void SelectSlot(int slot)
     {
-        GameSaveManager.Instance.SelectSlot(slot);
+        SaveGameManager.Instance.SelectSlot(slot);
     }
 
 }

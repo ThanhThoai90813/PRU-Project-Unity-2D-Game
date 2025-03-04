@@ -2,24 +2,17 @@ using Inventory;
 using Inventory.Model;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameSaveManager : MonoBehaviour
+public class SaveGameManager : Singleton<SaveGameManager>
 {
-    public static GameSaveManager Instance;
     
     public Transform player;
     public InventoryController inventoryController;
     public int selectedSlot = 1; // Slot mặc định
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
     public void SelectSlot(int slot)
     {
         selectedSlot = slot;
@@ -39,30 +32,6 @@ public class GameSaveManager : MonoBehaviour
 
         Debug.Log("Saved to Slot " + selectedSlot);
     }
-
-    //public void LoadGame()
-    //{
-    //    if (player == null || inventoryController == null) return;
-
-    //    var (position, health, inventoryItems) = SaveSystem.LoadPlayerData(selectedSlot);
-    //    if (position.HasValue && health.HasValue)
-    //    {
-    //        player.position = position.Value;
-    //        Damageable damageable = player.GetComponent<Damageable>();
-    //        damageable.Health = health.Value;
-    //        inventoryController.inventoryData.Initialize();
-
-    //        foreach (InventoryItem item in inventoryItems)
-    //        {
-    //            inventoryController.inventoryData.AddItem(item);
-    //        }
-    //        Debug.Log($"Loaded from Slot {selectedSlot} | Position: {position.Value} | Health: {health.Value}");
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Load failed! No data found.");
-    //    }
-    //}
 
     public void LoadGame()
     {
@@ -99,12 +68,12 @@ public class GameSaveManager : MonoBehaviour
         player.position = new Vector3(data.posX, data.posY, 0);
         Damageable damageable = player.GetComponent<Damageable>();
         damageable.Health = data.playerHealth;
-        inventoryController.inventoryData.Initialize();
+        //inventoryController.inventoryData.Initialize();
 
-        foreach (InventoryItem item in data.inventoryItems)
-        {
-            inventoryController.inventoryData.AddItem(item);
-        }
+        //foreach (InventoryItem item in data.inventoryItems)
+        //{
+        //    inventoryController.inventoryData.AddItem(item);
+        //}
         Debug.Log($"Loaded from Slot {selectedSlot} | Scene: {data.sceneName} | Position: {data.posX}, {data.posY} | Health: {data.playerHealth}");
     }
 
