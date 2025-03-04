@@ -1,1 +1,1 @@
-{"coin":0}
+{"coin":0,"playerHeal":985,"inventoryData":{"itemDatas":[{"ItemID":3,"ItemQuantity":3},{"ItemID":1,"ItemQuantity":3},{"ItemID":0,"ItemQuantity":3},{"ItemID":6,"ItemQuantity":3},{"ItemID":9,"ItemQuantity":5},{"ItemID":8,"ItemQuantity":1},{"ItemID":7,"ItemQuantity":1},{"ItemID":5,"ItemQuantity":1},{"ItemID":-1,"ItemQuantity":0},{"ItemID":-1,"ItemQuantity":0}]}}

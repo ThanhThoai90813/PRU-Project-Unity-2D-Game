@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c475d0b2087854d96df6f9e0dad0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 2bff5bc96603cf949ba8dec81eb0d6fc, type: 2}
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 9dfab82379652a749957a4a9f3e703bf, type: 2}
   <Quantity>k__BackingField: 1
   audioSource: {fileID: 5789033003800942732}
   duration: 0.3

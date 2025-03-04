@@ -16,13 +16,13 @@ public class DBController : Singleton<DBController>
             Save(DBKey.COIN, value);
         }
     }
-    private int playerHeal;
+    private int _playerHeal;
     public int PLAYERHEAL
     {
-        get => playerHeal;
+        get => _playerHeal;
         set
         {
-            playerHeal = value;
+            _playerHeal = value;
             Save(DBKey.PLAYERHEAL, value);
         }
     }
@@ -86,6 +86,7 @@ public class DBController : Singleton<DBController>
                 string json = JsonUtility.ToJson(values);
                 PlayerPrefs.SetString(key, json);
                 SaveAllToTextFile();
+                Debug.Log("Saved InventoryData: " + json);
             }
             catch (UnityException e)
             {
@@ -130,9 +131,9 @@ public class DBController : Singleton<DBController>
     void Load()
     {
         _coin = LoadDataByKey<int>(DBKey.COIN);
-        playerHeal = LoadDataByKey<int>(DBKey.PLAYERHEAL);
+        _playerHeal = LoadDataByKey<int>(DBKey.PLAYERHEAL);
         _inventoryData = LoadDataByKey<InventoryData>(DBKey.INVENTORY_DATA);
-
+        Debug.Log("Loaded InventoryData: " + JsonUtility.ToJson(_inventoryData));
     }
 
     // New method to save all variables to a text file
@@ -140,7 +141,10 @@ public class DBController : Singleton<DBController>
     {
         DBData dbData = new DBData
         {
-            coin = _coin
+            coin = _coin,
+            playerHeal = _playerHeal,
+            inventoryData = _inventoryData
+
         };
 
         string json = JsonUtility.ToJson(dbData);
@@ -180,4 +184,6 @@ public static class DBKey
 public class DBData
 {
     public int coin;
+    public int playerHeal;
+    public InventoryData inventoryData;
 }

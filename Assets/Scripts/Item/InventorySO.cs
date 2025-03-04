@@ -162,12 +162,22 @@ namespace Inventory.Model
             {
                 if (inventoryItems[itemIndex].IsEmpty)
                     return;
-                int reminder = inventoryItems[itemIndex].quantity - amount;
-                if (reminder <= 0)
+                
+                int currentQuantity = inventoryItems[itemIndex].quantity;
+
+                int newQuantity = currentQuantity - amount;
+
+                if (newQuantity <= 0)
+                {
                     inventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                    _inventoryDB.itemDatas[itemIndex].ItemID = -1;
+                    _inventoryDB.itemDatas[itemIndex].ItemQuantity = 0;
+                }
                 else
-                    inventoryItems[itemIndex] = inventoryItems[itemIndex]
-                        .ChangeQuantity(reminder);
+                {
+                    inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(newQuantity);
+                    _inventoryDB.itemDatas[itemIndex].ItemQuantity = newQuantity;
+                }
 
                 InformAboutChange();
             }

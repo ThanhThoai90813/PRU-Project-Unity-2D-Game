@@ -45,13 +45,16 @@ namespace Inventory
 
         private void SaveInventoryDatabase(Dictionary<int, InventoryItem> inventoryState)
         {
+            // Reset tất cả slot trong inventoryDB về trạng thái mặc định trước
             for (int i = 0; i < inventoryDB.itemDatas.Count; i++)
             {
-                if (inventoryState.TryGetValue(i,out InventoryItem inventoryItem))
+                if (inventoryState.TryGetValue(i, out InventoryItem inventoryItem))
                 {
                     inventoryDB.SetItemQuantity(inventoryItem.item.ItemID, inventoryItem.quantity);
+                    Debug.Log($"[SAVE] Slot {i}: ID {inventoryItem.item.ItemID} - Quantity {inventoryItem.quantity}");
                 }
             }
+            // Lưu lại vào DBController
             DBController.Instance.INVENTORY_DATA = inventoryDB;
         }
 
