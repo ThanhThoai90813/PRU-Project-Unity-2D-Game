@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83396226, g: 0.83396226, b: 0.83396226, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -617,7 +617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &481409437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,9 +699,9 @@ RectTransform:
   - {fileID: 708520904}
   m_Father: {fileID: 708442784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26464707, y: 0.18444446}
-  m_AnchorMax: {x: 0.26464707, y: 0.18444446}
-  m_AnchoredPosition: {x: 454.90997, y: -13.484001}
+  m_AnchorMin: {x: 0.12041711, y: 0.16410491}
+  m_AnchorMax: {x: 0.12041711, y: 0.16410491}
+  m_AnchoredPosition: {x: 567.91, y: -6.4839935}
   m_SizeDelta: {x: 91.39, y: 100.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &708335388
@@ -919,18 +919,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728716266}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 708362306}
   m_Father: {fileID: 708442784}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
-  m_AnchorMin: {x: 0.73300004, y: 0.18444446}
-  m_AnchorMax: {x: 0.73300004, y: 0.18444446}
-  m_AnchoredPosition: {x: -460.6, y: -13.484001}
-  m_SizeDelta: {x: 75.25, y: 100.45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.85927564, y: 0.18444446}
+  m_AnchorMax: {x: 0.85927564, y: 0.18444446}
+  m_AnchoredPosition: {x: -630, y: -13.484001}
+  m_SizeDelta: {x: 81.9, y: 100.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &708576436
 CanvasRenderer:
@@ -1526,7 +1526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: oN
+  m_Text: No
 --- !u!114 &734036370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,7 +2151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1348309224
 MonoBehaviour:
   m_ObjectHideFlags: 0
