@@ -14,7 +14,7 @@ namespace Inventory.Model
         public List<InventoryItem> InventoryItems => inventoryItems;
 
         [field: SerializeField]
-        public int Size { get; private set; } = 10;
+        public int Size { get; private set; } = 20;
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
         private InventoryData _inventoryDB;

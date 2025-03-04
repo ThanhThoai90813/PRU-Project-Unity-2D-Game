@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class InventoryData
 {
-    private int defaultSlot = 10;
+    private int defaultSlot = 20;
     public List<ItemData> itemDatas = new List<ItemData>();
     public InventoryData()
     {

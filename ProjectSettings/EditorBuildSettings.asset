@@ -13,10 +13,7 @@ EditorBuildSettings:
     guid: e4ffdb43d971cda418f5ab6a2c56a6c5
   - enabled: 1
     path: Assets/Scenes/Map2_Village.unity
-    guid: 7ada8ddadefc72b46b59d708a44409ef
-  - enabled: 1
-    path: Assets/Scenes/Map3_Castle.unity
-    guid: 3eda3aeab8365cf45b1422aa754801f7
+    guid: f93a4766ae967bf49a8615ac106e36ae
   - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: a1ac28cf5e438e94f93dd87145e64f56
