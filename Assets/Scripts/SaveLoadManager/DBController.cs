@@ -13,13 +13,13 @@ public class DBController : Singleton<DBController>
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
     
-    public int HEALTH
+    public int PLAYERHEALTH
     {
         get => _userProfile.ProfileData.health;
         set
         {
             _userProfile.ProfileData.health = value;
-            QueueSave();
+            //QueueSave(); //Gọi tự động lưu
         }
     }
     
@@ -29,7 +29,7 @@ public class DBController : Singleton<DBController>
         set
         {
             _userProfile.ProfileData.inventoryData = value;
-            QueueSave();
+            //QueueSave(); //Gọi tự động lưu
         }
     }
     
@@ -138,7 +138,7 @@ public class DBController : Singleton<DBController>
     }
     
     // Synchronous save for critical moments (app closing, etc.)
-    private void ForceSave()
+    public void ForceSave()
     {
         try
         {
@@ -157,6 +157,11 @@ public class DBController : Singleton<DBController>
     public void ForceLoadCustomProfile(int index)
     {
         _currentProfileIndex = index;
+
+        // Xóa dữ liệu trước đó
+        ResetPlayerData();
+
+        // Load dữ liệu mới
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
     }
@@ -165,7 +170,21 @@ public class DBController : Singleton<DBController>
     public void SaveNow()
     {
         ForceSave();
+        Debug.Log("SaveNow() called.");
+
     }
+
+    public void SaveGame(int slot)
+    {
+        PlayerPrefs.SetInt($"PlayerHealth_Slot{slot}", PLAYERHEALTH);
+        PlayerPrefs.Save();
+        Debug.Log($"Game saved in slot {slot}");
+    }
+    public void ResetPlayerData()
+    {
+        _userProfile.SetProfileData(new ProfileData());
+    }
+
 }
 
 [Serializable]
