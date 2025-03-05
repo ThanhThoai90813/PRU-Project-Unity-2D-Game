@@ -74,40 +74,40 @@ public class PauseMenu : MonoBehaviour
     /// <summary>
     /// /
     /// </summary>
-    public void SaveGame()
-    {
-        SaveGameManager.Instance.SaveGame();
-        CloseSlotMenus();
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
-    public void LoadGame()
-    {
-        SaveGameManager.Instance.LoadGame();
-        CloseSlotMenus();
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
+    //public void SaveGame()
+    //{
+    //    SaveGameManager.Instance.SaveGame();
+    //    CloseSlotMenus();
+    //    Time.timeScale = 1f;
+    //    isPaused = false;
+    //}
+    //public void LoadGame()
+    //{
+    //    SaveGameManager.Instance.LoadGame();
+    //    CloseSlotMenus();
+    //    Time.timeScale = 1f;
+    //    isPaused = false;
+    //}
 
-    public void OpenSaveSlotMenu()
-    {
-        PauseMenuUI.SetActive(false);
-        SaveSlotMenuUI.SetActive(true);
-    }
-    public void OpenLoadSlotMenu()
-    {
-        PauseMenuUI.SetActive(false);
-        LoadSlotMenuUI.SetActive(true);
-    }
-    public void CloseSlotMenus()
-    {
-        SaveSlotMenuUI.SetActive(false);
-        LoadSlotMenuUI.SetActive(false);
-        PauseMenuUI.SetActive(true);
-    }
-    public void SelectSlot(int slot)
-    {
-        SaveGameManager.Instance.SelectSlot(slot);
-    }
+    //public void OpenSaveSlotMenu()
+    //{
+    //    PauseMenuUI.SetActive(false);
+    //    SaveSlotMenuUI.SetActive(true);
+    //}
+    //public void OpenLoadSlotMenu()
+    //{
+    //    PauseMenuUI.SetActive(false);
+    //    LoadSlotMenuUI.SetActive(true);
+    //}
+    //public void CloseSlotMenus()
+    //{
+    //    SaveSlotMenuUI.SetActive(false);
+    //    LoadSlotMenuUI.SetActive(false);
+    //    PauseMenuUI.SetActive(true);
+    //}
+    //public void SelectSlot(int slot)
+    //{
+    //    SaveGameManager.Instance.SelectSlot(slot);
+    //}
 
 }

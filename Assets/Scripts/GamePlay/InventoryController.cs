@@ -19,12 +19,12 @@ namespace Inventory
 
         InventoryData inventoryDB;
 
-        //private void Start()
-        //{
-        //    inventoryDB = DBController.Instance.INVENTORY_DATA;
-        //    PrepareUI();
-        //    PrepareInventoryData();
-        //}
+        private void Start()
+        {
+            inventoryDB = DBController.Instance.INVENTORY_DATA;
+            PrepareUI();
+            PrepareInventoryData();
+        }
 
         private void PrepareInventoryData()
         {
@@ -55,7 +55,7 @@ namespace Inventory
                 }
             }
             // Lưu lại vào DBController
-            //DBController.Instance.INVENTORY_DATA = inventoryDB;
+            DBController.Instance.INVENTORY_DATA = inventoryDB;
         }
 
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)

@@ -1,189 +1,182 @@
-//using System;
-//using System.IO;
-//using UnityEngine;
+using System;
+using System.IO;
+using System.Net.Security;
+using System.Threading.Tasks;
+using UnityEngine;
 
-//public class DBController : Singleton<DBController>
-//{
-//    #region VARIABLE
+public class DBController : Singleton<DBController>
+{
+    private const string FILE_NAME_FORMAT = "Profile_{0}.txt";
+    [SerializeField] private UserProfile _userProfile;
+    
+    private bool _pendingSave = false;
+    private Task _currentSaveTask = null;
+    private int _currentProfileIndex;
+    
+    public int HEALTH
+    {
+        get => _userProfile.ProfileData.health;
+        set
+        {
+            _userProfile.ProfileData.health = value;
+            QueueSave();
+        }
+    }
+    
+    public InventoryData INVENTORY_DATA
+    {
+        get => _userProfile.ProfileData.inventoryData;
+        set
+        {
+            _userProfile.ProfileData.inventoryData = value;
+            QueueSave();
+        }
+    }
+    
+    protected override void CustomAwake()
+    {
+        _currentProfileIndex = 0;
+        Initializing();
+    }
 
-//    private int _coin;
-//    public int COIN
-//    {
-//        get => _coin;
-//        set
-//        {
-//            _coin = value;
-//            Save(DBKey.COIN, value);
-//        }
-//    }
-//    private int _playerHeal;
-//    public int PLAYERHEAL
-//    {
-//        get => _playerHeal;
-//        set
-//        {
-//            _playerHeal = value;
-//            Save(DBKey.PLAYERHEAL, value);
-//        }
-//    }
-//    private InventoryData _inventoryData;
-//    public InventoryData INVENTORY_DATA
-//    {
-//        get => _inventoryData;
-//        set
-//        {
-//            _inventoryData = value;
-//            Save(DBKey.INVENTORY_DATA, value);
-//        }
-//    }
-//    #endregion
-//    protected override void CustomAwake()
-//    {
-//        Initializing();
-//    }
+    private void Initializing()
+    {
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+    }
+    
+    private void QueueSave()
+    {
+        if (!_pendingSave)
+        {
+            _pendingSave = true;
+            
+            // If we're not already saving, start saving immediately
+            if (_currentSaveTask == null || _currentSaveTask.IsCompleted)
+            {
+                SaveAsync();
+            }
+        }
+    }
+    
+    private async void SaveAsync()
+    {
+        // Wait a short frame to batch multiple rapid changes together
+        await Task.Delay(50);
+        
+        try
+        {
+            _pendingSave = false;
+            
+            string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            
+            // Start the async file write operation
+            _currentSaveTask = File.WriteAllTextAsync(path, jsonData);
+            
+            // Wait for it to complete
+            await _currentSaveTask;
+            
+            // If more changes happened during saving, save again
+            if (_pendingSave)
+            {
+                SaveAsync();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error saving data: {e.Message}");
+            
+            // If saving failed, try again later
+            _pendingSave = true;
+            await Task.Delay(1000); // Wait a bit longer before retry
+            
+            if (_pendingSave)
+            {
+                SaveAsync();
+            }
+        }
+    }
 
-//    //Load data khi mới vÀo Scene mẹ
-//    void Initializing()
-//    {
-//        CheckDependency(DBKey.COIN, key => COIN = 0);
-//        CheckDependency(DBKey.PLAYERHEAL, key => PLAYERHEAL = 1000);
-//        CheckDependency(DBKey.INVENTORY_DATA, key =>
-//        {
-//            INVENTORY_DATA = new InventoryData();
-//        });
+    public ProfileData LoadData(int index)
+    {
+        try
+        {
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, index.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            if (File.Exists(path))
+            {
+                var jsonData = File.ReadAllText(path);
+                return JsonUtility.FromJson<ProfileData>(jsonData);
+            }
+            Debug.Log("Database file not found - Creating new one");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error loading data: {e.Message}");
+        }
+        
+        return new ProfileData();
+    }
+    
+    // Call this when application is quitting or pausing to ensure data is saved
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause && _pendingSave)
+        {
+            ForceSave();
+        }
+    }
+    
+    private void OnApplicationQuit()
+    {
+        if (_pendingSave)
+        {
+            ForceSave();
+        }
+    }
+    
+    // Synchronous save for critical moments (app closing, etc.)
+    private void ForceSave()
+    {
+        try
+        {
+            string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            File.WriteAllText(path, jsonData);
+            _pendingSave = false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error force saving data: {e.Message}");
+        }
+    }
+    
+    public void ForceLoadCustomProfile(int index)
+    {
+        _currentProfileIndex = index;
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+    }
+    
+    // Optional: Public method to force a save manually
+    public void SaveNow()
+    {
+        ForceSave();
+    }
+}
 
-//        Load();
-//    }
-
-//    void CheckDependency(string key, Action<string> onComplete)
-//    {
-//        if (!PlayerPrefs.HasKey(key))
-//        {
-//            onComplete?.Invoke(key);
-//        }
-//    }
-
-//    void Save<T>(string key, T values)
-//    {
-//        if (typeof(T) == typeof(int) ||
-//            typeof(T) == typeof(bool) ||
-//            typeof(T) == typeof(string) ||
-//            typeof(T) == typeof(float) ||
-//            typeof(T) == typeof(long) ||
-//            typeof(T) == typeof(Quaternion) ||
-//            typeof(T) == typeof(Vector2) ||
-//            typeof(T) == typeof(Vector3) ||
-//            typeof(T) == typeof(Vector2Int) ||
-//            typeof(T) == typeof(Vector3Int))
-//        {
-//            PlayerPrefs.SetString(key, values.ToString());
-//            SaveAllToTextFile();
-//        }
-//        else
-//        {
-//            try
-//            {
-//                string json = JsonUtility.ToJson(values);
-//                PlayerPrefs.SetString(key, json);
-//                SaveAllToTextFile();
-//                Debug.Log("Saved InventoryData: " + json);
-//            }
-//            catch (UnityException e)
-//            {
-//                throw new UnityException(e.Message);
-//            }
-//        }
-//    }
-
-//    T LoadDataByKey<T>(string key)
-//    {
-//        if (typeof(T) == typeof(int) ||
-//            typeof(T) == typeof(bool) ||
-//            typeof(T) == typeof(string) ||
-//            typeof(T) == typeof(float) ||
-//            typeof(T) == typeof(long) ||
-//            typeof(T) == typeof(Quaternion) ||
-//            typeof(T) == typeof(Vector2) ||
-//            typeof(T) == typeof(Vector3) ||
-//            typeof(T) == typeof(Vector2Int) ||
-//            typeof(T) == typeof(Vector3Int))
-//        {
-//            string stringValue = PlayerPrefs.GetString(key);
-//            return (T)Convert.ChangeType(stringValue, typeof(T));
-//        }
-//        else
-//        {
-//            string json = PlayerPrefs.GetString(key);
-//            return JsonUtility.FromJson<T>(json);
-//        }
-//    }
-
-//    public void Delete(string key)
-//    {
-//        PlayerPrefs.DeleteKey(key);
-//    }
-
-//    public void DeleteAll()
-//    {
-//        PlayerPrefs.DeleteAll();
-//    }
-
-//    void Load()
-//    {
-//        _coin = LoadDataByKey<int>(DBKey.COIN);
-//        _playerHeal = LoadDataByKey<int>(DBKey.PLAYERHEAL);
-//        _inventoryData = LoadDataByKey<InventoryData>(DBKey.INVENTORY_DATA);
-//        Debug.Log("Loaded InventoryData: " + JsonUtility.ToJson(_inventoryData));
-//    }
-
-//    // New method to save all variables to a text file
-//    public void SaveAllToTextFile()
-//    {
-//        DBData dbData = new DBData
-//        {
-//            coin = _coin,
-//            playerHeal = _playerHeal,
-//            inventoryData = _inventoryData
-
-//        };
-
-//        string json = JsonUtility.ToJson(dbData);
-//        SaveToTextFile("DBData.txt", json);
-//    }
-
-//    public void SaveToTextFile(string fileName, string data)
-//    {
-//        string path = Path.Combine(Application.dataPath, "Resources", fileName);
-//        File.WriteAllText(path, data);
-//    }
-
-//    public string LoadFromTextFile(string fileName)
-//    {
-//        string path = Path.Combine(Application.dataPath, "Resources", fileName);
-//        if (File.Exists(path))
-//        {
-//            return File.ReadAllText(path);
-//        }
-//        else
-//        {
-//            Debug.LogError("File not found: " + path);
-//            return null;
-//        }
-//    }
-//}
-
-//public static class DBKey
-//{
-//    public static readonly string COIN = "COIN";
-//    public static readonly string PLAYERHEAL = "PLAYERHEAL"; // định danh tên biến lưu
-//    public static readonly string INVENTORY_DATA = "INVENTORY_DATA"; // định danh inventory
-
-//}
-
-//[Serializable]
-//public class DBData
-//{
-//    public int coin;
-//    public int playerHeal;
-//    public InventoryData inventoryData;
-//}
+[Serializable]
+public class ProfileData
+{
+    public int health;
+    public InventoryData inventoryData;
+    
+    public ProfileData()
+    {
+        health = 100;
+        inventoryData = new InventoryData();
+    }
+}
