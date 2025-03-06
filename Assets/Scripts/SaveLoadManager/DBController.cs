@@ -15,13 +15,14 @@ public class DBController : Singleton<DBController>
 
     //khai báo getter setter các biến cần lưu
     #region
-    public string CURRENTSCENENAME
+
+    public string CURRENTSCENE
     {
-        get => _userProfile.ProfileData.sceneName;
+        get => _userProfile.ProfileData.currentScene;
         set
         {
-            _userProfile.ProfileData.sceneName = value;
-            QueueSave();
+            _userProfile.ProfileData.currentScene = value;
+            Debug.Log("Current scene set to: " + value);
         }
     }
 
@@ -61,23 +62,20 @@ public class DBController : Singleton<DBController>
     {
         _currentProfileIndex = 0;
         Initializing();
-    }
-    private void OnEnable()
-    {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Initializing();
-        if (string.IsNullOrEmpty(CURRENTSCENENAME))
+        // Tìm player trong scene mới và áp dụng vị trí đã lưu
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            CURRENTSCENENAME = scene.name;
+            player.transform.position = _userProfile.ProfileData.playerPosition;
+            Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
         }
     }
 
@@ -85,19 +83,15 @@ public class DBController : Singleton<DBController>
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
-        if (!string.IsNullOrEmpty(profileData.sceneName) && SceneManager.GetActiveScene().name != profileData.sceneName)
-        {
-            SceneManager.LoadScene(profileData.sceneName);
-            return; 
-        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            player.transform.position = profileData.playerPosition;
-            Debug.Log("Player position loaded: " + profileData.playerPosition);
+            player.transform.position = _userProfile.ProfileData.playerPosition;
+            Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
         }
     }
-    
+
     private void QueueSave()
     {
         if (!_pendingSave)
@@ -217,7 +211,7 @@ public class DBController : Singleton<DBController>
         // Load dữ liệu mới
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
-
+ 
         //Cập nhật vị trí player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -234,6 +228,17 @@ public class DBController : Singleton<DBController>
         Debug.Log("SaveNow() called.");
 
     }
+    public void NewGame()
+    {
+        // Reset dữ liệu về mặc định
+        _userProfile.SetProfileData(new ProfileData());
+        PLAYER_POSITION = Vector2.zero;
+        CURRENTSCENE = "MainMenu"; // Scene mặc định
+        SaveNow(); // Lưu dữ liệu mới
+
+        // Load scene khởi đầu
+        SceneManager.LoadScene("Map1_JungleMap");
+    }
 
     public void SaveGame(int slot)
     {
@@ -241,6 +246,28 @@ public class DBController : Singleton<DBController>
         PlayerPrefs.Save();
         Debug.Log($"Game saved in slot {slot}");
     }
+    public void LoadGame()
+    {
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+
+        // Load scene đã lưu
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (profileData.currentScene != currentScene)
+        {
+            SceneManager.LoadScene(profileData.currentScene);
+        }
+        else
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                player.transform.position = _userProfile.ProfileData.playerPosition;
+                Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
+            }
+        }
+    }
+
     public void ResetPlayerData()
     {
         _userProfile.SetProfileData(new ProfileData());
@@ -257,13 +284,13 @@ public class ProfileData
     public int health;
     public InventoryData inventoryData;
     public Vector2 playerPosition;
-    public string sceneName;
+    public string currentScene;
 
     public ProfileData()
     {
         health = 100;
         inventoryData = new InventoryData();
         playerPosition = Vector2.zero;
-        sceneName = "MainMenu";
+        currentScene = "MainMenu";
     }
 }

@@ -225,13 +225,13 @@ public class MenuController : MonoBehaviour {
     public void newGame()
     {
         //Loads the first scene, change the number to your desired scene
-        SceneManager.LoadScene(1);
+        DBController.Instance.NewGame();
     }
 
     //Continue
     public void continueGame()
     {
-        //In this part you need to include your save game script to implement the continue function
+        DBController.Instance.LoadGame();
     }
 
     //Select scene Event
