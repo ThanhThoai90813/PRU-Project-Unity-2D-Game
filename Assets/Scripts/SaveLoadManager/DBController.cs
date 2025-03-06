@@ -1,189 +1,308 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DBController : Singleton<DBController>
 {
-    #region VARIABLE
+    private const string FILE_NAME_FORMAT = "Profile_{0}.txt";
+    [SerializeField] private UserProfile _userProfile;
+    
+    private bool _pendingSave = false;
+    private Task _currentSaveTask = null;
+    private int _currentProfileIndex;
 
-    private int _coin;
-    public int COIN
+    //khai báo getter setter các biến cần lưu
+    #region
+
+    public string CURRENTSCENE
     {
-        get => _coin;
+        get => _userProfile.ProfileData.currentScene;
         set
         {
-            _coin = value;
-            Save(DBKey.COIN, value);
+            _userProfile.ProfileData.currentScene = value;
+            Debug.Log("Current scene set to: " + value);
         }
     }
-    private int _playerHeal;
-    public int PLAYERHEAL
+
+    public int PLAYERHEALTH
     {
-        get => _playerHeal;
+        get => _userProfile.ProfileData.health;
         set
         {
-            _playerHeal = value;
-            Save(DBKey.PLAYERHEAL, value);
+            _userProfile.ProfileData.health = value;
+            //QueueSave(); //Gọi tự động lưu
         }
     }
-    private InventoryData _inventoryData;
+    
     public InventoryData INVENTORY_DATA
     {
-        get => _inventoryData;
+        get => _userProfile.ProfileData.inventoryData;
         set
         {
-            _inventoryData = value;
-            Save(DBKey.INVENTORY_DATA, value);
+            _userProfile.ProfileData.inventoryData = value;
+            //QueueSave(); //Gọi tự động lưu
         }
     }
+
+    public Vector2 PLAYER_POSITION
+    {
+        get => _userProfile.ProfileData.playerPosition;
+        set
+        {
+            _userProfile.ProfileData.playerPosition = value;
+            //QueueSave(); //Gọi tự động lưu
+        }
+    }
+
+    public string SAVEDATETIME
+    {
+        get => _userProfile.ProfileData.saveDateTime;
+    }
+
     #endregion
+
+    //chỗ xử lí việc save load
     protected override void CustomAwake()
     {
+        _currentProfileIndex = 0;
         Initializing();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
-    //Load data khi mới vÀo Scene mẹ
-    void Initializing()
+    private void OnDestroy()
     {
-        CheckDependency(DBKey.COIN, key => COIN = 0);
-        CheckDependency(DBKey.PLAYERHEAL, key => PLAYERHEAL = 1000);
-        CheckDependency(DBKey.INVENTORY_DATA, key =>
-        {
-            INVENTORY_DATA = new InventoryData();
-        });
-
-        Load();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-    void CheckDependency(string key, Action<string> onComplete)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!PlayerPrefs.HasKey(key))
+        // Tìm player trong scene mới và áp dụng vị trí đã lưu
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            onComplete?.Invoke(key);
+            player.transform.position = _userProfile.ProfileData.playerPosition;
+            Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
         }
     }
 
-    void Save<T>(string key, T values)
+    private void Initializing()
     {
-        if (typeof(T) == typeof(int) ||
-            typeof(T) == typeof(bool) ||
-            typeof(T) == typeof(string) ||
-            typeof(T) == typeof(float) ||
-            typeof(T) == typeof(long) ||
-            typeof(T) == typeof(Quaternion) ||
-            typeof(T) == typeof(Vector2) ||
-            typeof(T) == typeof(Vector3) ||
-            typeof(T) == typeof(Vector2Int) ||
-            typeof(T) == typeof(Vector3Int))
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            PlayerPrefs.SetString(key, values.ToString());
-            SaveAllToTextFile();
+            player.transform.position = _userProfile.ProfileData.playerPosition;
+            Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
         }
-        else
+    }
+
+    private void QueueSave()
+    {
+        if (!_pendingSave)
         {
-            try
+            _pendingSave = true;
+            
+            // If we're not already saving, start saving immediately
+            if (_currentSaveTask == null || _currentSaveTask.IsCompleted)
             {
-                string json = JsonUtility.ToJson(values);
-                PlayerPrefs.SetString(key, json);
-                SaveAllToTextFile();
-                Debug.Log("Saved InventoryData: " + json);
-            }
-            catch (UnityException e)
-            {
-                throw new UnityException(e.Message);
+                SaveAsync();
             }
         }
     }
-
-    T LoadDataByKey<T>(string key)
+    
+    private async void SaveAsync()
     {
-        if (typeof(T) == typeof(int) ||
-            typeof(T) == typeof(bool) ||
-            typeof(T) == typeof(string) ||
-            typeof(T) == typeof(float) ||
-            typeof(T) == typeof(long) ||
-            typeof(T) == typeof(Quaternion) ||
-            typeof(T) == typeof(Vector2) ||
-            typeof(T) == typeof(Vector3) ||
-            typeof(T) == typeof(Vector2Int) ||
-            typeof(T) == typeof(Vector3Int))
+        // Wait a short frame to batch multiple rapid changes together
+        await Task.Delay(50);
+        
+        try
         {
-            string stringValue = PlayerPrefs.GetString(key);
-            return (T)Convert.ChangeType(stringValue, typeof(T));
+            _pendingSave = false;
+            _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            
+            // Start the async file write operation
+            _currentSaveTask = File.WriteAllTextAsync(path, jsonData);
+            
+            // Wait for it to complete
+            await _currentSaveTask;
+            
+            // If more changes happened during saving, save again
+            if (_pendingSave)
+            {
+                SaveAsync();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error saving data: {e.Message}");
+            
+            // If saving failed, try again later
+            _pendingSave = true;
+            await Task.Delay(1000); // Wait a bit longer before retry
+            
+            if (_pendingSave)
+            {
+                SaveAsync();
+            }
+        }
+    }
+
+    public ProfileData LoadData(int index)
+    {
+        try
+        {
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, index.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            if (File.Exists(path))
+            {
+                var jsonData = File.ReadAllText(path);
+                return JsonUtility.FromJson<ProfileData>(jsonData);
+            }
+            Debug.Log("Database file not found - Creating new one");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error loading data: {e.Message}");
+        }
+        
+        return new ProfileData();
+    }
+    
+    // Call this when application is quitting or pausing to ensure data is saved
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause && _pendingSave)
+        {
+            ForceSave();
+        }
+    }
+    
+    private void OnApplicationQuit()
+    {
+        if (_pendingSave)
+        {
+            ForceSave();
+        }
+    }
+    
+    // Synchronous save for critical moments (app closing, etc.)
+    public void ForceSave()
+    {
+        try
+        {
+            _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
+            string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
+            string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+            File.WriteAllText(path, jsonData);
+            _pendingSave = false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error force saving data: {e.Message}");
+        }
+    }
+    
+    public void ForceLoadCustomProfile(int index)
+    {
+        _currentProfileIndex = index;
+
+        // Xóa dữ liệu trước đó để tránh bị override dũ liệu cũ
+        ResetPlayerData();
+
+        // Load dữ liệu mới
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+ 
+        //Cập nhật vị trí player
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = profileData.playerPosition;
+            Debug.Log("New Player Position Set: " + player.transform.position);
+        }
+    }
+    
+    // Optional: Public method to force a save manually
+    public void SaveNow()
+    {
+        _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        ForceSave();
+        Debug.Log("SaveNow() called.");
+
+    }
+    public void NewGame()
+    {
+        _userProfile.SetProfileData(new ProfileData());
+        PLAYER_POSITION = Vector2.zero;
+        CURRENTSCENE = "MainMenu"; // Scene mặc định
+        _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        SaveNow();
+
+        // Load scene khởi đầu
+        SceneManager.LoadScene("Map1_JungleMap");
+    }
+
+    public void SaveGame(int slot)
+    {
+        PlayerPrefs.SetInt($"PlayerHealth_Slot{slot}", PLAYERHEALTH);
+        PlayerPrefs.Save();
+        Debug.Log($"Game saved in slot {slot}");
+    }
+    public void LoadGame()
+    {
+        ProfileData profileData = LoadData(_currentProfileIndex);
+        _userProfile.SetProfileData(profileData);
+
+        // Load scene đã lưu
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (profileData.currentScene != currentScene)
+        {
+            SceneManager.LoadScene(profileData.currentScene);
         }
         else
         {
-            string json = PlayerPrefs.GetString(key);
-            return JsonUtility.FromJson<T>(json);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                player.transform.position = _userProfile.ProfileData.playerPosition;
+                Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
+            }
         }
     }
 
-    public void Delete(string key)
+    public void ResetPlayerData()
     {
-        PlayerPrefs.DeleteKey(key);
+        _userProfile.SetProfileData(new ProfileData());
+        PLAYER_POSITION = Vector2.zero;
     }
-
-    public void DeleteAll()
-    {
-        PlayerPrefs.DeleteAll();
-    }
-
-    void Load()
-    {
-        _coin = LoadDataByKey<int>(DBKey.COIN);
-        _playerHeal = LoadDataByKey<int>(DBKey.PLAYERHEAL);
-        _inventoryData = LoadDataByKey<InventoryData>(DBKey.INVENTORY_DATA);
-        Debug.Log("Loaded InventoryData: " + JsonUtility.ToJson(_inventoryData));
-    }
-
-    // New method to save all variables to a text file
-    public void SaveAllToTextFile()
-    {
-        DBData dbData = new DBData
-        {
-            coin = _coin,
-            playerHeal = _playerHeal,
-            inventoryData = _inventoryData
-
-        };
-
-        string json = JsonUtility.ToJson(dbData);
-        SaveToTextFile("DBData.txt", json);
-    }
-
-    public void SaveToTextFile(string fileName, string data)
-    {
-        string path = Path.Combine(Application.dataPath, "Resources", fileName);
-        File.WriteAllText(path, data);
-    }
-
-    public string LoadFromTextFile(string fileName)
-    {
-        string path = Path.Combine(Application.dataPath, "Resources", fileName);
-        if (File.Exists(path))
-        {
-            return File.ReadAllText(path);
-        }
-        else
-        {
-            Debug.LogError("File not found: " + path);
-            return null;
-        }
-    }
-}
-
-public static class DBKey
-{
-    public static readonly string COIN = "COIN";
-    public static readonly string PLAYERHEAL = "PLAYERHEAL"; // định danh tên biến lưu
-    public static readonly string INVENTORY_DATA = "INVENTORY_DATA"; // định danh inventory
 
 }
 
+
+//chỗ khai báo biến cần lưu (chỉ nhận dữ liệu nguyên thủy)
 [Serializable]
-public class DBData
+public class ProfileData
 {
-    public int coin;
-    public int playerHeal;
+    public int health;
     public InventoryData inventoryData;
+    public Vector2 playerPosition;
+    public string currentScene;
+    public string saveDateTime;
+
+    public ProfileData()
+    {
+        health = 100;
+        inventoryData = new InventoryData();
+        playerPosition = Vector2.zero;
+        currentScene = "MainMenu";
+        saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+    }
 }

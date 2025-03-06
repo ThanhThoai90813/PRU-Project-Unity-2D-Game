@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6a9b30b2c1ffb41b6421f72a7c9e9d, type: 3}
+  m_Name: UserProfile
+  m_EditorClassIdentifier: 
+  _profileData:
+    health: 55
+    inventoryData:
+      itemDatas:
+      - ItemID: 12
+        ItemQuantity: 2
+      - ItemID: 17
+        ItemQuantity: 1
+      - ItemID: 2
+        ItemQuantity: 1
+      - ItemID: 3
+        ItemQuantity: 2
+      - ItemID: 1
+        ItemQuantity: 2
+      - ItemID: 0
+        ItemQuantity: 2
+      - ItemID: 6
+        ItemQuantity: 2
+      - ItemID: 9
+        ItemQuantity: 2
+      - ItemID: 8
+        ItemQuantity: 1
+      - ItemID: 7
+        ItemQuantity: 1
+      - ItemID: 5
+        ItemQuantity: 2
+      - ItemID: 4
+        ItemQuantity: 1
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+      - ItemID: -1
+        ItemQuantity: 0
+    playerPosition: {x: 1167.214, y: -16.37746}
