@@ -13,9 +13,33 @@ MonoBehaviour:
   m_Name: UserProfile
   m_EditorClassIdentifier: 
   _profileData:
-    health: 100
+    health: 55
     inventoryData:
       itemDatas:
+      - ItemID: 12
+        ItemQuantity: 2
+      - ItemID: 17
+        ItemQuantity: 1
+      - ItemID: 2
+        ItemQuantity: 1
+      - ItemID: 3
+        ItemQuantity: 2
+      - ItemID: 1
+        ItemQuantity: 2
+      - ItemID: 0
+        ItemQuantity: 2
+      - ItemID: 6
+        ItemQuantity: 2
+      - ItemID: 9
+        ItemQuantity: 2
+      - ItemID: 8
+        ItemQuantity: 1
+      - ItemID: 7
+        ItemQuantity: 1
+      - ItemID: 5
+        ItemQuantity: 2
+      - ItemID: 4
+        ItemQuantity: 1
       - ItemID: -1
         ItemQuantity: 0
       - ItemID: -1
@@ -32,27 +56,4 @@ MonoBehaviour:
         ItemQuantity: 0
       - ItemID: -1
         ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
+    playerPosition: {x: 1167.214, y: -16.37746}

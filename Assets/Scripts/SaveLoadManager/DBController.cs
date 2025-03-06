@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Security;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DBController : Singleton<DBController>
 {
@@ -13,6 +14,7 @@ public class DBController : Singleton<DBController>
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
     
+    //khai báo getter setter các biến cần lưu
     public int PLAYERHEALTH
     {
         get => _userProfile.ProfileData.health;
@@ -32,10 +34,35 @@ public class DBController : Singleton<DBController>
             //QueueSave(); //Gọi tự động lưu
         }
     }
-    
+
+    public Vector2 PLAYER_POSITION
+    {
+        get => _userProfile.ProfileData.playerPosition;
+        set
+        {
+            _userProfile.ProfileData.playerPosition = value;
+            //QueueSave(); //Gọi tự động lưu
+        }
+    }
+
+    //chỗ xử lí việc save load
     protected override void CustomAwake()
     {
         _currentProfileIndex = 0;
+        Initializing();
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         Initializing();
     }
 
@@ -43,6 +70,12 @@ public class DBController : Singleton<DBController>
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = profileData.playerPosition;
+            Debug.Log("Player position loaded: " + profileData.playerPosition);
+        }
     }
     
     private void QueueSave()
@@ -164,6 +197,14 @@ public class DBController : Singleton<DBController>
         // Load dữ liệu mới
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
+
+        //Cập nhật vị trí player
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = profileData.playerPosition;
+            Debug.Log("New Player Position Set: " + player.transform.position);
+        }
     }
     
     // Optional: Public method to force a save manually
@@ -183,19 +224,24 @@ public class DBController : Singleton<DBController>
     public void ResetPlayerData()
     {
         _userProfile.SetProfileData(new ProfileData());
+        PLAYER_POSITION = Vector2.zero;
     }
 
 }
 
+
+//chỗ khai báo biến cần lưu (chỉ nhận dữ liệu nguyên thủy)
 [Serializable]
 public class ProfileData
 {
     public int health;
     public InventoryData inventoryData;
+    public Vector2 playerPosition;
     
     public ProfileData()
     {
         health = 100;
         inventoryData = new InventoryData();
+        playerPosition = Vector2.zero;
     }
 }

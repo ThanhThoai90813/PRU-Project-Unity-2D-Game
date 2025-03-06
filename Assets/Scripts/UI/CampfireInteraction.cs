@@ -25,9 +25,14 @@ public class CampfireInteraction : MonoBehaviour
     {
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                DBController.Instance.PLAYER_POSITION = player.transform.position;
+                Debug.Log("Saving Player Position: " + DBController.Instance.PLAYER_POSITION);
+            }
             DBController.Instance.SaveNow();
             Debug.Log("Game Saved at Campfire!");
-            // UIManager.Instance.ShowMessage("Game Saved!", 2f);
         }
     }
 }

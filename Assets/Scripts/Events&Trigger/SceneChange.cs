@@ -7,9 +7,16 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Player"))
         {
+            GameObject player = other.gameObject;
+            if (player != null)
+            {
+                Vector2 currentPosition = player.transform.position;
+                DBController.Instance.PLAYER_POSITION = currentPosition;
+                DBController.Instance.SaveNow();
+            }
+            // Chuyển scene
             SceneManager.LoadScene(sceneName);
         }
     }
