@@ -287,7 +287,7 @@ public class DBController : Singleton<DBController>
 }
 
 
-//chỗ khai báo biến cần lưu (chỉ nhận dữ liệu nguyên thủy)
+//chỗ khai báo thứ cần lưu (chỉ nhận dữ liệu nguyên thủy)
 [Serializable]
 public class ProfileData
 {
