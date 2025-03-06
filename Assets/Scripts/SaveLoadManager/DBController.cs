@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Net.Security;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,8 +12,19 @@ public class DBController : Singleton<DBController>
     private bool _pendingSave = false;
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
-    
+
     //khai báo getter setter các biến cần lưu
+    #region
+    public string CURRENTSCENENAME
+    {
+        get => _userProfile.ProfileData.sceneName;
+        set
+        {
+            _userProfile.ProfileData.sceneName = value;
+            QueueSave();
+        }
+    }
+
     public int PLAYERHEALTH
     {
         get => _userProfile.ProfileData.health;
@@ -44,6 +54,7 @@ public class DBController : Singleton<DBController>
             //QueueSave(); //Gọi tự động lưu
         }
     }
+    #endregion
 
     //chỗ xử lí việc save load
     protected override void CustomAwake()
@@ -64,12 +75,21 @@ public class DBController : Singleton<DBController>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Initializing();
+        if (string.IsNullOrEmpty(CURRENTSCENENAME))
+        {
+            CURRENTSCENENAME = scene.name;
+        }
     }
 
     private void Initializing()
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
+        if (!string.IsNullOrEmpty(profileData.sceneName) && SceneManager.GetActiveScene().name != profileData.sceneName)
+        {
+            SceneManager.LoadScene(profileData.sceneName);
+            return; 
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -191,7 +211,7 @@ public class DBController : Singleton<DBController>
     {
         _currentProfileIndex = index;
 
-        // Xóa dữ liệu trước đó
+        // Xóa dữ liệu trước đó để tránh bị override dũ liệu cũ
         ResetPlayerData();
 
         // Load dữ liệu mới
@@ -237,11 +257,13 @@ public class ProfileData
     public int health;
     public InventoryData inventoryData;
     public Vector2 playerPosition;
-    
+    public string sceneName;
+
     public ProfileData()
     {
         health = 100;
         inventoryData = new InventoryData();
         playerPosition = Vector2.zero;
+        sceneName = "MainMenu";
     }
 }

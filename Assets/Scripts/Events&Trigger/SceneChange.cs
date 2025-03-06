@@ -14,7 +14,9 @@ public class SceneChanger : MonoBehaviour
             {
                 Vector2 currentPosition = player.transform.position;
                 DBController.Instance.PLAYER_POSITION = currentPosition;
+                DBController.Instance.CURRENTSCENENAME = sceneName;
                 DBController.Instance.SaveNow();
+                Debug.Log($"Saved: Scene = {sceneName}, Position = {currentPosition}");
             }
             // Chuyển scene
             SceneManager.LoadScene(sceneName);
