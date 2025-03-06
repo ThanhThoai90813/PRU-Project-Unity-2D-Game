@@ -67,7 +67,7 @@ public class MenuController : MonoBehaviour {
     private AudioSource Audio;
 
     //Events
-    [SerializeField, HideInInspector]
+    [SerializeField]
     public UnityEvent[] Events;
 
     //Exit Menu

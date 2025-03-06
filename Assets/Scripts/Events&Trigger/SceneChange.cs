@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//xử lý trigger chuyển map và lưu lại dữ liệu người chơi sau khi chuyển
 public class SceneChanger : MonoBehaviour
 {
     public string sceneName;
@@ -15,10 +16,9 @@ public class SceneChanger : MonoBehaviour
                 Vector2 currentPosition = player.transform.position;
                 DBController.Instance.PLAYER_POSITION = currentPosition;
                 DBController.Instance.CURRENTSCENE = sceneName;
-                DBController.Instance.SaveNow(); // Lưu ngay lập tức
-                Debug.Log($"Saved: Scene = {sceneName}, Position = {currentPosition}");
+                DBController.Instance.SaveNow();
             }
-            SceneManager.LoadScene(sceneName); // Chuyển scene sau khi lưu
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

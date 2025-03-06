@@ -55,6 +55,12 @@ public class DBController : Singleton<DBController>
             //QueueSave(); //Gọi tự động lưu
         }
     }
+
+    public string SAVEDATETIME
+    {
+        get => _userProfile.ProfileData.saveDateTime;
+    }
+
     #endregion
 
     //chỗ xử lí việc save load
@@ -114,7 +120,8 @@ public class DBController : Singleton<DBController>
         try
         {
             _pendingSave = false;
-            
+            _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
             string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
             string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -189,6 +196,8 @@ public class DBController : Singleton<DBController>
     {
         try
         {
+            _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
             string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
             string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -224,17 +233,18 @@ public class DBController : Singleton<DBController>
     // Optional: Public method to force a save manually
     public void SaveNow()
     {
+        _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         ForceSave();
         Debug.Log("SaveNow() called.");
 
     }
     public void NewGame()
     {
-        // Reset dữ liệu về mặc định
         _userProfile.SetProfileData(new ProfileData());
         PLAYER_POSITION = Vector2.zero;
         CURRENTSCENE = "MainMenu"; // Scene mặc định
-        SaveNow(); // Lưu dữ liệu mới
+        _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        SaveNow();
 
         // Load scene khởi đầu
         SceneManager.LoadScene("Map1_JungleMap");
@@ -285,6 +295,7 @@ public class ProfileData
     public InventoryData inventoryData;
     public Vector2 playerPosition;
     public string currentScene;
+    public string saveDateTime;
 
     public ProfileData()
     {
@@ -292,5 +303,6 @@ public class ProfileData
         inventoryData = new InventoryData();
         playerPosition = Vector2.zero;
         currentScene = "MainMenu";
+        saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
     }
 }

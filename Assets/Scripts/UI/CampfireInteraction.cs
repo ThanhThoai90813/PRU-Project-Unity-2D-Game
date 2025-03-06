@@ -29,9 +29,7 @@ public class CampfireInteraction : MonoBehaviour
             if (player != null)
             {
                 DBController.Instance.PLAYER_POSITION = player.transform.position;
-                DBController.Instance.CURRENTSCENE = SceneManager.GetActiveScene().name; // Gán tên scene hiện tại
-                Debug.Log("Saving Player Position: " + DBController.Instance.PLAYER_POSITION);
-                Debug.Log("Saving Scene: " + DBController.Instance.CURRENTSCENE); // Debug để kiểm tra
+                DBController.Instance.CURRENTSCENE = SceneManager.GetActiveScene().name;
             }
             DBController.Instance.SaveNow();
             Debug.Log("Game Saved at Campfire!");
