@@ -241,7 +241,8 @@ public class DBController : Singleton<DBController>
     public void NewGame()
     {
         _userProfile.SetProfileData(new ProfileData());
-        PLAYER_POSITION = Vector2.zero;
+        PLAYER_POSITION = new Vector2(1182, -17);
+
         CURRENTSCENE = "MainMenu"; // Scene mặc định
         _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         SaveNow();
@@ -301,7 +302,7 @@ public class ProfileData
     {
         health = 100;
         inventoryData = new InventoryData();
-        playerPosition = Vector2.zero;
+        playerPosition = new Vector2(1182, -17);
         currentScene = "MainMenu";
         saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
     }

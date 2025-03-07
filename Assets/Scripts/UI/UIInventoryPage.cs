@@ -88,6 +88,15 @@ namespace Inventory.UI
 
         private void HandleEndDrag(UIInventoryItem inventoryItemUI)
         {
+            if (inventoryItemUI == null) return;
+            if (TrashCan.Instance != null && TrashCan.Instance.IsPointerOverTrashCan())
+            {
+                int index = listOfUIItems.IndexOf(inventoryItemUI);
+                if (index != -1)
+                {
+                    OnItemActionRequested?.Invoke(index); // Gọi sự kiện xóa item
+                }
+            }
             ResetDraggtedItem();
 
         }

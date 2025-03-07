@@ -82,7 +82,14 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-           
+            // Kiểm tra nếu item được thả vào thùng rác
+            if (TrashCan.Instance != null && TrashCan.Instance.IsPointerOverTrashCan())
+            {
+                inventoryData.RemoveItem(itemIndex, inventoryItem.quantity);
+                TrashCan.Instance.PlayDropSound();
+                Debug.Log($"Item {inventoryItem.item.Name} has been removed from inventory.");
+                return;
+            }
             IItemAction itemAction = inventoryItem.item as IItemAction;
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
 

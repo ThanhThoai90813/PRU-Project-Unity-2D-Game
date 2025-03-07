@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cc991e812585d364ea5bde7f891ef708
+guid: 9f93ab37a6f200d43a5b9d3754d02823
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1109132893433667816
-    second: 06_apple_pie_dish_0
+      213: -1171790437229086565
+    second: pngegg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 06_apple_pie_dish_0
+      name: pngegg_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 31
+        x: 387
+        y: 299
+        width: 1227
+        height: 1402
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e0a0d97d7e646f00800000000000000
-      internalID: 1109132893433667816
+      spriteID: b98b2c54ec6fcbfe0800000000000000
+      internalID: -1171790437229086565
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      06_apple_pie_dish_0: 1109132893433667816
+      pngegg_0: -1171790437229086565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

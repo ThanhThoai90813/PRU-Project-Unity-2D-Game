@@ -17,9 +17,20 @@ public class Item : MonoBehaviour
     [SerializeField]
     private float duration = 0.3f;
 
+    private Rigidbody2D rb;
+    private bool hasLanded = false;
+
     private void Start()
     {
         GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
+
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody2D>();
+        }
+        rb.gravityScale = 1.0f;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Giữ cho item không bị xoay khi rơi
     }
 
     public void DestroyItem()
@@ -44,4 +55,24 @@ public class Item : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && !hasLanded)
+        {
+            hasLanded = true;
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Item picked up!");
+            DestroyItem();
+        }
+    }
+
 }
