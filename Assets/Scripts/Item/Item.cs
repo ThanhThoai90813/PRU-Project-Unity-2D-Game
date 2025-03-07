@@ -22,6 +22,12 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
+        if (DBController.Instance.IsItemCollected(InventoryItem.ItemID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
 
         rb = GetComponent<Rigidbody2D>();
@@ -36,13 +42,17 @@ public class Item : MonoBehaviour
     public void DestroyItem()
     {
         GetComponent<Collider2D>().enabled = false;
+        DBController.Instance.AddCollectedItem(InventoryItem.ItemID);
         StartCoroutine(AnimateItemPickup());
 
     }
 
     private IEnumerator AnimateItemPickup()
     {
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.zero;
         float currentTime = 0;

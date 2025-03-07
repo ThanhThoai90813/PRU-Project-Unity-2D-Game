@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -277,12 +278,32 @@ public class DBController : Singleton<DBController>
                 Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
             }
         }
+        // Kiểm tra và xóa các vật phẩm đã nhặt
+        foreach (Item item in FindObjectsOfType<Item>())
+        {
+            if (IsItemCollected(item.InventoryItem.ItemID))
+            {
+                Destroy(item.gameObject);
+            }
+        }
     }
 
     public void ResetPlayerData()
     {
         _userProfile.SetProfileData(new ProfileData());
         PLAYER_POSITION = Vector2.zero;
+    }
+    public void AddCollectedItem(int itemID)
+    {
+        if (!_userProfile.ProfileData.collectedItems.Contains(itemID.ToString()))
+        {
+            _userProfile.ProfileData.collectedItems.Add(itemID.ToString());
+            SaveNow();
+        }
+    }
+    public bool IsItemCollected(int itemID)
+    {
+        return _userProfile.ProfileData.collectedItems.Contains(itemID.ToString());
     }
 
 }
@@ -297,6 +318,8 @@ public class ProfileData
     public Vector2 playerPosition;
     public string currentScene;
     public string saveDateTime;
+    public List<string> collectedItems;
+
 
     public ProfileData()
     {
@@ -305,5 +328,6 @@ public class ProfileData
         playerPosition = new Vector2(1182, -17);
         currentScene = "MainMenu";
         saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+        collectedItems = new List<string>();
     }
 }
