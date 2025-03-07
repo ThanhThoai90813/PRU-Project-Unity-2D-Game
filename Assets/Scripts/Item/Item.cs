@@ -77,23 +77,4 @@ public class Item : MonoBehaviour
         return itemToken;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground") && !hasLanded)
-    //    {
-    //        hasLanded = true;
-    //        rb.linearVelocity = Vector2.zero;
-    //        rb.bodyType = RigidbodyType2D.Static;
-    //    }
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        Debug.Log("Item picked up!");
-    //        DestroyItem();
-    //    }
-    //}
-
 }

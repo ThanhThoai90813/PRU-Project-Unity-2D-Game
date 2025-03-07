@@ -78,12 +78,19 @@ public class DBController : Singleton<DBController>
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Tìm player trong scene mới và áp dụng vị trí đã lưu
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             player.transform.position = _userProfile.ProfileData.playerPosition;
             Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
+        }
+        //foreach (Item item in FindObjectsOfType<Item>())
+        foreach (Item item in FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (IsItemCollected(item.GetToken()))
+            {
+                Destroy(item.gameObject);
+            }
         }
     }
 
@@ -254,13 +261,11 @@ public class DBController : Singleton<DBController>
     {
         _userProfile.SetProfileData(new ProfileData());
         PLAYER_POSITION = new Vector2(1182, -17);
-
         CURRENTSCENE = "MainMenu"; // Scene mặc định
         _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         SaveNow();
 
-        // Load scene khởi đầu
-        SceneManager.LoadScene("Map1_JungleMap");
+        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
     }
 
     public void SaveGame(int slot)
@@ -269,34 +274,13 @@ public class DBController : Singleton<DBController>
         PlayerPrefs.Save();
         Debug.Log($"Game saved in slot {slot}");
     }
+
     public void LoadGame()
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
 
-        // Load scene đã lưu
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (profileData.currentScene != currentScene)
-        {
-            SceneManager.LoadScene(profileData.currentScene);
-        }
-        else
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                player.transform.position = _userProfile.ProfileData.playerPosition;
-                Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
-            }
-        }
-        // Kiểm tra và xóa các vật phẩm đã nhặt
-        foreach (Item item in FindObjectsOfType<Item>())
-        {
-            if (IsItemCollected(item.GetToken()))
-            {
-                Destroy(item.gameObject);
-            }
-        }
+        LoadingScreenManager.Instance.LoadScene(profileData.currentScene);
     }
 
     public void ResetPlayerData()
