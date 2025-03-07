@@ -2976,7 +2976,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoadingScreenObject: {fileID: 1908141663}
   ProgressBar: {fileID: 2024825224}
-  minimumLoadingTime: 1
 --- !u!1 &1095857151
 GameObject:
   m_ObjectHideFlags: 0

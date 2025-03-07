@@ -14,12 +14,10 @@ public class Item : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    [SerializeField]
-    private float duration = 0.3f;
+    //[SerializeField]
+    //private float duration = 0.3f;
 
     private Rigidbody2D rb;
-    private bool hasLanded = false;
-
     private int itemToken;
 
     private void Start()

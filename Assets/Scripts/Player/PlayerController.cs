@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Damageable damageable;
     private bool IsDead = false;
+    private UIRespawnCheck uiRespawnCheck;
 
     public float CurrentMoveSpeed { get
         {
@@ -125,6 +126,8 @@ public class PlayerController : MonoBehaviour
         damageable = GetComponent<Damageable>();
         damageable.Health = DBController.Instance.PLAYERHEALTH;
         damageable.healthChanged.AddListener(OnHealthChange);
+        uiRespawnCheck = FindObjectOfType<UIRespawnCheck>();
+
     }
 
 
@@ -240,8 +243,13 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 1f; 
             this.enabled = false;
+            StartCoroutine(ShowRespawnPanelAfterDelay(3f));
         }
     }
-
+    private IEnumerator ShowRespawnPanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        uiRespawnCheck.ShowCheckPanel();
+    }
 
 }
