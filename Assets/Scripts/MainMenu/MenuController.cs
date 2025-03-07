@@ -71,11 +71,11 @@ public class MenuController : MonoBehaviour {
     public UnityEvent[] Events;
 
     //Exit Menu
-    [SerializeField, HideInInspector]
+    [SerializeField]
     public GameObject exitMenu;
 
     //Options menu
-    [SerializeField, HideInInspector]
+    [SerializeField]
     public GameObject OptionsMenu;
 
 

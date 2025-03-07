@@ -3744,6 +3744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 704047735}
     m_Modifications:
+    - target: {fileID: 2481913430780551521, guid: 2bef25c8f9e115048834818a4a705771, type: 3}
+      propertyPath: saveMessageUI
+      value: 
+      objectReference: {fileID: 2135485325}
     - target: {fileID: 3908306397398861913, guid: 2bef25c8f9e115048834818a4a705771, type: 3}
       propertyPath: m_Name
       value: CampFire_1
@@ -7387,6 +7391,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7634064505920799179, guid: 9b64f446d226ac849bfe46f2ea0904ff, type: 3}
   m_PrefabInstance: {fileID: 2115081860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2135485325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4722903881524084327, guid: df5e90dad87d3a44284d65a1243d2399, type: 3}
+  m_PrefabInstance: {fileID: 6622624433774366016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140518645
 GameObject:
   m_ObjectHideFlags: 0
@@ -8027,6 +8036,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 704047735}
     m_Modifications:
+    - target: {fileID: 2481913430780551521, guid: 2bef25c8f9e115048834818a4a705771, type: 3}
+      propertyPath: saveMessageUI
+      value: 
+      objectReference: {fileID: 2135485325}
     - target: {fileID: 3908306397398861913, guid: 2bef25c8f9e115048834818a4a705771, type: 3}
       propertyPath: m_Name
       value: CampFire
@@ -8746,7 +8759,9 @@ PrefabInstance:
       value: GameCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2451092870761568756, guid: df5e90dad87d3a44284d65a1243d2399, type: 3}
+    - {fileID: 6975905126683298235, guid: df5e90dad87d3a44284d65a1243d2399, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df5e90dad87d3a44284d65a1243d2399, type: 3}

@@ -29,6 +29,11 @@ public class MenuEditor : Editor {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("SceneSelect"), true);
                 EditorGUILayout.HelpBox("The audio that will be played in the menu.", MessageType.Info);
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("Events"), true);
+                EditorGUILayout.LabelField("🎨 UI Elements", EditorStyles.boldLabel);
+                menu.menuText = (UnityEngine.UI.Text)EditorGUILayout.ObjectField("Menu Text", menu.menuText, typeof(UnityEngine.UI.Text), true);
+                menu.menuBar = (GameObject)EditorGUILayout.ObjectField("Menu Bar", menu.menuBar, typeof(GameObject), true);
+                menu.exitMenu = (GameObject)EditorGUILayout.ObjectField("Exit Menu", menu.exitMenu, typeof(GameObject), true);
+                menu.OptionsMenu = (GameObject)EditorGUILayout.ObjectField("Options Menu", menu.OptionsMenu, typeof(GameObject), true);
                 serializedObject.ApplyModifiedProperties();
                 break;
 
@@ -44,6 +49,12 @@ public class MenuEditor : Editor {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("SceneSelect"), true);
                 EditorGUILayout.HelpBox("The audio that will be played in the menu.", MessageType.Info);
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("Events"), true);
+                EditorGUILayout.LabelField("🎨 UI Elements", EditorStyles.boldLabel);
+                menu.menuText = (UnityEngine.UI.Text)EditorGUILayout.ObjectField("Menu Text", menu.menuText, typeof(UnityEngine.UI.Text), true);
+                menu.menuBar = (GameObject)EditorGUILayout.ObjectField("Menu Bar", menu.menuBar, typeof(GameObject), true);
+                menu.exitMenu = (GameObject)EditorGUILayout.ObjectField("Exit Menu", menu.exitMenu, typeof(GameObject), true);
+                menu.OptionsMenu = (GameObject)EditorGUILayout.ObjectField("Options Menu", menu.OptionsMenu, typeof(GameObject), true);
+
                 serializedObject.ApplyModifiedProperties();
                 break;
 
