@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using System.IO;
 
-public class SettingsController : MonoBehaviour {
+public class SettingsController : MonoBehaviour
+{
     public Toggle fullscreenToggle;
     public Dropdown resolutionDrop;
     public Dropdown textQualityDrop;
@@ -11,77 +12,103 @@ public class SettingsController : MonoBehaviour {
     public Dropdown vSyncDrop;
     public Slider volume;
     public Button saveButton;
-    public Resolution[] resolutions;
-    public Settings gameSettings;
 
+
+    private Resolution[] resolutions;
+    private Settings gameSettings;
+    private string settingsFilePath;
 
     void OnEnable()
     {
+        settingsFilePath = Application.persistentDataPath + "/gamesettings.json";
         gameSettings = new Settings();
+
         fullscreenToggle.onValueChanged.AddListener(delegate { FullscreenToggle(); });
         resolutionDrop.onValueChanged.AddListener(delegate { ResolutionChange(); });
         textQualityDrop.onValueChanged.AddListener(delegate { TextQChange(); });
         antialiasingDrop.onValueChanged.AddListener(delegate { AntialiasingChange(); });
         vSyncDrop.onValueChanged.AddListener(delegate { VsyncChange(); });
         volume.onValueChanged.AddListener(delegate { VolumeChange(); });
-        saveButton.onClick.AddListener(delegate { saveSettings(); });
+        saveButton.onClick.AddListener(delegate { SaveSettings(); });
 
+        LoadResolutions();
+        LoadSettings();
+    }
+
+    void LoadResolutions()
+    {
         resolutions = Screen.resolutions;
-        foreach(Resolution resolution in resolutions)
-        {
-            resolutionDrop.options.Add(new Dropdown.OptionData(resolution.ToString()));
-        }
+        resolutionDrop.ClearOptions();
 
-        loadSettings();
+        foreach (Resolution res in resolutions)
+        {
+            resolutionDrop.options.Add(new Dropdown.OptionData(res.width + "x" + res.height + " " + res.refreshRate + "Hz"));
+        }
     }
 
     public void FullscreenToggle()
     {
-       gameSettings.fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
+        gameSettings.fullscreen = fullscreenToggle.isOn;
+        Screen.fullScreen = gameSettings.fullscreen;
     }
 
     public void ResolutionChange()
     {
-        Screen.SetResolution(resolutions[resolutionDrop.value].width, resolutions[resolutionDrop.value].height, Screen.fullScreen, resolutions[resolutionDrop.value].refreshRate);
+        Resolution selectedRes = resolutions[resolutionDrop.value];
+        Screen.SetResolution(selectedRes.width, selectedRes.height, Screen.fullScreen, selectedRes.refreshRate);
         gameSettings.resolutionIndex = resolutionDrop.value;
     }
 
     public void AntialiasingChange()
     {
-        QualitySettings.antiAliasing = gameSettings.antialiasing = (int)Mathf.Pow(2, antialiasingDrop.value);
+        gameSettings.antialiasing = (int)Mathf.Pow(2, antialiasingDrop.value);
+        QualitySettings.antiAliasing = gameSettings.antialiasing;
     }
 
     public void VsyncChange()
     {
-        QualitySettings.vSyncCount = gameSettings.vSync = vSyncDrop.value;
+        gameSettings.vSync = vSyncDrop.value;
+        QualitySettings.vSyncCount = gameSettings.vSync;
     }
 
     public void TextQChange()
     {
-        gameSettings.textureQuality = QualitySettings.globalTextureMipmapLimit = textQualityDrop.value;
+        gameSettings.textureQuality = textQualityDrop.value;
+        QualitySettings.globalTextureMipmapLimit = gameSettings.textureQuality;
     }
 
     public void VolumeChange()
     {
-        gameSettings.volume = AudioListener.volume = volume.value;
+        gameSettings.volume = volume.value;
+        AudioListener.volume = gameSettings.volume;
     }
 
-    public void saveSettings()
+    public void SaveSettings()
     {
-        string jsonData = JsonUtility.ToJson(gameSettings,true);
-        File.WriteAllText(Application.persistentDataPath + "/gamesettings.json", jsonData);
+        string jsonData = JsonUtility.ToJson(gameSettings, true);
+        File.WriteAllText(settingsFilePath, jsonData);
         MenuController.instance.closeOptions();
     }
 
-    public void loadSettings()
+    public void LoadSettings()
     {
-        gameSettings = JsonUtility.FromJson<Settings>(File.ReadAllText( Application.persistentDataPath + "/gamesettings.json"));
+        if (File.Exists(settingsFilePath))
+        {
+            string jsonData = File.ReadAllText(settingsFilePath);
+            gameSettings = JsonUtility.FromJson<Settings>(jsonData);
+        }
+        else
+        {
+            gameSettings = new Settings();
+        }
+
         fullscreenToggle.isOn = gameSettings.fullscreen;
-        resolutionDrop.value = gameSettings.resolutionIndex;
-        antialiasingDrop.value = gameSettings.antialiasing;
+        resolutionDrop.value = Mathf.Clamp(gameSettings.resolutionIndex, 0, resolutions.Length - 1);
+        antialiasingDrop.value = Mathf.Clamp((int)Mathf.Log(gameSettings.antialiasing, 2), 0, 3);
         vSyncDrop.value = gameSettings.vSync;
         textQualityDrop.value = gameSettings.textureQuality;
         volume.value = gameSettings.volume;
+
         resolutionDrop.RefreshShownValue();
     }
 }

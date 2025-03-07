@@ -14,7 +14,6 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         PauseMenuUI.SetActive(false);
-        OptionsMenuUI.SetActive(false);
         Time.timeScale = 1f; 
         isPaused = false;
     }
@@ -45,22 +44,20 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
-    public void OpenOptions()
-    {
-        PauseMenuUI.SetActive(false);
-        OptionsMenuUI.SetActive(true);
-    }
-
-    public void CloseOptions()
-    {
-        OptionsMenuUI.SetActive(false);
-        PauseMenuUI.SetActive(true);
-    }
-
     public void LoadMainMenu()
     {
         Time.timeScale = 1f; 
         SceneManager.LoadScene("MainMenu");
+    }
+    public void OpenOptions()
+    {
+        OptionsMenuUI.SetActive(true);
+        PauseMenuUI.SetActive(false);
+    }
+    public void CloseOptions()
+    {
+        OptionsMenuUI.SetActive(false);
+        PauseMenuUI.SetActive(true);
     }
 
     public void QuitGame()

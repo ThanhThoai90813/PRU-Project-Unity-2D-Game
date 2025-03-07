@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CampfireInteraction : MonoBehaviour
 {
     private bool isPlayerNearby = false;
+    [SerializeField]
+    private GameObject saveMessageUI;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,6 +36,17 @@ public class CampfireInteraction : MonoBehaviour
             }
             DBController.Instance.SaveNow();
             Debug.Log("Game Saved at Campfire!");
+            StartCoroutine(ShowSaveMessage());
         }
     }
+    private IEnumerator ShowSaveMessage()
+    {
+        if (saveMessageUI != null)
+        {
+            saveMessageUI.SetActive(true); 
+            yield return new WaitForSeconds(2f); 
+            saveMessageUI.SetActive(false); 
+        }
+    }
+
 }

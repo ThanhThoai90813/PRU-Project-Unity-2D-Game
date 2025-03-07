@@ -71,11 +71,11 @@ public class MenuController : MonoBehaviour {
     public UnityEvent[] Events;
 
     //Exit Menu
-    [SerializeField, HideInInspector]
+    [SerializeField]
     public GameObject exitMenu;
 
     //Options menu
-    [SerializeField, HideInInspector]
+    [SerializeField]
     public GameObject OptionsMenu;
 
 
@@ -224,14 +224,15 @@ public class MenuController : MonoBehaviour {
     //New Game event
     public void newGame()
     {
-        //Loads the first scene, change the number to your desired scene
         DBController.Instance.NewGame();
+        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
     }
 
     //Continue
     public void continueGame()
     {
         DBController.Instance.LoadGame();
+        LoadingScreenManager.Instance.LoadScene(DBController.Instance.CURRENTSCENE);
     }
 
     //Select scene Event
@@ -390,6 +391,17 @@ public class MenuController : MonoBehaviour {
     {
         OptionsMenu.gameObject.GetComponent<Animation>().Play("Fade out");
         mainMenu = true;
+    }
+    public void SelectContinueOption()
+    {
+        int continueIndex = System.Array.IndexOf(options, "Continue");
+        if (continueIndex >= 0)
+        {
+            option = continueIndex;
+            menuText.text = options[option];
+            ArrowL.SetBool("Deactivate", option < 1);
+            ArrowR.SetBool("Deactivate", option == options.Length - 1);
+        }
     }
 
 }

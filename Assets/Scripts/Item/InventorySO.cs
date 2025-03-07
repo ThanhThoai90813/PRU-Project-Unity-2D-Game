@@ -51,9 +51,9 @@ namespace Inventory.Model
                     {
                         quantity -= AddItemToFirstFreeSlot(item, 1);
                     }
-                    InformAboutChange();
-                    return quantity;
                 }
+                InformAboutChange();
+                return quantity;
             }       
             quantity = AddStackableItem(item, quantity);
             InformAboutChange();

@@ -82,7 +82,15 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-           
+
+            if (TrashCan.Instance != null && TrashCan.Instance.IsPointerOverTrashCan())
+            {
+                inventoryData.RemoveItem(itemIndex, inventoryItem.quantity);
+                TrashCan.Instance.PlayDropSound();
+                SaveInventoryDatabase(inventoryData.GetCurrentInventoryState());
+                return;
+            }
+
             IItemAction itemAction = inventoryItem.item as IItemAction;
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
 
@@ -95,6 +103,7 @@ namespace Inventory
             if (destroyableItem != null && destroyableItem.ShouldBeDestroyed())
             {
                 inventoryData.RemoveItem(itemIndex, 1);
+                SaveInventoryDatabase(inventoryData.GetCurrentInventoryState());
             }
         }
 

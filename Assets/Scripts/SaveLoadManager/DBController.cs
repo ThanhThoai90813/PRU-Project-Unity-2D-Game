@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class DBController : Singleton<DBController>
 {
     private const string FILE_NAME_FORMAT = "Profile_{0}.txt";
     [SerializeField] private UserProfile _userProfile;
-    
+    private HashSet<int> collectedTokens = new HashSet<int>();
+
     private bool _pendingSave = false;
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
@@ -76,12 +78,19 @@ public class DBController : Singleton<DBController>
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Tìm player trong scene mới và áp dụng vị trí đã lưu
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             player.transform.position = _userProfile.ProfileData.playerPosition;
             Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
+        }
+        //foreach (Item item in FindObjectsOfType<Item>())
+        foreach (Item item in FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (IsItemCollected(item.GetToken()))
+            {
+                Destroy(item.gameObject);
+            }
         }
     }
 
@@ -89,6 +98,8 @@ public class DBController : Singleton<DBController>
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
+
+        collectedTokens = new HashSet<int>(profileData.collectedTokens);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -121,7 +132,8 @@ public class DBController : Singleton<DBController>
         {
             _pendingSave = false;
             _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
+            _userProfile.ProfileData.collectedTokens = new List<int>(collectedTokens);
+            
             string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
             string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -161,8 +173,13 @@ public class DBController : Singleton<DBController>
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
             if (File.Exists(path))
             {
+                //var jsonData = File.ReadAllText(path);
+                //return JsonUtility.FromJson<ProfileData>(jsonData);
+               
                 var jsonData = File.ReadAllText(path);
-                return JsonUtility.FromJson<ProfileData>(jsonData);
+                ProfileData profileData = JsonUtility.FromJson<ProfileData>(jsonData);
+                collectedTokens = new HashSet<int>(profileData.collectedTokens);
+                return profileData;
             }
             Debug.Log("Database file not found - Creating new one");
         }
@@ -220,7 +237,9 @@ public class DBController : Singleton<DBController>
         // Load dữ liệu mới
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
- 
+        
+        collectedTokens = new HashSet<int>(profileData.collectedTokens);
+
         //Cập nhật vị trí player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -241,13 +260,12 @@ public class DBController : Singleton<DBController>
     public void NewGame()
     {
         _userProfile.SetProfileData(new ProfileData());
-        PLAYER_POSITION = Vector2.zero;
+        PLAYER_POSITION = new Vector2(1182, -17);
         CURRENTSCENE = "MainMenu"; // Scene mặc định
         _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         SaveNow();
 
-        // Load scene khởi đầu
-        SceneManager.LoadScene("Map1_JungleMap");
+        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
     }
 
     public void SaveGame(int slot)
@@ -256,26 +274,13 @@ public class DBController : Singleton<DBController>
         PlayerPrefs.Save();
         Debug.Log($"Game saved in slot {slot}");
     }
+
     public void LoadGame()
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
 
-        // Load scene đã lưu
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (profileData.currentScene != currentScene)
-        {
-            SceneManager.LoadScene(profileData.currentScene);
-        }
-        else
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                player.transform.position = _userProfile.ProfileData.playerPosition;
-                Debug.Log("Player position loaded: " + _userProfile.ProfileData.playerPosition);
-            }
-        }
+        LoadingScreenManager.Instance.LoadScene(profileData.currentScene);
     }
 
     public void ResetPlayerData()
@@ -284,10 +289,25 @@ public class DBController : Singleton<DBController>
         PLAYER_POSITION = Vector2.zero;
     }
 
+    public bool IsItemCollected(int itemToken)
+    {
+        return collectedTokens.Contains(itemToken);
+    }
+    public void AddCollectedToken(int itemToken)
+    {
+        if (!collectedTokens.Contains(itemToken))
+        {
+            collectedTokens.Add(itemToken);
+            //_userProfile.ProfileData.collectedTokens.Add(itemToken);
+            _userProfile.ProfileData.collectedTokens = new List<int>(collectedTokens); 
+
+            SaveNow();
+        }
+    }
 }
 
 
-//chỗ khai báo biến cần lưu (chỉ nhận dữ liệu nguyên thủy)
+//chỗ khai báo thứ cần lưu (chỉ nhận dữ liệu nguyên thủy)
 [Serializable]
 public class ProfileData
 {
@@ -296,13 +316,17 @@ public class ProfileData
     public Vector2 playerPosition;
     public string currentScene;
     public string saveDateTime;
+    public List<string> collectedItems;
+    public List<int> collectedTokens;
 
     public ProfileData()
     {
         health = 100;
         inventoryData = new InventoryData();
-        playerPosition = Vector2.zero;
+        playerPosition = new Vector2(1182, -17);
         currentScene = "MainMenu";
         saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
+        collectedItems = new List<string>();
+        collectedTokens = new List<int>();
     }
 }

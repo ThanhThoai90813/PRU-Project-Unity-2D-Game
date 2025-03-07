@@ -13,47 +13,49 @@ MonoBehaviour:
   m_Name: UserProfile
   m_EditorClassIdentifier: 
   _profileData:
-    health: 55
+    health: 60
     inventoryData:
       itemDatas:
-      - ItemID: 12
+      - ItemID: 19
         ItemQuantity: 2
       - ItemID: 17
-        ItemQuantity: 1
-      - ItemID: 2
-        ItemQuantity: 1
-      - ItemID: 3
+        ItemQuantity: 2
+      - ItemID: 12
+        ItemQuantity: 2
+      - ItemID: 13
+        ItemQuantity: 2
+      - ItemID: 14
+        ItemQuantity: 2
+      - ItemID: 10
+        ItemQuantity: 2
+      - ItemID: 4
+        ItemQuantity: 2
+      - ItemID: 16
+        ItemQuantity: 2
+      - ItemID: 15
         ItemQuantity: 2
       - ItemID: 1
         ItemQuantity: 2
-      - ItemID: 0
-        ItemQuantity: 2
-      - ItemID: 6
+      - ItemID: 3
         ItemQuantity: 2
       - ItemID: 9
         ItemQuantity: 2
-      - ItemID: 8
-        ItemQuantity: 1
-      - ItemID: 7
-        ItemQuantity: 1
       - ItemID: 5
         ItemQuantity: 2
-      - ItemID: 4
+      - ItemID: 11
+        ItemQuantity: 2
+      - ItemID: 6
+        ItemQuantity: 2
+      - ItemID: 8
+        ItemQuantity: 2
+      - ItemID: 0
+        ItemQuantity: 3
+      - ItemID: 7
+        ItemQuantity: 1
+      - ItemID: 18
         ItemQuantity: 1
       - ItemID: -1
         ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-      - ItemID: -1
-        ItemQuantity: 0
-    playerPosition: {x: 1167.214, y: -16.37746}
+    playerPosition: {x: 1210.6208, y: -17.761646}
+    currentScene: Map1_JungleMap
+    saveDateTime: 2025-03-07 12:11:53

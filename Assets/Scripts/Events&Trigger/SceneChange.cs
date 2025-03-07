@@ -18,7 +18,7 @@ public class SceneChanger : MonoBehaviour
                 DBController.Instance.CURRENTSCENE = sceneName;
                 DBController.Instance.SaveNow();
             }
-            SceneManager.LoadScene(sceneName);
+            LoadingScreenManager.Instance.LoadScene(sceneName);
         }
     }
 }

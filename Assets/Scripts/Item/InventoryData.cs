@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+//hỗ trợ cho save load inventory
 [Serializable]
 public class InventoryData
 {
