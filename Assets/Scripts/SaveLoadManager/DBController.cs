@@ -9,7 +9,8 @@ public class DBController : Singleton<DBController>
 {
     private const string FILE_NAME_FORMAT = "Profile_{0}.txt";
     [SerializeField] private UserProfile _userProfile;
-    
+    private HashSet<int> collectedTokens = new HashSet<int>();
+
     private bool _pendingSave = false;
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
@@ -90,6 +91,8 @@ public class DBController : Singleton<DBController>
     {
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
+
+        collectedTokens = new HashSet<int>(profileData.collectedTokens);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -281,7 +284,7 @@ public class DBController : Singleton<DBController>
         // Kiểm tra và xóa các vật phẩm đã nhặt
         foreach (Item item in FindObjectsOfType<Item>())
         {
-            if (IsItemCollected(item.InventoryItem.ItemID))
+            if (IsItemCollected(item.GetToken()))
             {
                 Destroy(item.gameObject);
             }
@@ -293,19 +296,20 @@ public class DBController : Singleton<DBController>
         _userProfile.SetProfileData(new ProfileData());
         PLAYER_POSITION = Vector2.zero;
     }
-    public void AddCollectedItem(int itemID)
+
+    public bool IsItemCollected(int itemToken)
     {
-        if (!_userProfile.ProfileData.collectedItems.Contains(itemID.ToString()))
+        return collectedTokens.Contains(itemToken);
+    }
+    public void AddCollectedToken(int itemToken)
+    {
+        if (!collectedTokens.Contains(itemToken))
         {
-            _userProfile.ProfileData.collectedItems.Add(itemID.ToString());
+            collectedTokens.Add(itemToken);
+            _userProfile.ProfileData.collectedTokens.Add(itemToken);
             SaveNow();
         }
     }
-    public bool IsItemCollected(int itemID)
-    {
-        return _userProfile.ProfileData.collectedItems.Contains(itemID.ToString());
-    }
-
 }
 
 
@@ -319,7 +323,7 @@ public class ProfileData
     public string currentScene;
     public string saveDateTime;
     public List<string> collectedItems;
-
+    public List<int> collectedTokens;
 
     public ProfileData()
     {
@@ -329,5 +333,6 @@ public class ProfileData
         currentScene = "MainMenu";
         saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
         collectedItems = new List<string>();
+        collectedTokens = new List<int>();
     }
 }

@@ -391,6 +391,17 @@ public class MenuController : MonoBehaviour {
         OptionsMenu.gameObject.GetComponent<Animation>().Play("Fade out");
         mainMenu = true;
     }
+    public void SelectContinueOption()
+    {
+        int continueIndex = System.Array.IndexOf(options, "Continue");
+        if (continueIndex >= 0)
+        {
+            option = continueIndex;
+            menuText.text = options[option];
+            ArrowL.SetBool("Deactivate", option < 1);
+            ArrowR.SetBool("Deactivate", option == options.Length - 1);
+        }
+    }
 
 }
 

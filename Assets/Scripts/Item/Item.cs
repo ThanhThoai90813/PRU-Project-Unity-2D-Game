@@ -20,16 +20,16 @@ public class Item : MonoBehaviour
     private Rigidbody2D rb;
     private bool hasLanded = false;
 
+    private int itemToken;
+
     private void Start()
     {
-        if (DBController.Instance.IsItemCollected(InventoryItem.ItemID))
+        GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
+        itemToken = GenerateToken(InventoryItem.ItemID, transform.position);
+        if (DBController.Instance.IsItemCollected(itemToken))
         {
             Destroy(gameObject);
-            return;
         }
-
-        GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
-
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
@@ -42,47 +42,58 @@ public class Item : MonoBehaviour
     public void DestroyItem()
     {
         GetComponent<Collider2D>().enabled = false;
-        DBController.Instance.AddCollectedItem(InventoryItem.ItemID);
+        DBController.Instance.AddCollectedToken(itemToken);
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
         StartCoroutine(AnimateItemPickup());
 
     }
 
     private IEnumerator AnimateItemPickup()
     {
-        if (audioSource != null)
-        {
-            audioSource.Play();
-        }
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.zero;
+        float duration = 0.3f;
         float currentTime = 0;
+
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            transform.localScale =
-                Vector3.Lerp(startScale, endScale, currentTime / duration);
+            transform.localScale = Vector3.Lerp(startScale, endScale, currentTime / duration);
             yield return null;
         }
+
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private int GenerateToken(int id, Vector3 position)
     {
-        if (collision.gameObject.CompareTag("Ground") && !hasLanded)
-        {
-            hasLanded = true;
-            rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Static;
-        }
+        return id * 100000 + Mathf.RoundToInt(position.x * 1000) + Mathf.RoundToInt(position.y * 1000);
+    }
+    public int GetToken()
+    {
+        return itemToken;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Item picked up!");
-            DestroyItem();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground") && !hasLanded)
+    //    {
+    //        hasLanded = true;
+    //        rb.linearVelocity = Vector2.zero;
+    //        rb.bodyType = RigidbodyType2D.Static;
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Item picked up!");
+    //        DestroyItem();
+    //    }
+    //}
 
 }
