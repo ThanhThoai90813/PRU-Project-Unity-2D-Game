@@ -125,7 +125,8 @@ public class DBController : Singleton<DBController>
         {
             _pendingSave = false;
             _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
+            _userProfile.ProfileData.collectedTokens = new List<int>(collectedTokens);
+            
             string jsonData = JsonUtility.ToJson(_userProfile.ProfileData);
             string FILE_NAME = string.Format(FILE_NAME_FORMAT, _currentProfileIndex.ToString());
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -165,8 +166,13 @@ public class DBController : Singleton<DBController>
             string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
             if (File.Exists(path))
             {
+                //var jsonData = File.ReadAllText(path);
+                //return JsonUtility.FromJson<ProfileData>(jsonData);
+               
                 var jsonData = File.ReadAllText(path);
-                return JsonUtility.FromJson<ProfileData>(jsonData);
+                ProfileData profileData = JsonUtility.FromJson<ProfileData>(jsonData);
+                collectedTokens = new HashSet<int>(profileData.collectedTokens);
+                return profileData;
             }
             Debug.Log("Database file not found - Creating new one");
         }
@@ -224,7 +230,9 @@ public class DBController : Singleton<DBController>
         // Load dữ liệu mới
         ProfileData profileData = LoadData(_currentProfileIndex);
         _userProfile.SetProfileData(profileData);
- 
+        
+        collectedTokens = new HashSet<int>(profileData.collectedTokens);
+
         //Cập nhật vị trí player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -306,7 +314,9 @@ public class DBController : Singleton<DBController>
         if (!collectedTokens.Contains(itemToken))
         {
             collectedTokens.Add(itemToken);
-            _userProfile.ProfileData.collectedTokens.Add(itemToken);
+            //_userProfile.ProfileData.collectedTokens.Add(itemToken);
+            _userProfile.ProfileData.collectedTokens = new List<int>(collectedTokens); 
+
             SaveNow();
         }
     }
