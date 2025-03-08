@@ -11,6 +11,13 @@ public class Attack : MonoBehaviour
 
         if(damageable != null)
         {
+            Animator enemyAnimator = collision.GetComponent<Animator>();
+            if (enemyAnimator != null && enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("block"))
+            {
+                Debug.Log(collision.name + " blocked the attack!");
+                return; // Không gây sát thương
+            }
+
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2 (-knockback.x, knockback.y);
 
             //hitTrigger the target

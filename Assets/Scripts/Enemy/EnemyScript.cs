@@ -249,5 +249,4 @@ public class EnemyScript : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-
 }

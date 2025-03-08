@@ -21,7 +21,7 @@ namespace Inventory
 
         private void Start()
         {
-            inventoryDB = DBController.Instance.INVENTORY_DATA;
+            //inventoryDB = DBController.Instance.INVENTORY_DATA;
             PrepareUI();
             PrepareInventoryData();
         }
