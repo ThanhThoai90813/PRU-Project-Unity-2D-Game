@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public int attackDamage = 10;
+    public int baseAttackDamage = 10;
     public Vector2 knockback = Vector2.zero;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,19 +15,18 @@ public class Attack : MonoBehaviour
             if (enemyAnimator != null && enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("block"))
             {
                 Debug.Log(collision.name + " blocked the attack!");
-                return; // Không gây sát thương
+                return;
             }
 
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2 (-knockback.x, knockback.y);
 
             //hitTrigger the target
-            bool gotHit = damageable.Hit(attackDamage,knockback);
+            bool gotHit = damageable.Hit(baseAttackDamage,knockback);
             if (gotHit)
             {
-                Debug.Log(collision.name + " hit for " + attackDamage);
+                Debug.Log(collision.name + " hit for " + baseAttackDamage);
             }
 
         }
-
     }
 }

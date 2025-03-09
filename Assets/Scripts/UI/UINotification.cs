@@ -1,22 +1,25 @@
 using UnityEngine;
-using TMPro; // Nếu dùng TextMeshPro
-// using UnityEngine.UI; // Nếu dùng UI Text thông thường
+using TMPro; 
 
 public class UINotification : MonoBehaviour
 {
     [SerializeField]
-    private GameObject notificationPanel; // Gán NotificationPanel từ Inspector
+    private GameObject notificationPanel; 
 
     [SerializeField]
-    private TextMeshProUGUI notificationText; // Gán NotificationText (TextMeshPro)
-    // private Text notificationText; // Nếu dùng UI Text thay vì TextMeshPro
+    private TextMeshProUGUI notificationText; 
 
     [SerializeField]
-    private float displayTime = 3f; // Thời gian hiển thị thông báo (giây)
+    private float displayTime = 5f;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip notificationSound;
 
     private void Awake()
     {
-        // Đảm bảo panel tắt khi bắt đầu
         if (notificationPanel != null)
         {
             notificationPanel.SetActive(false);
@@ -30,17 +33,24 @@ public class UINotification : MonoBehaviour
             Debug.LogError("Notification UI components chưa được gán!");
             return;
         }
-
-        // Hiển thị panel và cập nhật nội dung
+        var animEx = notificationPanel.GetComponent<Animation>();
+        notificationPanel.transform.SetAsLastSibling();
+        animEx.Play("Fade In");
         notificationText.text = message;
         notificationPanel.SetActive(true);
 
-        // Tự động tắt sau một khoảng thời gian
+        if (audioSource != null && notificationSound != null)
+        {
+            audioSource.PlayOneShot(notificationSound);
+        }
+
         Invoke(nameof(HideNotification), displayTime);
     }
 
     private void HideNotification()
     {
+        var animEx = notificationPanel.GetComponent<Animation>();
+        animEx.Play("Fade out");
         notificationPanel.SetActive(false);
     }
 }
