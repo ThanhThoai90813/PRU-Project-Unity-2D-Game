@@ -18,6 +18,8 @@ public class DialogueController : MonoBehaviour
     [SerializeField]
     private AudioSource typingSound;
 
+    public event Action OnConversationEnded;
+
     private Queue<string> paragraphs = new Queue<string>();
     private bool conversationEnded;
     private bool isTyping;
@@ -94,26 +96,8 @@ public class DialogueController : MonoBehaviour
             gameObject.SetActive(false);
         }
         StopTypingSound();
+        OnConversationEnded?.Invoke();
     }
-
-    //private IEnumerator TypeDialogueText(string p)
-    //{
-    //    float elapsedTime = 0f;
-    //    int charIndenx = 0;
-    //    charIndenx = Mathf.Clamp(charIndenx, 0, p.Length);
-
-    //    while (charIndenx < p.Length)
-    //    {
-    //        elapsedTime += Time.deltaTime * typeSpeed;
-    //        charIndenx = Mathf.FloorToInt(elapsedTime);
-
-    //        NPCDialogueText.text = p.Substring(0, charIndenx);
-
-    //        yield return null;
-    //    }
-
-    //    NPCDialogueText.text = p;
-    //}
 
     private IEnumerator TypeDialogueText(string p)
     {

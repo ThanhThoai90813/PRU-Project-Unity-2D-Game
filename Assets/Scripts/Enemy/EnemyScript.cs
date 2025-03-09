@@ -220,7 +220,7 @@ public class EnemyScript : MonoBehaviour
     }
     private void PerformRandomAttack()
     {
-        int randomAttack = UnityEngine.Random.Range(1, 3); // Sinh số từ 1 đến 2
+        int randomAttack = UnityEngine.Random.Range(1, 4); // Sinh số từ 1 đến 2
         animator.SetInteger("attackType", randomAttack);
         animator.SetTrigger("attack"); 
         AttackCooldown = UnityEngine.Random.Range(1.5f, 3.0f); 
@@ -248,6 +248,5 @@ public class EnemyScript : MonoBehaviour
         transform.position = endPos;
         rb.bodyType = RigidbodyType2D.Static;
     }
-
 
 }

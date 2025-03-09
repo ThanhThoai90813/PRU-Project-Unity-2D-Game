@@ -4,8 +4,11 @@ public class EnemyBullet : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    public float force;
+
+    [Header("Bullet Settings")]
+    public float force = 5f;
     private float timer;
+    public int damage = 10;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,7 +38,7 @@ public class EnemyBullet : MonoBehaviour
             Damageable dmg = other.gameObject.GetComponent<Damageable>();
             if (dmg != null)
             {
-                dmg.Hit(7, Vector2.zero);
+                dmg.Hit(damage, Vector2.zero);
             }
             Destroy(gameObject);
         }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1274553325432606250}
   m_Layer: 0
   m_Name: Whiskey
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,6 @@ MonoBehaviour:
   <InventoryItem>k__BackingField: {fileID: 11400000, guid: 4d9b3eef9ece9ce4eaac7ce3208cc2c5, type: 2}
   <Quantity>k__BackingField: 1
   audioSource: {fileID: 5789033003800942732}
-  duration: 0.3
 --- !u!82 &5789033003800942732
 AudioSource:
   m_ObjectHideFlags: 0

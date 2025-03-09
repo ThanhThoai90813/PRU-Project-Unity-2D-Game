@@ -4,15 +4,14 @@ using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject damageTextPrefab;
-    public GameObject healthTextPrefab;
+    public GameObject damageTextPrefab; // Vẫn giữ để hiển thị số khi bị damage
+    public GameObject healthSpritePrefab; // Thay healthImagePrefab bằng healthSpritePrefab
 
-    public Canvas gameCanvas;
+    public Canvas gameCanvas; // Vẫn cần cho damageTextPrefab (UI)
 
     private void Awake()
     {
         gameCanvas = FindAnyObjectByType<Canvas>();
-       
     }
 
     private void OnEnable()
@@ -29,43 +28,42 @@ public class UIManager : MonoBehaviour
 
     public void CharacterTookDamage(GameObject character, int damageReceived)
     {
-        // tao text khi nhan vat bi hit
-        Vector3 spawPosition = Camera.main.WorldToScreenPoint(character.transform.position);
+        Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 
-        TMP_Text tmpText = Instantiate(damageTextPrefab, spawPosition, Quaternion.identity, gameCanvas.transform)
+        TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform)
             .GetComponent<TMP_Text>();
 
         tmpText.text = damageReceived.ToString();
-
     }
 
     public void CharacterHealed(GameObject character, int healthRestored)
     {
-        // tao text khi nhan vat nhan duoc mau
-        Vector3 spawPosition = Camera.main.WorldToScreenPoint(character.transform.position);
+        // Đặt vị trí ban đầu trong world-space (không cần Canvas)
+        Vector3 spawnPosition = character.transform.position + new Vector3(0, 1f, 0); // Đặt phía trên nhân vật
 
-        TMP_Text tmpText = Instantiate(healthTextPrefab, spawPosition, Quaternion.identity, gameCanvas.transform)
-            .GetComponent<TMP_Text>();
+        // Instantiate healthSpritePrefab
+        GameObject healthSpriteObject = Instantiate(healthSpritePrefab, spawnPosition, Quaternion.identity);
 
-        tmpText.text = healthRestored.ToString();
+        // Điều chỉnh scale dựa trên lượng máu hồi (tùy chọn)
+        float scale = Mathf.Clamp(healthRestored / 5f, 1f, 3f);
+        healthSpriteObject.transform.localScale = new Vector3(scale, scale, 1);
     }
 
-	public void OnExitGame(InputAction.CallbackContext context)
-	{
-		if(context.started)
+    public void OnExitGame(InputAction.CallbackContext context)
+    {
+        if (context.started)
         {
-            #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
-			    Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            #endif
-            
-            #if (UNITY_EDITOR)
-			    UnityEditor.EditorApplication.isPlaying = false;
-            #elif (UNITY_STANDALONE)
-                Application.Quit(); 
-            #elif (UNITY_WEBGL)
-                SceneManager.LoadScene("QuitScene"); 
-            #endif
+#if (UNITY_EDITOR || DEVELOPMENT_BUILD)
+            Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+#endif
 
-		}
-	}
+#if (UNITY_EDITOR)
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif (UNITY_STANDALONE)
+            Application.Quit();
+#elif (UNITY_WEBGL)
+            SceneManager.LoadScene("QuitScene");
+#endif
+        }
+    }
 }

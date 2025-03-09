@@ -1,6 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "DamageBoostItem", menuName = "Items/HealthItem")]
+
 public class CharacterStatHealthModifierSO : CharacterStatModifierSO
 {
     public override void AffectChararacter(GameObject character, float val)

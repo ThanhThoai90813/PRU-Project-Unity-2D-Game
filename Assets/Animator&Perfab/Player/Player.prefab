@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 25
-  knockback: {x: 9, y: 2}
+  baseAttackDamage: 20
+  knockback: {x: 8, y: 2}
 --- !u!1 &1750676743291639129
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 18
+  baseAttackDamage: 15
   knockback: {x: 0, y: 0}
 --- !u!1 &4997766033144800037
 GameObject:
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 12
+  baseAttackDamage: 10
   knockback: {x: 0, y: 0}
 --- !u!1 &5399577709223641202
 GameObject:
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  baseAttackDamage: 10
   knockback: {x: 3, y: 0}
 --- !u!1 &5976921644725700893
 GameObject:
@@ -853,7 +853,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _maxHealth: 100
-  _health: 50
+  _health: 10
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 1
@@ -990,5 +990,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 15
+  baseAttackDamage: 15
   knockback: {x: 5, y: 0}

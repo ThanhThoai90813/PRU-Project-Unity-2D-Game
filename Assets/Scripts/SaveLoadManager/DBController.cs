@@ -304,6 +304,11 @@ public class DBController : Singleton<DBController>
             SaveNow();
         }
     }
+
+    public int GetCurrentProfileIndex()
+    {
+        return _currentProfileIndex;
+    }
 }
 
 
@@ -318,7 +323,7 @@ public class ProfileData
     public string saveDateTime;
     public List<string> collectedItems;
     public List<int> collectedTokens;
-
+    public List<int> rewardedNPCs;
     public ProfileData()
     {
         health = 100;
@@ -328,5 +333,6 @@ public class ProfileData
         saveDateTime = System.DateTime.Now.ToString("yyy-MM-dd HH:mm:ss");
         collectedItems = new List<string>();
         collectedTokens = new List<int>();
+        rewardedNPCs = new List<int>();
     }
 }
