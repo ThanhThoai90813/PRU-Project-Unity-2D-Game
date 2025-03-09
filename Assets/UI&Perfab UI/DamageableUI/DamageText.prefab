@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 394411006181070834}
   - component: {fileID: 2464337175548895876}
   m_Layer: 5
-  m_Name: HealthText
+  m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Healed
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa795ece00397ff429bca3b4a66c934f, type: 2}
   m_sharedMaterial: {fileID: -1252511891467657568, guid: fa795ece00397ff429bca3b4a66c934f, type: 2}
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279564072
-  m_fontColor: {r: 0.0913304, g: 0.4490565, b: 0.056767512, a: 1}
+    rgba: 2344994245
+  m_fontColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0.54509807}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

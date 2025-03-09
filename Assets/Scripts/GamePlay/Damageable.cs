@@ -24,6 +24,7 @@ public class Damageable : MonoBehaviour
             _maxHealth = value;
         }
     }
+
     [SerializeField]
     private int _health = 100;
     public int Health 
@@ -49,6 +50,8 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     private bool isInvincible = false;
 
+    [SerializeField]
+    public float damageReductionPercentage = 0f;
 
     private float timeSincehit = 0;
     public float invincibilityTime = 0.25f;
@@ -111,12 +114,15 @@ public class Damageable : MonoBehaviour
     {
         if (IsAlive && !isInvincible)
         {
-            Health -= damage;
+            float reducedDamage = damage * (1f - damageReductionPercentage / 100f);
+            int finalDamage = Mathf.Max(0, (int)reducedDamage);
+
+            Health -= finalDamage;
             isInvincible = true;
             LockVelocity = true;
             animator.SetTrigger(AnimationStrings.hitTrigger);
-            damageableHit?.Invoke(damage, knockback);
-            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+            damageableHit?.Invoke(finalDamage, knockback);
+            CharacterEvents.characterDamaged.Invoke(gameObject, finalDamage);
 
             return true;
         }
