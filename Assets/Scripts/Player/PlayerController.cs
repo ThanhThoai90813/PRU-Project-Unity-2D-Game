@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth >= maxHealth || currentHealth < 0) return;
 
-        //DBController.Instance.PLAYERHEALTH = currentHealth;
+        DBController.Instance.PLAYERHEALTH = currentHealth;
     }
 
     private void Awake()
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
-        //damageable.Health = DBController.Instance.PLAYERHEALTH;
+        damageable.Health = DBController.Instance.PLAYERHEALTH;
         damageable.healthChanged.AddListener(OnHealthChange);
         uiRespawnCheck = FindObjectOfType<UIRespawnCheck>();
 
