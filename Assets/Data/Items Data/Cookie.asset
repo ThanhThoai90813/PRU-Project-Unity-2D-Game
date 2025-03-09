@@ -15,11 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Cookie
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A crispy cookie with a sweet buttery flavor and
+    melted chocolate bits. When eaten, it restores a bit of HP and gives a warm feeling
+    like enjoying a peaceful moment in the middle of a difficult journey.'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: ecfc905a2597f014695bcc25207a2010, type: 3}
   <ItemID>k__BackingField: 16
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 5
+  - statModifier: {fileID: 11400000, guid: f0d9591eb88f5f142bc916a396b5c4f3, type: 2}
+    value: 1
   isConsumable: 1
   <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}

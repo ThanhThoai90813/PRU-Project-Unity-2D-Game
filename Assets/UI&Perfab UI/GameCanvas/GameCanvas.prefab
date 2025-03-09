@@ -739,13 +739,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move: \r\n   \u2022 Up \u2013 W or Up Arrow Key\r\n   \u2022 Down \u2013
-    S or Down Arrow Key\r\n   \u2022 Left \u2013 A or Left Arrow Key\r\n   \u2022
-    Right \u2013 D or Right Arrow Key\r\n\nRun: \r\n   \u2022 Hold Shift to run\n\nJump:\n  
-    \u2022 Press Space to jump\n\nAttack:\n   \u2022 Press Left click to hit\n  
-    \u2022 Triple left click to combo\n\nUI:\n   \u2022 Press I to open Inventory\n  
-    \u2022 Right click in Inventory to use item\n   \u2022 Press Esc to Pause the
-    game\n\r\n\r\n\r\n"
+  m_text: '  A crispy cookie with a sweet buttery flavor and melted chocolate bits.
+    When eaten, it restores a bit of HP and gives a warm feeling like enjoying a
+    peaceful moment in the middle of a difficult journey.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa795ece00397ff429bca3b4a66c934f, type: 2}
   m_sharedMaterial: {fileID: -1252511891467657568, guid: fa795ece00397ff429bca3b4a66c934f, type: 2}
@@ -754,8 +750,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282335039
+  m_fontColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -782,9 +778,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 6
   m_wordSpacing: 0
-  m_lineSpacing: -40
+  m_lineSpacing: -9
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -810,7 +806,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.650665, y: 1.072876, z: 0, w: -0.000022888184}
+  m_margin: {x: 28.878128, y: 1.072876, z: 0, w: -0.00006828549}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4623,8 +4619,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 3690987520
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.8627451}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11536,7 +11532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5466254450083187993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11884,7 +11880,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6291105844597065160}
   m_HandleRect: {fileID: 1905142705539006903}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -15,7 +15,9 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 30
   <Name>k__BackingField: Meat
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A delicious piece of meat that can be eaten raw
+    to restore some HP or cooked into a more delicious dish. When cooked, it will
+    give you more energy, making you ready for any challenge ahead.'
   <ItemImage>k__BackingField: {fileID: -4323355115588157232, guid: 55aa7ae30e65d794f8f59148991b55af, type: 3}
   <ItemID>k__BackingField: 3
   modifiersData:

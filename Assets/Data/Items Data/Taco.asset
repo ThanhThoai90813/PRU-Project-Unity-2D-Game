@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Taco
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
+  <MaxStackSize>k__BackingField: 50
   <Name>k__BackingField: Taco
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A crispy taco filled with meat, vegetables, and
+    cheese, seasoned with rich spices. When eaten, it restores a moderate amount
+    of HP and gives a refreshing feeling like enjoying a feast in the middle of an
+    adventure!'
   <ItemImage>k__BackingField: {fileID: 2939023620515649265, guid: fee3ca2383f3c164c957a9dee41c702c, type: 3}
   <ItemID>k__BackingField: 13
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: f0d9591eb88f5f142bc916a396b5c4f3, type: 2}
-    value: 3
+  - statModifier: {fileID: 11400000, guid: 64e88126a9a466a4b92d43e9ce4e75ee, type: 2}
+    value: 15
   isConsumable: 1
-  <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}
+  <actionSFX>k__BackingField: {fileID: 8300000, guid: d105617e8e0b63a45bbcb689f9205d7a, type: 3}

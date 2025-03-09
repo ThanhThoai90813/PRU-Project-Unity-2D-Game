@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Roll
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 10
+  <MaxStackSize>k__BackingField: 20
   <Name>k__BackingField: Rool
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A small loaf of bread, crispy on the outside and
+    soft on the inside, giving off an enticing aroma. When eaten, it restores some
+    HP and gives a warm feeling, like having enjoyed a delicious meal in the middle
+    of an adventure.'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 1f652ffe06272fe4c86995d3781d605b, type: 3}
   <ItemID>k__BackingField: 7
   modifiersData:
   - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 10
+    value: 30
   isConsumable: 1
-  <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}
+  <actionSFX>k__BackingField: {fileID: 8300000, guid: d105617e8e0b63a45bbcb689f9205d7a, type: 3}

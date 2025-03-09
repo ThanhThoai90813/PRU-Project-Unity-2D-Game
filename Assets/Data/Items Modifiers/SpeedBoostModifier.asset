@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpeedBoostModifier
   m_EditorClassIdentifier: 
   duration: 30
-  speedIncrease: 3
+  speedIncrease: 2
   buffData: {fileID: 11400000, guid: d62ec30550a23a945b1ba640f54f855c, type: 2}
