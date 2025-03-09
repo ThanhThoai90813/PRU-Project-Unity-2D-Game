@@ -11,6 +11,7 @@ TagManager:
   - Bat
   - Bat_fly
   - NPC
+  - GruzMother
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - GroundDetection
   - Pickup
   - NPC
-  - 
+  - Boss
   - 
   - 
   - 
