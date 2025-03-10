@@ -256,7 +256,7 @@ public class GruzeMother : MonoBehaviour
 
         if (portalPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(453.027313f, -8.68389988f, -0.141204819f);
+            Vector3 spawnPosition = new Vector3(438.5f, -8.68389988f, -0.141204819f);
             portalInstance = Instantiate(portalPrefab, spawnPosition, Quaternion.identity);
             portalInstance.SetActive(true);
 

@@ -222,7 +222,7 @@ MonoBehaviour:
   attackMoveSpeed: 20
   attackMoveDirection: {x: -1, y: 5}
   attackPlayerSpeed: 25
-  player: {fileID: 7558734865977323833, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
+  player: {fileID: 0}
   groundCheckUp: {fileID: 2426275425596315660}
   groundCheckDown: {fileID: 1839843030383854999}
   groundCheckWall: {fileID: 5160487231522698956}
@@ -233,6 +233,7 @@ MonoBehaviour:
   audioSource: {fileID: 8190928950182181752}
   aliveSound: {fileID: 8300000, guid: 0bcdf661eb8b04248ab1f3aae1d1014c, type: 3}
   attackCollider: {fileID: 5319258159483681790}
+  portalPrefab: {fileID: 0}
 --- !u!95 &6730398778328076990
 Animator:
   serializedVersion: 7
@@ -323,7 +324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _maxHealth: 100
-  _health: 100
+  _health: 1
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0
