@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -50,13 +51,19 @@ public class GruzeMother : MonoBehaviour
     private bool isTouchingWall;
     private bool goingUp = true;
     private bool facingLeft = true;
-   
+    private bool hasSpawnedPortal = false;
+
     private Rigidbody2D enemyRB;
     private Animator enemyAnim;
     private Damageable damageable;
 
     [SerializeField]
     private Collider2D attackCollider;
+
+    [SerializeField] 
+    private GameObject portalPrefab;
+    private GameObject portalInstance;
+
 
     public void EnableAttackCollider()
     {
@@ -76,17 +83,27 @@ public class GruzeMother : MonoBehaviour
 
     void Start()
     {
-       idelMoveDirection.Normalize();
-       attackMoveDirection.Normalize();
-       enemyRB = GetComponent<Rigidbody2D>();
-       enemyAnim = GetComponent<Animator>();
-       damageable = GetComponent<Damageable>();
-
+        idelMoveDirection.Normalize();
+        attackMoveDirection.Normalize();
+        enemyRB = GetComponent<Rigidbody2D>();
+        enemyAnim = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
+        damageable.damageableDeath.AddListener(SpawnPortal);
+        FindPlayer();
         if (audioSource != null && aliveSound != null)
         {
             audioSource.clip = aliveSound;
-            audioSource.loop = true; 
+            audioSource.loop = true;
             audioSource.Play();
+        }
+    }
+
+    void FindPlayer()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
         }
     }
     public async void StopAudio()
@@ -104,26 +121,9 @@ public class GruzeMother : MonoBehaviour
         isTouchingUp = Physics2D.OverlapCircle(groundCheckUp.position, groundCheckRadius, groundLayer);
         isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
-    }
-    private void FixedUpdate()
-    {
-        if (damageable.IsAlive)
+        if (!damageable.IsAlive && !hasSpawnedPortal)
         {
-            if (CanMove)
-            {
-                randomStatePicker();
-            }
-            else
-            {
-                enemyRB.linearVelocity = Vector3.zero;
-            }
-        }
-    }
-    public bool CanMove
-    {
-        get
-        {
-            return enemyAnim != null && enemyAnim.GetBool(AnimationStrings.canMove);
+            SpawnPortal();
         }
     }
 
@@ -248,5 +248,47 @@ public class GruzeMother : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheckWall.position, groundCheckRadius);
 
     }
+
+    public void SpawnPortal()
+    {
+        if (hasSpawnedPortal) return;
+        hasSpawnedPortal = true;
+
+        if (portalPrefab != null)
+        {
+            Vector3 spawnPosition = new Vector3(453.027313f, -8.68389988f, -0.141204819f);
+            portalInstance = Instantiate(portalPrefab, spawnPosition, Quaternion.identity);
+            portalInstance.SetActive(true);
+
+            StartCoroutine(FadeInPortal(portalInstance));
+        }
+
+    }
+
+    private IEnumerator FadeInPortal(GameObject portal)
+    {
+        SpriteRenderer sprite = portal.GetComponent<SpriteRenderer>();
+        if (sprite != null)
+        {
+            Color color = sprite.color;
+            color.a = 0; 
+            sprite.color = color;
+
+            float duration = 7f;
+            float elapsedTime = 0;
+            audioSource.volume = 0f;
+            audioSource.Play();
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float progress = elapsedTime / duration;
+                color.a = Mathf.Lerp(0, 1, elapsedTime / duration);
+                sprite.color = color;
+                audioSource.volume = Mathf.Lerp(0f, 1f, progress);
+                yield return null;
+            }
+        }
+    }
+
 
 }
