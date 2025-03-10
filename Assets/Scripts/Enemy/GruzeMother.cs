@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class GruzeMother : MonoBehaviour
@@ -39,15 +41,10 @@ public class GruzeMother : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
 
-    [Header("Damage Settings")]
-    [SerializeField]
-    private int attackDamage = 20;
-    [SerializeField]
-    private Vector2 knockback = new Vector2(2f, 2f); 
-    [SerializeField]
-    private float attackCooldown = 5f;
-    private float lastAttackTime;
-   
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip aliveSound;
+
     private bool isTouchingUp;
     private bool isTouchingDown;
     private bool isTouchingWall;
@@ -56,6 +53,26 @@ public class GruzeMother : MonoBehaviour
    
     private Rigidbody2D enemyRB;
     private Animator enemyAnim;
+    private Damageable damageable;
+
+    [SerializeField]
+    private Collider2D attackCollider;
+
+    public void EnableAttackCollider()
+    {
+        if (attackCollider != null)
+        {
+            attackCollider.enabled = true;
+        }
+    }
+    public void DisableAttackCollider()
+    {
+        if (attackCollider != null)
+        {
+            attackCollider.enabled = false;
+        }
+    }
+
 
     void Start()
     {
@@ -63,7 +80,23 @@ public class GruzeMother : MonoBehaviour
        attackMoveDirection.Normalize();
        enemyRB = GetComponent<Rigidbody2D>();
        enemyAnim = GetComponent<Animator>();
-       lastAttackTime = -attackCooldown;
+       damageable = GetComponent<Damageable>();
+
+        if (audioSource != null && aliveSound != null)
+        {
+            audioSource.clip = aliveSound;
+            audioSource.loop = true; 
+            audioSource.Play();
+        }
+    }
+    public async void StopAudio()
+    {
+        await Task.Delay(2000);
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
     }
 
     void Update()
@@ -72,18 +105,37 @@ public class GruzeMother : MonoBehaviour
         isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
     }
+    private void FixedUpdate()
+    {
+        if (damageable.IsAlive)
+        {
+            if (CanMove)
+            {
+                randomStatePicker();
+            }
+            else
+            {
+                enemyRB.linearVelocity = Vector3.zero;
+            }
+        }
+    }
+    public bool CanMove
+    {
+        get
+        {
+            return enemyAnim != null && enemyAnim.GetBool(AnimationStrings.canMove);
+        }
+    }
 
     void randomStatePicker()
     {
         int randdomState = Random.Range(0, 2);
         if(randdomState == 0)
         {
-            //attackUpNDown aniamton
             enemyAnim.SetTrigger("AttackUpNDown");
         }
         else if (randdomState == 1)
         {
-            //attack player animation
             enemyAnim.SetTrigger("AttackPlayer");
         }
     }
@@ -172,25 +224,6 @@ public class GruzeMother : MonoBehaviour
             Flip();
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") && Time.time >= lastAttackTime + attackCooldown)
-        {
-            Damageable playerDamageable = collision.GetComponent<Damageable>();
-            if (playerDamageable != null)
-            {
-                Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                Vector2 appliedKnockback = knockbackDirection * knockback;
-
-                bool hitSuccessful = playerDamageable.Hit(attackDamage, appliedKnockback);
-                if (hitSuccessful)
-                {
-                    lastAttackTime = Time.time;
-                }
-            }
-        }
-    }
-
 
     public void ChangeDirection()
     {

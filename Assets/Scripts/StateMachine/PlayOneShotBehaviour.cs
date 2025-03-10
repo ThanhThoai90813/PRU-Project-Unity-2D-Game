@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayOneShotBehaviour : StateMachineBehaviour
 {
     public AudioClip soundToPlay;
-    public float volume = 1f;
+    public float volume = 1.5f;
     public bool playOnEnter = true, playOnExit = false, playAfterDelay = false;
 
     public float playDelay = 0.25f;

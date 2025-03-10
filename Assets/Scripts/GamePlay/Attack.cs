@@ -22,10 +22,7 @@ public class Attack : MonoBehaviour
 
             //hitTrigger the target
             bool gotHit = damageable.Hit(baseAttackDamage,knockback);
-            if (gotHit)
-            {
-                Debug.Log(collision.name + " hit for " + baseAttackDamage);
-            }
+  
 
         }
     }
