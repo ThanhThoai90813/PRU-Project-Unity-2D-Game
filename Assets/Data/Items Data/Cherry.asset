@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Cherry
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 40
+  <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Cherry
-  <Description>k__BackingField: A small, round, red fruit. Rich in vitamin C, antioxidants,
-    helps strengthen the immune system, good for the heart and sleep. (Heal 10HP)
+  <Description>k__BackingField: '  A small, round, red fruit. Rich in vitamin C,
+    antioxidants, helps strengthen the immune system, good for the heart and sleep.
+    (Heal 10HP)'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: bf7bb96fa1c415b4fb03ff227c934adc, type: 3}
   <ItemID>k__BackingField: 1
   modifiersData:

@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Red Mushroom
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
+  <MaxStackSize>k__BackingField: 60
   <Name>k__BackingField: Red Mushroom
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: "  A fiery red mushroom with mysterious white spots,
+    giving off an unusual aroma. When eaten, it restores a certain amount of HP,
+    but be careful\u2014some red mushrooms may contain strange powers, sometimes
+    bringing unexpected effects!"
   <ItemImage>k__BackingField: {fileID: 1239013784, guid: 76d85216932ebd946bba4891c99218f4, type: 3}
   <ItemID>k__BackingField: 18
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 5
+  - statModifier: {fileID: 11400000, guid: fc51e10ed907b0644af0d928fcac0abf, type: 2}
+    value: 10
   isConsumable: 1
-  <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}
+  <actionSFX>k__BackingField: {fileID: 8300000, guid: d105617e8e0b63a45bbcb689f9205d7a, type: 3}

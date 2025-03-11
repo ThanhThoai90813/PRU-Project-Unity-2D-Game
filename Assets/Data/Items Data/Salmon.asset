@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Salmon
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
+  <MaxStackSize>k__BackingField: 50
   <Name>k__BackingField: Salmon
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A slice of fresh, nutritious salmon. It can be
+    eaten raw to restore a large amount of HP, but if cooked, it will give you even
+    more energy, ready to face any challenge ahead!'
   <ItemImage>k__BackingField: {fileID: -6685954240006414707, guid: c90c6d0130b3e9e4897f1c7150f7cde0, type: 3}
   <ItemID>k__BackingField: 11
   modifiersData:
   - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 20
+    value: 50
   isConsumable: 1
   <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}

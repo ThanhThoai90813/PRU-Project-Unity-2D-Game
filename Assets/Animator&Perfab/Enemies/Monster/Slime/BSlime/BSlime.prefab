@@ -133,7 +133,7 @@ Animator:
   m_GameObject: {fileID: 2385150149044112528}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6dc18391aaabd7e4cbbf59751bf0c73b, type: 2}
+  m_Controller: {fileID: 9100000, guid: c76406f1d4da85442904f7ded08b9cee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   _health: 100
   _isAlive: 1
   isInvincible: 0
+  damageReductionPercentage: 0
   invincibilityTime: 0.25
 --- !u!70 &4138513054450865630
 CapsuleCollider2D:
@@ -381,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  baseAttackDamage: 10
   knockback: {x: 2, y: 0}
 --- !u!1 &5558254883041900832
 GameObject:

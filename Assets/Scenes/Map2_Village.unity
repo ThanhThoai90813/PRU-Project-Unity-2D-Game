@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &127888138 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7558734865977323833, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
-  m_PrefabInstance: {fileID: 907488357}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &164641050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,7 +435,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 127888138}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -1836,6 +1831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Map1_JungleMap
+  confirmationPanel: {fileID: 0}
 --- !u!61 &2098910768
 BoxCollider2D:
   m_ObjectHideFlags: 0

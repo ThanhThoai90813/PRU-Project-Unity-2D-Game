@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Jam
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
+  <MaxStackSize>k__BackingField: 30
   <Name>k__BackingField: Jam
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: '  A jar of smooth, sweet fruit jam with a rich natural
+    flavor. Can be eaten directly to restore some HP or served with bread to increase
+    the effect. A small but energetic gift for long adventures!'
   <ItemImage>k__BackingField: {fileID: -7782623459120347722, guid: 761fa1480c978364a904e12efb3a3f44, type: 3}
   <ItemID>k__BackingField: 14
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 5
+  - statModifier: {fileID: 11400000, guid: 881f1952963317b4abc8416006a908f9, type: 2}
+    value: 3
   isConsumable: 1
   <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Cyan Mushroom
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
+  <MaxStackSize>k__BackingField: 60
   <Name>k__BackingField: Cyan Mushroom
-  <Description>k__BackingField: asdasdda
+  <Description>k__BackingField: "  A rare blue-green mushroom that glows in the dark.
+    When eaten, it bring about strange effects\u2014some good, some bad. Do you dare
+    to try it?"
   <ItemImage>k__BackingField: {fileID: -1033799171, guid: 50456662e6aebe24a9db8a88ab79431c, type: 3}
   <ItemID>k__BackingField: 19
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: 6ade30c6330121a47a29671928ad8775, type: 2}
-    value: 5
+  - statModifier: {fileID: 11400000, guid: fc51e10ed907b0644af0d928fcac0abf, type: 2}
+    value: 30
   isConsumable: 1
-  <actionSFX>k__BackingField: {fileID: 8300000, guid: d9935018adc118746b64d63f72dc51ca, type: 3}
+  <actionSFX>k__BackingField: {fileID: 8300000, guid: d105617e8e0b63a45bbcb689f9205d7a, type: 3}

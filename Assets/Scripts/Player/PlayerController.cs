@@ -127,7 +127,6 @@ public class PlayerController : MonoBehaviour
         damageable.Health = DBController.Instance.PLAYERHEALTH;
         damageable.healthChanged.AddListener(OnHealthChange);
         uiRespawnCheck = FindObjectOfType<UIRespawnCheck>();
-
     }
 
 
@@ -202,7 +201,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started && touchingDirections.IsGrounded && CanMove)
+        if(context.started && touchingDirections.IsGrounded && CanMove && IsALive)
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);

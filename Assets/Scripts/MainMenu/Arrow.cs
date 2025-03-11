@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Arrow : MonoBehaviour {
+public class Arrow : MonoBehaviour
+{
 
     Animator anim;
 
@@ -10,7 +11,7 @@ public class Arrow : MonoBehaviour {
         anim = gameObject.GetComponent<Animator>();
 
     }
-	
+
     public void animEnd()
     {
         anim.SetBool("Click", false);
