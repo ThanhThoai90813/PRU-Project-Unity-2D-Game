@@ -103,7 +103,7 @@ public class ArcherEnemy : MonoBehaviour
         if (arrowPrefab != null && firePoint != null)
         {
             GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-            Arrow arrowScript = arrow.GetComponent<Arrow>();
+            EnemyArrow arrowScript = arrow.GetComponent<EnemyArrow>();
             if (arrowScript != null)
             {
                 arrowScript.SetDirection(facingRight ? 1 : -1);             }

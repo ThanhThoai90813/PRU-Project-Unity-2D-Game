@@ -3,6 +3,7 @@ using Inventory;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using System.Collections;
 
 public class Trader1 : NPC, ITalkable
 {
@@ -28,16 +29,47 @@ public class Trader1 : NPC, ITalkable
     private UINotification notificationUI;
 
     private bool hasReceivedReward = false;
-   
+    private GameObject player;
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    private float lookAtPlayerRange = 5f;
+    [SerializeField] 
+    private bool canRotate = true;
+    private Coroutine checkPlayerDistanceCoroutine;
+
     private void Start()
     {
         // Kiểm tra xem NPC này đã trao thưởng chưa khi khởi động
         hasReceivedReward = DBController.Instance.IsItemCollected(_npcToken);
         dialogueController.OnConversationEnded += GiveReward; // Đăng ký sự kiện
+        player = GameObject.FindGameObjectWithTag("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Chạy Coroutine để kiểm tra khoảng cách Player
+        checkPlayerDistanceCoroutine = StartCoroutine(CheckPlayerDistance());
     }
     public override void Interact()
     {
         Talk(dialogueText);
+    }
+    private IEnumerator CheckPlayerDistance()
+    {
+        while (true)
+        {
+            if (canRotate) LookAtPlayer();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+    private void LookAtPlayer()
+    {
+        if (player == null || spriteRenderer == null) return;
+
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < lookAtPlayerRange)
+        {
+            spriteRenderer.flipX = player.transform.position.x < transform.position.x;
+        }
     }
 
     public void Talk(DialogueText dialogueText)
@@ -86,5 +118,10 @@ public class Trader1 : NPC, ITalkable
     private void OnDestroy()
     {
         dialogueController.OnConversationEnded -= GiveReward;
+
+        if (checkPlayerDistanceCoroutine != null)
+        {
+            StopCoroutine(checkPlayerDistanceCoroutine);
+        }
     }
 }
