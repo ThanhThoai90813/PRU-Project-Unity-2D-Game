@@ -34,7 +34,14 @@ public class EnemyArrow : MonoBehaviour
     public void SetDirection(int dir)
     {
         direction = dir;
-        transform.localScale = new Vector3(direction, 1, 1);
+        if (direction < 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        else if (direction > 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 
 }
