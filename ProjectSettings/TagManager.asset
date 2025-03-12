@@ -12,6 +12,7 @@ TagManager:
   - Bat_fly
   - NPC
   - GruzMother
+  - Minotaur
   layers:
   - Default
   - TransparentFX
