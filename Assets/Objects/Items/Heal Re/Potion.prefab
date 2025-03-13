@@ -142,7 +142,10 @@ MonoBehaviour:
   <InventoryItem>k__BackingField: {fileID: 11400000, guid: 3ef26093699be9241af0180d65e72319, type: 2}
   <Quantity>k__BackingField: 1
   audioSource: {fileID: 5789033003800942732}
-  duration: 0.3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 0.1
 --- !u!82 &5789033003800942732
 AudioSource:
   m_ObjectHideFlags: 0

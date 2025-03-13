@@ -21,7 +21,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: -1033799171, guid: 50456662e6aebe24a9db8a88ab79431c, type: 3}
   <ItemID>k__BackingField: 19
   modifiersData:
-  - statModifier: {fileID: 11400000, guid: fc51e10ed907b0644af0d928fcac0abf, type: 2}
-    value: 30
+  - statModifier: {fileID: 11400000, guid: 64e88126a9a466a4b92d43e9ce4e75ee, type: 2}
+    value: 15
   isConsumable: 1
   <actionSFX>k__BackingField: {fileID: 8300000, guid: d105617e8e0b63a45bbcb689f9205d7a, type: 3}

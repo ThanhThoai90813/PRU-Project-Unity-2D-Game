@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4f8b438458fa30041865000691e86423
   - enabled: 1
+    path: Assets/Scenes/NewGameCutScene.unity
+    guid: 0bb9cd71b16c18c4283fcb96929ccbb7
+  - enabled: 1
     path: Assets/Scenes/Map1_JungleMap.unity
     guid: e4ffdb43d971cda418f5ab6a2c56a6c5
   - enabled: 1
     path: Assets/Scenes/Map1_Boss.unity
     guid: 69b87205cb25ac74c9b761c1df5b94ff
-  - enabled: 1
-    path: Assets/Scenes/Map2_Village.unity
-    guid: f93a4766ae967bf49a8615ac106e36ae
   - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: a1ac28cf5e438e94f93dd87145e64f56
