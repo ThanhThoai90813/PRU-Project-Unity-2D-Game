@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748ff6690392d547908c897a80f606c, type: 3}
+  m_Name: Villager
+  m_EditorClassIdentifier: 
+  speakerName: Sara
+  paragraphs:
+  - Thank heavens! Thank you for saving me, thank you so much. We were almost eaten
+    by the goblins!
+  - My name is Sara. We were on our way to a nearby village when we were ambushed
+    and kidnapped by goblins while resting for the night.
+  - "That's right, the village of Horizon. Are you heading there too? That\u2019s
+    great! We\u2019ll lead the way, and you can protect us on the journey!"

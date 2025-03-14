@@ -322,14 +322,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246b1af15523be345bc2eb6f8b920e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAcceleration: 50
-  maxSpeed: 2
+  walkAcceleration: 20
+  maxSpeed: 1
   walkStopRate: 0.05
   attackZone: {fileID: 4798215653084722075}
   cliffDetectionZone: {fileID: 8309063698083024217}
-  healthPickupPrefab: {fileID: 7221909226235203633, guid: e9508f4fb939ee945a2740dc2ab29a90, type: 3}
-  chaseSpeed: 3.5
+  healthPickupPrefab: {fileID: 7221909226235203633, guid: c46eb9beef7108c46bd127a729527a59, type: 3}
+  target: {fileID: 0}
+  chaseSpeed: 1
   attackRange: 2
+  isKnockedBack: 0
+  knockbackTime: 0.2
+  isChasing: 0
   _hasTarget: 0
 --- !u!114 &3516746208588823622
 MonoBehaviour:
@@ -364,10 +368,12 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  isCheatInvincible: 0
+  _maxHealth: 150
+  _health: 150
   _isAlive: 1
   isInvincible: 0
+  damageReductionPercentage: 0
   invincibilityTime: 0.25
 --- !u!1 &7627003074479822711
 GameObject:
@@ -574,8 +580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 50
-  knockback: {x: 5, y: 2}
+  baseAttackDamage: 15
+  knockback: {x: 2, y: 1}
 --- !u!1 &8359903181979592754
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,5 +680,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
-  knockback: {x: -3, y: 2}
+  baseAttackDamage: 10
+  knockback: {x: 1, y: 1}

@@ -5,13 +5,13 @@ public abstract class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private SpriteRenderer _interactSprite;
+
     private Transform _playerTransform;
     private const float INTERACT_DISTANCE = 5f;
 
-    private void Start()
+    protected virtual void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         if (player != null)
         {
             _playerTransform = player.transform;
@@ -35,21 +35,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
             Interact();
         }
 
-        if (_interactSprite != null)
-        {
-            if (_interactSprite.gameObject.activeSelf && !IsWithinInteractDistance())
-            {
-                _interactSprite.gameObject.SetActive(false);
-            }
-            else if (!_interactSprite.gameObject.activeSelf && IsWithinInteractDistance())
-            {
-                _interactSprite.gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            Debug.LogError("SpriteRenderer chưa được gán trong Inspector!");
-        }
+        UpdateInteractSprite();
     }
 
     public abstract void Interact();
@@ -58,5 +44,23 @@ public abstract class NPC : MonoBehaviour, IInteractable
     {
         if (_playerTransform == null) return false;
         return Vector2.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
+    }
+
+    private void UpdateInteractSprite()
+    {
+        if (_interactSprite == null)
+        {
+            Debug.LogError("SpriteRenderer chưa được gán trong Inspector!");
+            return;
+        }
+
+        if (_interactSprite.gameObject.activeSelf && !IsWithinInteractDistance())
+        {
+            _interactSprite.gameObject.SetActive(false);
+        }
+        else if (!_interactSprite.gameObject.activeSelf && IsWithinInteractDistance())
+        {
+            _interactSprite.gameObject.SetActive(true);
+        }
     }
 }

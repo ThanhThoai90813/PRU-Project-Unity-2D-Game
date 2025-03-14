@@ -223,7 +223,7 @@ public class EnemyScript : MonoBehaviour
         int randomAttack = UnityEngine.Random.Range(1, 4); // Sinh số từ 1 đến 2
         animator.SetInteger("attackType", randomAttack);
         animator.SetTrigger("attack"); 
-        AttackCooldown = UnityEngine.Random.Range(1.5f, 2.0f); 
+        AttackCooldown = UnityEngine.Random.Range(2.5f, 4f); 
     }
     public void Die()
     {

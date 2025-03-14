@@ -284,14 +284,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246b1af15523be345bc2eb6f8b920e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAcceleration: 70
-  maxSpeed: 3
+  walkAcceleration: 50
+  maxSpeed: 2.5
   walkStopRate: 0.05
   attackZone: {fileID: 7382648368577332474}
   cliffDetectionZone: {fileID: 3254886295563295924}
   healthPickupPrefab: {fileID: 7221909226235203633, guid: e9508f4fb939ee945a2740dc2ab29a90, type: 3}
-  chaseSpeed: 4
+  target: {fileID: 0}
+  chaseSpeed: 3
   attackRange: 0.6
+  isKnockedBack: 0
+  knockbackTime: 0.2
+  isChasing: 0
   _hasTarget: 0
 --- !u!114 &6751519109067231204
 MonoBehaviour:
@@ -326,10 +330,12 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
+  isCheatInvincible: 0
   _maxHealth: 50
   _health: 50
   _isAlive: 1
   isInvincible: 0
+  damageReductionPercentage: 0
   invincibilityTime: 0.25
 --- !u!70 &7626002316347500817
 CapsuleCollider2D:
@@ -468,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
+  baseAttackDamage: 5
   knockback: {x: -1, y: 1}
 --- !u!1 &5728431004704389973
 GameObject:

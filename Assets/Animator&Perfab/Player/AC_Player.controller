@@ -101,7 +101,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 58cd86e71a3c4114abe1e78ddcbf91a7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3a3fb87b8cc40a541908ca1bac66a987, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 52ee97fd74ca83242afb06cdc0109544, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 78bee4315548fc4488874b19f3bbe78f, type: 3}
   volume: 100
   playOnEnter: 1
   playOnExit: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 2ee08a87d24518345a41eb9e83fb3d25, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 5c7494eadfc92ab488787902dd4b9789, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
@@ -402,27 +402,27 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 270, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1127805052421752788}
-    m_Position: {x: 270, y: -20, z: 0}
+    m_Position: {x: 270, y: -80, z: 0}
   m_AnyStateTransitions:
   - {fileID: -1298310198154333403}
   - {fileID: -5011808142686699135}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 891080164306582338}
-    second:
-    - {fileID: -7269821594874513705}
-    - {fileID: 2262571548092817600}
-  - first: {fileID: 1127805052421752788}
-    second:
-    - {fileID: 3661018933518011362}
   - first: {fileID: 1934924543051390384}
     second:
     - {fileID: 7186796522920284906}
     - {fileID: 3838665916317437736}
     - {fileID: 7009513764301561928}
+  - first: {fileID: 891080164306582338}
+    second:
+    - {fileID: -7269821594874513705}
+    - {fileID: 2262571548092817600}
   - first: {fileID: 7024603811851527302}
     second:
     - {fileID: -8034815692989530033}
+  - first: {fileID: 1127805052421752788}
+    second:
+    - {fileID: 3661018933518011362}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 590, y: 230, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 52ee97fd74ca83242afb06cdc0109544, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 78bee4315548fc4488874b19f3bbe78f, type: 3}
   volume: 100
   playOnEnter: 1
   playOnExit: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 52ee97fd74ca83242afb06cdc0109544, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 78bee4315548fc4488874b19f3bbe78f, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
@@ -772,7 +772,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 99cb677d29783c54d937f24cda7b2b64, type: 2}
+  m_Motion: {fileID: 7400000, guid: 58cd86e71a3c4114abe1e78ddcbf91a7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 52ee97fd74ca83242afb06cdc0109544, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 78bee4315548fc4488874b19f3bbe78f, type: 3}
   volume: 100
   playOnEnter: 1
   playOnExit: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 72bab2f23d8384247b9ce90ab0aa30d7, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 1387fd9800e863a42abef5134b3e7b8a, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5db566ef4444490d1c08bed517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 52ee97fd74ca83242afb06cdc0109544, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 78bee4315548fc4488874b19f3bbe78f, type: 3}
   volume: 1
   playOnEnter: 1
   playOnExit: 0
@@ -1719,7 +1719,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3a3fb87b8cc40a541908ca1bac66a987, type: 2}
+  m_Motion: {fileID: 7400000, guid: 99cb677d29783c54d937f24cda7b2b64, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

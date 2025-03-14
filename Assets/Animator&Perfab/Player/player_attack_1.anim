@@ -22,8 +22,17 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.1
+        time: 0.11111111
         value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5555556
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -34,7 +43,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttack
+    path: SwordAttack3
     classID: 60
     script: {fileID: 0}
     flags: 0
@@ -42,25 +51,35 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8268656931135249757, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.1
-      value: {fileID: -2203531189515088095, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.2
-      value: {fileID: -8742159639227662668, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.3
-      value: {fileID: 4754574740028706705, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.4
-      value: {fileID: -31060345325833370, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.5
-      value: {fileID: 2859163151248194548, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - time: 0.6
-      value: {fileID: 2901424368693176021, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+      value: {fileID: -6986738885829826786, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.11111111
+      value: {fileID: 2120647941774376557, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.22222222
+      value: {fileID: 783259405271124362, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.33333334
+      value: {fileID: 1673355239187035891, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.44444445
+      value: {fileID: -6282720384379446190, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.5555556
+      value: {fileID: 4476102447101524921, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.6666667
+      value: {fileID: -6157472530757624854, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.7777778
+      value: {fileID: -3503236954400159079, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 0.8888889
+      value: {fileID: 5175423782967277542, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 1
+      value: {fileID: -2348209286669534141, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 1.1111112
+      value: {fileID: -411039753804421132, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - time: 1.2222222
+      value: {fileID: -2271264044987215856, guid: 563778d1256080e449e0c917a05ef689, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 10
+  m_SampleRate: 9
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -68,7 +87,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2109124072
+      path: 3279835772
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 60
@@ -86,24 +105,29 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -8268656931135249757, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: -2203531189515088095, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: -8742159639227662668, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: 4754574740028706705, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: -31060345325833370, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: 2859163151248194548, guid: 563778d1256080e449e0c917a05ef689, type: 3}
-    - {fileID: 2901424368693176021, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -6986738885829826786, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: 2120647941774376557, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: 783259405271124362, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: 1673355239187035891, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -6282720384379446190, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: 4476102447101524921, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -6157472530757624854, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -3503236954400159079, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: 5175423782967277542, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -2348209286669534141, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -411039753804421132, guid: 563778d1256080e449e0c917a05ef689, type: 3}
+    - {fileID: -2271264044987215856, guid: 563778d1256080e449e0c917a05ef689, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.70000005
+    m_StopTime: 1.3333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -119,8 +143,17 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.1
+        time: 0.11111111
         value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5555556
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -131,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttack
+    path: SwordAttack3
     classID: 60
     script: {fileID: 0}
     flags: 0

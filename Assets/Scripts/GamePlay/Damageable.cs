@@ -8,7 +8,8 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, Vector2> damageableHit;
     public UnityEvent damageableDeath;
     public UnityEvent<int, int> healthChanged;
-
+    [SerializeField]
+    private bool isCheatInvincible = false;
     Animator animator;
 
     [SerializeField]
@@ -48,7 +49,7 @@ public class Damageable : MonoBehaviour
     private bool _isAlive = true;
 
     [SerializeField]
-    private bool isInvincible = false;
+    public bool isInvincible = false;
 
     [SerializeField]
     public float damageReductionPercentage = 0f;
@@ -98,7 +99,7 @@ public class Damageable : MonoBehaviour
 
     private void Update()
     {
-        if (isInvincible)
+        if (isInvincible && !isCheatInvincible)
         {
             if (timeSincehit > invincibilityTime)
             {
@@ -112,7 +113,7 @@ public class Damageable : MonoBehaviour
 
     public bool Hit(int damage,Vector2 knockback)
     {
-        if (IsAlive && !isInvincible)
+        if (IsAlive && !isInvincible || !isCheatInvincible)
         {
             float reducedDamage = damage * (1f - damageReductionPercentage / 100f);
             int finalDamage = Mathf.Max(0, (int)reducedDamage);
@@ -142,5 +143,16 @@ public class Damageable : MonoBehaviour
         }
         return false;
     }
-
+    public void SetCheatInvincible(bool value)
+    {
+        isCheatInvincible = value;
+        if (value)
+        {
+            Debug.Log("Cheat Invincibility ON!");
+        }
+        else
+        {
+            Debug.Log("Cheat Invincibility OFF!");
+        }
+    }
 }
