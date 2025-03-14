@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 654871342100255532}
   - component: {fileID: 4487686944784438143}
   - component: {fileID: 7076276691295101489}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bringer_Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  lifetime: 2
+  lifetime: 10
   damage: 20
   knockback: {x: 1, y: 0}
+  arrowType: 0
+  arcHeight: 2
+  waveAmplitude: 0.5
+  waveFrequency: 2
