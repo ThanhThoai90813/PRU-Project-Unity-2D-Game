@@ -9,37 +9,37 @@ public class PickUpSystem : MonoBehaviour
     private InventorySO inventoryData;
     private Item nearbyItem;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Item item = collision.GetComponent<Item>();
-    //    if (item != null)
-    //    {
-    //        int reminder = inventoryData.AddItem(item.InventoryItem, item.Quantity);
-    //        if (reminder == 0)
-    //            item.DestroyItem();
-    //        else
-    //            item.Quantity = reminder;
-    //    }
-    //}
+    [SerializeField] 
+    private GameObject pickUpText;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Player entered trigger of item: " + collision.name);
         Item item = collision.GetComponent<Item>();
         if (item != null)
         {
-            nearbyItem = item; // Lưu vật phẩm gần nhất
+            nearbyItem = item;
+            if (pickUpText != null)
+            {
+                pickUpText.SetActive(true);
+            }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Item item = collision.GetComponent<Item>();
-        if (item != null && item == nearbyItem)
+        if (collision.TryGetComponent(out Item item) && item == nearbyItem)
         {
-            nearbyItem = null; // Xóa vật phẩm khỏi danh sách nếu người chơi rời khỏi vùng
+            nearbyItem = null;
+            if (pickUpText != null)
+            {
+                pickUpText.SetActive(false);
+            }
         }
     }
+
     private void Update()
     {
-        // Kiểm tra nếu người chơi nhấn phím "E" và có vật phẩm gần đó
         if (Input.GetKeyDown(KeyCode.E) && nearbyItem != null)
         {
             PickUpItem(nearbyItem);
@@ -56,6 +56,11 @@ public class PickUpSystem : MonoBehaviour
         {
             item.Quantity = remainder;
         }
-        nearbyItem = null; // Xóa vật phẩm khỏi danh sách sau khi nhặt
+        nearbyItem = null;
+
+        if (pickUpText != null)
+        {
+            pickUpText.SetActive(false);
+        }
     }
 }

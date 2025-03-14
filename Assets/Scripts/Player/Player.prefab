@@ -853,7 +853,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _maxHealth: 100
-  _health: 10
+  _health: 100
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0
@@ -886,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 8733a82eebd41da49b1615f2003133df, type: 2}
+  pickUpText: {fileID: 0}
 --- !u!1 &8240057082200004934
 GameObject:
   m_ObjectHideFlags: 0

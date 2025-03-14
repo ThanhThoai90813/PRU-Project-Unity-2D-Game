@@ -283,7 +283,9 @@ public class DBController : Singleton<DBController>
         _userProfile.ProfileData.saveDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         SaveNow();
 
-        LoadingScreenManager.Instance.LoadScene("NewGameCutScene");
+        //LoadingScreenManager.Instance.LoadScene("NewGameCutScene");
+        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
+
     }
 
     public void SaveGame(int slot)

@@ -61,7 +61,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3e4084004beef01448d8db9bb550aaa5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 46d554bcaa299f94b900abf5864f79a6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -120,7 +120,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AC_Chest
+  m_Name: AC_Crate
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isOnWall
@@ -232,7 +232,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8d24433f011a7d545b423f639b604b6e, type: 2}
+  m_Motion: {fileID: 7400000, guid: fdd061877e072c0479d7d0451db793ef, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -260,7 +260,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6ee1d6e1c86c1944e9818ec82aea861e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 86ea5b28e1d5aea4aacb9625074eb555, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
