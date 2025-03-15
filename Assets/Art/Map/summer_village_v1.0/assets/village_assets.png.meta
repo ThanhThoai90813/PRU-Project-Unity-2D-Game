@@ -313,7 +313,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -327,7 +327,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -351,7 +351,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2447,7 +2447,100 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      village_assets_0: 6469755700526602426
+      village_assets_1: 2429482816927775742
+      village_assets_10: 8243893816035155194
+      village_assets_11: -7232461169308313416
+      village_assets_12: -9060358390651104174
+      village_assets_13: -7817364569953917904
+      village_assets_14: 8788942751594755748
+      village_assets_15: -6932603722226094848
+      village_assets_16: -9011392575477463160
+      village_assets_17: 3263741599141554690
+      village_assets_18: 4910222955571350378
+      village_assets_19: 2812864286432834732
+      village_assets_2: 6327466931259707459
+      village_assets_20: 4453344587647457546
+      village_assets_21: 18200986202928995
+      village_assets_22: -3070398450546237519
+      village_assets_23: 7121215343777200670
+      village_assets_24: 6128420447434289364
+      village_assets_25: -1162137306347512742
+      village_assets_26: -2700810227838316205
+      village_assets_27: -8731716364776414839
+      village_assets_28: -3902638058265656248
+      village_assets_29: -7548545788877247647
+      village_assets_3: 1244362495026956377
+      village_assets_30: -1304253607561328576
+      village_assets_31: 8100288583017026566
+      village_assets_32: 9152653411518991850
+      village_assets_33: 7586894237734159903
+      village_assets_34: 4973859567969394616
+      village_assets_35: 6231506986849767341
+      village_assets_36: -2854102639146801521
+      village_assets_37: -5962217440479947852
+      village_assets_38: 2212094622674666399
+      village_assets_39: 3168785695150832133
+      village_assets_4: -8056451964601342351
+      village_assets_40: 1407500352615823774
+      village_assets_41: 4383652670827901860
+      village_assets_42: 1379323267671843385
+      village_assets_43: -1690132575891235124
+      village_assets_44: 321606820611976758
+      village_assets_45: -5788703200634844835
+      village_assets_46: -9139800335948536552
+      village_assets_47: -773198718981312236
+      village_assets_48: 4910204389227105293
+      village_assets_49: 3532614237849336951
+      village_assets_5: 5573148911030714986
+      village_assets_50: -4959128784755581321
+      village_assets_51: 6470832685934310968
+      village_assets_52: -8378112920979680008
+      village_assets_53: 3702713169188165549
+      village_assets_54: -7446335763957789483
+      village_assets_55: 9050595486897674637
+      village_assets_56: 6341926082381820950
+      village_assets_57: -5484156190238092103
+      village_assets_58: 9035300980874011822
+      village_assets_59: -1732004010013521955
+      village_assets_6: 6469809517196816439
+      village_assets_60: 1309607130213758306
+      village_assets_61: -6304639330650882511
+      village_assets_62: 307510781780815704
+      village_assets_63: 6836996893142782299
+      village_assets_64: -1935695517566154506
+      village_assets_65: -489056860560171893
+      village_assets_66: 3688452701119234047
+      village_assets_67: -7657647921091482237
+      village_assets_68: -4720443296888292232
+      village_assets_69: 3144865524970522313
+      village_assets_7: 4399368383197687651
+      village_assets_70: 1909050433416872289
+      village_assets_71: -7010756860549367593
+      village_assets_72: 2030269512537244889
+      village_assets_73: -7716012729890669438
+      village_assets_74: 4929514690606949596
+      village_assets_75: 6357168042838402845
+      village_assets_76: 1909850001026804286
+      village_assets_77: -1974765885298375812
+      village_assets_78: -7948974097020303774
+      village_assets_79: 2527147504200020247
+      village_assets_8: -3677912053377973908
+      village_assets_80: 7966817373683478456
+      village_assets_81: 5857434488468474647
+      village_assets_82: -8535300061195311245
+      village_assets_83: 3656161654272136206
+      village_assets_84: 9102832486013442514
+      village_assets_85: -4121400828740953630
+      village_assets_86: -3454160305435161719
+      village_assets_87: -8325358044398762520
+      village_assets_88: 2871970309932419172
+      village_assets_89: 5954335367590151903
+      village_assets_9: -6094000132006067803
+      village_assets_90: 1865038466553575228
+      village_assets_91: -3262475521147717623
+      village_assets_92: 2381163249960354209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

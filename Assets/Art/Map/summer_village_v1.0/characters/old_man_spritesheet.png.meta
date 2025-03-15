@@ -178,7 +178,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -192,7 +192,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -216,7 +216,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1322,7 +1322,55 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      old_man_spritesheet_0: -3147766290711148694
+      old_man_spritesheet_1: -8148988334520353730
+      old_man_spritesheet_10: 1079575859969069095
+      old_man_spritesheet_11: -5608232286089179081
+      old_man_spritesheet_12: -5086835107721399864
+      old_man_spritesheet_13: -1784948197878740684
+      old_man_spritesheet_14: -9218720637493339862
+      old_man_spritesheet_15: -6922833363281359565
+      old_man_spritesheet_16: 4589408051631056643
+      old_man_spritesheet_17: 4124887309357947917
+      old_man_spritesheet_18: -2474141748584667233
+      old_man_spritesheet_19: 1815276848963346296
+      old_man_spritesheet_2: 953183164479785077
+      old_man_spritesheet_20: 3624564334086105351
+      old_man_spritesheet_21: -785349223155958873
+      old_man_spritesheet_22: -3106997135445523378
+      old_man_spritesheet_23: 623928898686467695
+      old_man_spritesheet_24: 4680133702498991964
+      old_man_spritesheet_25: -1001723000196070133
+      old_man_spritesheet_26: -8029662745931830362
+      old_man_spritesheet_27: 1045599967028720587
+      old_man_spritesheet_28: -1856469756011779591
+      old_man_spritesheet_29: 5516715946198757738
+      old_man_spritesheet_3: 6735753508999844206
+      old_man_spritesheet_30: -4264283859596348758
+      old_man_spritesheet_31: -6545218172804538596
+      old_man_spritesheet_32: -8869535118758117621
+      old_man_spritesheet_33: 7896633694279204509
+      old_man_spritesheet_34: -7278944400711746207
+      old_man_spritesheet_35: -770217097825129069
+      old_man_spritesheet_36: -2687208891701791691
+      old_man_spritesheet_37: -8131057161420396026
+      old_man_spritesheet_38: -4877620314693638540
+      old_man_spritesheet_39: 4472206432478892974
+      old_man_spritesheet_4: 1010443898326151828
+      old_man_spritesheet_40: 1516702880623892139
+      old_man_spritesheet_41: -7091677861308293778
+      old_man_spritesheet_42: 8835313049661218690
+      old_man_spritesheet_43: -224198773910317796
+      old_man_spritesheet_44: -2155014474005704919
+      old_man_spritesheet_45: -7119007873511950211
+      old_man_spritesheet_46: 3913498865659095140
+      old_man_spritesheet_47: -8534539010702675786
+      old_man_spritesheet_5: 4995231683572811792
+      old_man_spritesheet_6: -5276577802464695106
+      old_man_spritesheet_7: 6935418936911806843
+      old_man_spritesheet_8: -4459653159228271125
+      old_man_spritesheet_9: -3578881614717122773
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

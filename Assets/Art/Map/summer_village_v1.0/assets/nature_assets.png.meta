@@ -283,7 +283,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -297,7 +297,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -321,7 +321,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2197,7 +2197,90 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nature_assets_0: -8760510490002931193
+      nature_assets_1: 3112031968346064483
+      nature_assets_10: 2709851484070985152
+      nature_assets_11: -2081287230795003836
+      nature_assets_12: 8651909882375624855
+      nature_assets_13: 3107753758606876155
+      nature_assets_14: -6370622259439382711
+      nature_assets_15: 3932721564818401817
+      nature_assets_16: -8053623452193793884
+      nature_assets_17: 3174028898122103150
+      nature_assets_18: -27471423798907650
+      nature_assets_19: 5790290768492154830
+      nature_assets_2: -6448657224693254500
+      nature_assets_20: 926638803601672366
+      nature_assets_21: -7093463594796215175
+      nature_assets_22: -4700762046776142659
+      nature_assets_23: 6021589835681586592
+      nature_assets_24: -547378511350033161
+      nature_assets_25: 6365604020239736473
+      nature_assets_26: 3068772279936283141
+      nature_assets_27: 167715701223441937
+      nature_assets_28: -3542090218432369336
+      nature_assets_29: 8961658894204192169
+      nature_assets_3: 7037675275070498666
+      nature_assets_30: 216135918826228255
+      nature_assets_31: -4560614747895881245
+      nature_assets_32: 6585689159502848532
+      nature_assets_33: 3223841814943741078
+      nature_assets_34: -8025583042440870925
+      nature_assets_35: -4458205064943373366
+      nature_assets_36: -6299020902766051708
+      nature_assets_37: 6128278896819102431
+      nature_assets_38: 8645307708938696782
+      nature_assets_39: 5451073809583947628
+      nature_assets_4: 3522148235446726513
+      nature_assets_40: -3436341138795896889
+      nature_assets_41: -3799458983561183740
+      nature_assets_42: -2103276941622821077
+      nature_assets_43: 4878445374444809811
+      nature_assets_44: -1442339306459753482
+      nature_assets_45: 8735140467217132965
+      nature_assets_46: 8927138000651957712
+      nature_assets_47: 3727967096817247481
+      nature_assets_48: 7163544277617638030
+      nature_assets_49: -7437713816960416720
+      nature_assets_5: 5793555634913327675
+      nature_assets_50: -1048470219458122850
+      nature_assets_51: 8543096201062857466
+      nature_assets_52: -7402845591672642204
+      nature_assets_53: -1050466299265145478
+      nature_assets_54: -2708180032280992202
+      nature_assets_55: 7417517079124331924
+      nature_assets_56: -1862209998868418227
+      nature_assets_57: 721383499957159784
+      nature_assets_58: 2700589373891705190
+      nature_assets_59: -810855881288847120
+      nature_assets_6: -6616025083244175058
+      nature_assets_60: -5154866606611851453
+      nature_assets_61: -4301927596893603197
+      nature_assets_62: 2790312662090800330
+      nature_assets_63: 8274942418074985811
+      nature_assets_64: 9037773967305238941
+      nature_assets_65: 84393899393508454
+      nature_assets_66: -8456413737149177158
+      nature_assets_67: -5158724863555663379
+      nature_assets_68: -6703703071227280455
+      nature_assets_69: -3885570944906426288
+      nature_assets_7: 8180287783980876426
+      nature_assets_70: 342809350274332246
+      nature_assets_71: 5004532791255824967
+      nature_assets_72: -6651480481030446475
+      nature_assets_73: 6500383419508888440
+      nature_assets_74: -9185199814650271574
+      nature_assets_75: -3622256991783592851
+      nature_assets_76: -2976295950905547368
+      nature_assets_77: 807333316219172554
+      nature_assets_78: -1287109599385090667
+      nature_assets_79: -5489184883434593151
+      nature_assets_8: -123973681893219340
+      nature_assets_80: 7134122144684623417
+      nature_assets_81: -4998866348622576451
+      nature_assets_82: 5915655435097217477
+      nature_assets_9: 8494878928415398191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

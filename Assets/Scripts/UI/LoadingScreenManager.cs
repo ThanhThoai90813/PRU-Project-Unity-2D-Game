@@ -31,19 +31,11 @@ public class LoadingScreenManager : MonoBehaviour
         m_LoadingScreenObject.SetActive(true);
         ProgressBar.value = 0;
 
-        //float fakeProgress = 0f; 
-        //float progressSpeed = 0.5f; 
-        //float startTime = Time.time;
-        //float minimumLoadingTime = 3f;
-
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        //asyncLoad.allowSceneActivation = true; // Cho phép scene kích hoạt khi tải xong
         asyncLoad.allowSceneActivation = false;
-        while (!asyncLoad.isDone) //|| fakeProgress < 1f
+        while (!asyncLoad.isDone)
         {
             float realProgress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            //fakeProgress = Mathf.MoveTowards(fakeProgress, realProgress, progressSpeed * Time.deltaTime); yield return null;
-            //ProgressBar.value = fakeProgress;
             ProgressBar.value = realProgress;
             if (asyncLoad.progress >= 0.9f)
             {
@@ -51,19 +43,6 @@ public class LoadingScreenManager : MonoBehaviour
             }
             yield return null;
         }
-
-        //while (fakeProgress < 1f)
-        //{
-        //    fakeProgress = Mathf.MoveTowards(fakeProgress, 1f, progressSpeed * Time.deltaTime);
-        //    ProgressBar.value = fakeProgress;
-        //    yield return null;
-        //}
-
-        //float elapsedTime = Time.time - startTime;
-        //if (elapsedTime < minimumLoadingTime)
-        //{
-        //    yield return new WaitForSeconds(minimumLoadingTime - elapsedTime);
-        //}
 
         m_LoadingScreenObject.SetActive(false);
     }

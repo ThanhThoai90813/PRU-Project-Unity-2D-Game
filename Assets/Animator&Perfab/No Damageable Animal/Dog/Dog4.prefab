@@ -152,13 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc875e80fc98a244e81893fb6d052818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: 2
+  flightSpeed: 1.5
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   weaveAmplitude: 0.3
   weaveFrequency: 4
   useWeaving: 0
+  minWaitTime: 2
+  maxWaitTime: 5
+  walkAnimationName: dog4_run
+  idleAnimationName: dog4_idle
 --- !u!61 &2562151795138695009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.09837799}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,5 +207,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.75, y: 1.3125}
+  m_Size: {x: 1.75, y: 1.115744}
   m_EdgeRadius: 0

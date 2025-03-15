@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2179109700277780394}
   - component: {fileID: 9195155483457308055}
   - component: {fileID: 5025308564195924977}
-  - component: {fileID: 3320157319342694613}
   - component: {fileID: 3791613190529650744}
   m_Layer: 0
   m_Name: Portal
@@ -19,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2179109700277780394
 Transform:
   m_ObjectHideFlags: 0
@@ -136,20 +135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.835892, y: 4.70918}
   m_EdgeRadius: 0
---- !u!114 &3320157319342694613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8940516926448988138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c537ead1cd3e9ea478a495ab6ea6b53d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Map1_JungleMap
-  confirmationPanel: {fileID: 0}
 --- !u!82 &3791613190529650744
 AudioSource:
   m_ObjectHideFlags: 0

@@ -313,7 +313,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -327,7 +327,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -351,7 +351,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2447,7 +2447,100 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      market_assets_0: 4735326475727761899
+      market_assets_1: 3488554730117946168
+      market_assets_10: -7698943729961533995
+      market_assets_11: 2935674271239114101
+      market_assets_12: -515079784439305630
+      market_assets_13: 5928819449178563224
+      market_assets_14: 5764317791813490939
+      market_assets_15: 2519097999490247690
+      market_assets_16: 8992176039579154543
+      market_assets_17: 889976556032213945
+      market_assets_18: -7245945765197371932
+      market_assets_19: 6825104046884157547
+      market_assets_2: -5766274165934346684
+      market_assets_20: 8188143896890131673
+      market_assets_21: -4155673240702996633
+      market_assets_22: 4836425620823436339
+      market_assets_23: -3675374195952568041
+      market_assets_24: -7496078391797376976
+      market_assets_25: 2160767222832224374
+      market_assets_26: -6036706647450484130
+      market_assets_27: -5138701383223668491
+      market_assets_28: -7864189453621432718
+      market_assets_29: 7914915471180698079
+      market_assets_3: 3555296450084225966
+      market_assets_30: -2029358257372561806
+      market_assets_31: 5768410752562339039
+      market_assets_32: -8933583782431586353
+      market_assets_33: 3187711767557097229
+      market_assets_34: 1176825677578667647
+      market_assets_35: -1309271204559491819
+      market_assets_36: 210086287273897016
+      market_assets_37: -2477131132237110824
+      market_assets_38: -6432789432425028120
+      market_assets_39: 6057165573184917486
+      market_assets_4: 2898836697452486428
+      market_assets_40: 1222964169766344004
+      market_assets_41: -5979881109341988976
+      market_assets_42: 8720627235579596781
+      market_assets_43: -1531442408036352036
+      market_assets_44: 6021696672306878396
+      market_assets_45: -3145951648419557242
+      market_assets_46: -6384034741628662563
+      market_assets_47: 5108261550219424894
+      market_assets_48: 833583066260321396
+      market_assets_49: -6864362456717569676
+      market_assets_5: 6238579577692781049
+      market_assets_50: -9188197708496738921
+      market_assets_51: -2773928133642907283
+      market_assets_52: -92658760305791437
+      market_assets_53: -3706847493117816984
+      market_assets_54: -4122054340379987176
+      market_assets_55: -1691475690460837967
+      market_assets_56: -7051556532398258466
+      market_assets_57: 1041985535141085379
+      market_assets_58: -296129117680441073
+      market_assets_59: -3028928541528505495
+      market_assets_6: -8849805372233849323
+      market_assets_60: 7654864236824643458
+      market_assets_61: 6100815113915287403
+      market_assets_62: -3039539780597892158
+      market_assets_63: 5167111713359818132
+      market_assets_64: 2075522288918514077
+      market_assets_65: -4277142567321910465
+      market_assets_66: -7380441403149447572
+      market_assets_67: 2160858918853211179
+      market_assets_68: -497373182753377727
+      market_assets_69: 2088099336740049529
+      market_assets_7: 2555919278479925461
+      market_assets_70: 7471663867167354243
+      market_assets_71: -2112787816481287978
+      market_assets_72: -516897929542536868
+      market_assets_73: -800657803777700429
+      market_assets_74: 5142902058205857639
+      market_assets_75: -463895048245261786
+      market_assets_76: 1170588878733825302
+      market_assets_77: 6993785730590021550
+      market_assets_78: -3561301828235577842
+      market_assets_79: -8064456053219944985
+      market_assets_8: -1897374390843320536
+      market_assets_80: 5243001496233996772
+      market_assets_81: 3327948474417069761
+      market_assets_82: -686775766493944729
+      market_assets_83: -4542306131202601085
+      market_assets_84: -2124077190839689499
+      market_assets_85: -4071401014990383627
+      market_assets_86: -5807424138795773607
+      market_assets_87: -4610988258028873222
+      market_assets_88: 7033575160503085986
+      market_assets_89: -4330829576184964564
+      market_assets_9: -688157599889617191
+      market_assets_90: -8587622566890929285
+      market_assets_91: -960820040069765288
+      market_assets_92: -3513130342641832412
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

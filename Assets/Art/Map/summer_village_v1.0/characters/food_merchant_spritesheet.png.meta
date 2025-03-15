@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      food_merchant_spritesheet_0: -4202139600894037712
+      food_merchant_spritesheet_1: -5825406783719752994
+      food_merchant_spritesheet_10: 2523163303959044735
+      food_merchant_spritesheet_11: 5044010694369637455
+      food_merchant_spritesheet_2: 4024640133182056406
+      food_merchant_spritesheet_3: 7468281349559959181
+      food_merchant_spritesheet_4: -854957495493844495
+      food_merchant_spritesheet_5: 3115602982546592555
+      food_merchant_spritesheet_6: -7509139015159741602
+      food_merchant_spritesheet_7: -3959405445876988705
+      food_merchant_spritesheet_8: 3666725974350371132
+      food_merchant_spritesheet_9: -7656246520447865748
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

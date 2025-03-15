@@ -35,7 +35,7 @@ public class SceneChanger : MonoBehaviour
             currentPosition.y += 2f;
             DBController.Instance.PLAYER_POSITION = currentPosition;
             DBController.Instance.CURRENTSCENE = sceneName;
-            DBController.Instance.SaveNow();
+            //DBController.Instance.SaveNow();
         }
 
         LoadingScreenManager.Instance.LoadScene(sceneName);
