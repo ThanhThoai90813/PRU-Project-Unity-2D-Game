@@ -151,12 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc875e80fc98a244e81893fb6d052818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: 1.5
+  flightSpeed: 1.15
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   weaveAmplitude: 0.3
-  weaveFrequency: 4
+  weaveFrequency: 1.1
   useWeaving: 1
+  minWaitTime: 2
+  maxWaitTime: 5
+  walkAnimationName: butterly3_flying
+  idleAnimationName: butterly3_flying

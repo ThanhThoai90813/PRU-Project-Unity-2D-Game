@@ -1106,6 +1106,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Map1_JungleMap
   confirmationPanel: {fileID: 1644448593}
+--- !u!1001 &1892182981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 400.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.813997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08215499
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242379824898746510, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: m_Name
+      value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618228384529800483, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 7221909226235203633, guid: c341aaf5a24e8504598c7f2f34692ca1, type: 3}
+    - target: {fileID: 8618228384529800483, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: maxQuantity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618228384529800483, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: minQuantity
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
 --- !u!1 &1931911012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1385,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2014940569391295083, guid: f45e196b20910c74bbeed0433130608b, type: 3}
+      propertyPath: _health
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014940569391295083, guid: f45e196b20910c74bbeed0433130608b, type: 3}
+      propertyPath: _maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 3021055092217468650, guid: f45e196b20910c74bbeed0433130608b, type: 3}
       propertyPath: m_Name
       value: GruzMother
@@ -1976,3 +2053,4 @@ SceneRoots:
   - {fileID: 1667067772}
   - {fileID: 678199774}
   - {fileID: 2115162933}
+  - {fileID: 1892182981}

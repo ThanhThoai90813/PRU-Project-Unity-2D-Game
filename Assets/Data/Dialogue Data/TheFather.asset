@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4748ff6690392d547908c897a80f606c, type: 3}
+  m_Name: TheFather
+  m_EditorClassIdentifier: 
+  speakerName: The Father
+  paragraphs:
+  - Stay back and don't get in the way of my business.
+  - I need to sell quickly so I can go find my benefa....
+  - "You\u2014it's you! Just as my daughter described."
+  - I'm the father of the girl you saved in the cave in the forest. Oh, I was just
+    trying to finish selling quickly so I could go find you!
+  - "Oh, thank God\u2014no, thank you so much for saving my daughter! Our family
+    has all our hopes placed in her"
+  - I don't have anything valuable to repay you, but please accept these potions
+    I made. Once again, thank you so much!

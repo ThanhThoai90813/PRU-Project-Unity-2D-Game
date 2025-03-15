@@ -158,5 +158,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   weaveAmplitude: 0.3
-  weaveFrequency: 4
+  weaveFrequency: 1
   useWeaving: 1
+  minWaitTime: 2
+  maxWaitTime: 5
+  walkAnimationName: butterfily_flying
+  idleAnimationName: butterfily_flying
