@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,8 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, Vector2> damageableHit;
     public UnityEvent damageableDeath;
     public UnityEvent<int, int> healthChanged;
-
+    [SerializeField]
+    private bool isCheatInvincible = false;
     Animator animator;
 
     [SerializeField]
@@ -48,7 +50,7 @@ public class Damageable : MonoBehaviour
     private bool _isAlive = true;
 
     [SerializeField]
-    private bool isInvincible = false;
+    public bool isInvincible = false;
 
     [SerializeField]
     public float damageReductionPercentage = 0f;
@@ -98,7 +100,7 @@ public class Damageable : MonoBehaviour
 
     private void Update()
     {
-        if (isInvincible)
+        if (isInvincible && !isCheatInvincible)
         {
             if (timeSincehit > invincibilityTime)
             {
@@ -110,24 +112,32 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public bool Hit(int damage,Vector2 knockback)
+    public bool Hit(int damage, Vector2 knockback)
     {
-        if (IsAlive && !isInvincible)
+        MeowGoro meowgoro = GetComponent<MeowGoro>();
+
+        if (IsAlive && !isInvincible) // Chỉ nhận sát thương nếu không miễn nhiễm
         {
             float reducedDamage = damage * (1f - damageReductionPercentage / 100f);
             int finalDamage = Mathf.Max(0, (int)reducedDamage);
 
             Health -= finalDamage;
-            isInvincible = true;
+            isInvincible = true; // Kích hoạt miễn nhiễm
             LockVelocity = true;
             animator.SetTrigger(AnimationStrings.hitTrigger);
             damageableHit?.Invoke(finalDamage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, finalDamage);
 
+            StartCoroutine(BecomeTemporarilyInvincible()); // Bắt đầu thời gian miễn nhiễm
+
             return true;
         }
-        //unable to be hit
         return false;
+    }
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        isInvincible = false; // Hết miễn nhiễm, có thể bị đánh tiếp
     }
 
     public bool Heal(int healthRestore)
@@ -142,5 +152,16 @@ public class Damageable : MonoBehaviour
         }
         return false;
     }
-
+    public void SetCheatInvincible(bool value)
+    {
+        isCheatInvincible = value;
+        if (value)
+        {
+            Debug.Log("Cheat Invincibility ON!");
+        }
+        else
+        {
+            Debug.Log("Cheat Invincibility OFF!");
+        }
+    }
 }

@@ -1,0 +1,446 @@
+fileFormatVersion: 2
+guid: afcb3633675484b4aa99f3910affe596
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9084802387649581450
+    second: Death_BlankToInk_Character_0
+  - first:
+      213: 5063341135275324088
+    second: Death_BlankToInk_Character_1
+  - first:
+      213: -3945600954020926747
+    second: Death_BlankToInk_Character_2
+  - first:
+      213: -8683063901984711361
+    second: Death_BlankToInk_Character_3
+  - first:
+      213: -9048535301083627224
+    second: Death_BlankToInk_Character_4
+  - first:
+      213: 3224768483510922897
+    second: Death_BlankToInk_Character_5
+  - first:
+      213: -7514801260165046385
+    second: Death_BlankToInk_Character_6
+  - first:
+      213: -7244350142852149869
+    second: Death_BlankToInk_Character_7
+  - first:
+      213: 2785358606831288745
+    second: Death_BlankToInk_Character_8
+  - first:
+      213: -2191018009437484158
+    second: Death_BlankToInk_Character_9
+  - first:
+      213: 7706776088640212794
+    second: Death_BlankToInk_Character_10
+  - first:
+      213: 6762262721564244185
+    second: Death_BlankToInk_Character_11
+  - first:
+      213: 3553048463662500968
+    second: Death_BlankToInk_Character_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_1
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 255
+        width: 23
+        height: 45
+      alignment: 9
+      pivot: {x: 0.53, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b275b09fe9944640800000000000000
+      internalID: 5063341135275324088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_2
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 255
+        width: 23
+        height: 39
+      alignment: 9
+      pivot: {x: 0.49, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eae32646d86e39c0800000000000000
+      internalID: -3945600954020926747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_3
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 191
+        width: 35
+        height: 32
+      alignment: 9
+      pivot: {x: 0.42, y: 0.64}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d1f20d26f8f7780800000000000000
+      internalID: -8683063901984711361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_4
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 191
+        width: 46
+        height: 16
+      alignment: 9
+      pivot: {x: 0.36, y: 1.31}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8210459b5152d6280800000000000000
+      internalID: -9048535301083627224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_5
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 191
+        width: 47
+        height: 14
+      alignment: 9
+      pivot: {x: 0.37, y: 1.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e2b86a9dda0cc20800000000000000
+      internalID: 3224768483510922897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 127
+        width: 47
+        height: 15
+      alignment: 9
+      pivot: {x: 0.37, y: 1.49}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8f543aa11016b790800000000000000
+      internalID: -7514801260165046385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 127
+        width: 47
+        height: 14
+      alignment: 9
+      pivot: {x: 0.34, y: 1.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d4fb26de5e67b90800000000000000
+      internalID: -7244350142852149869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_8
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 127
+        width: 47
+        height: 10
+      alignment: 9
+      pivot: {x: 0.34, y: 2.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1814c35e497a620800000000000000
+      internalID: 2785358606831288745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_9
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 63
+        width: 47
+        height: 10
+      alignment: 9
+      pivot: {x: 0.37, y: 2.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28bcefa9ab0f791e0800000000000000
+      internalID: -2191018009437484158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_10
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 63
+        width: 47
+        height: 10
+      alignment: 9
+      pivot: {x: 0.37, y: 2.17}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3fcfd63508f3fa60800000000000000
+      internalID: 7706776088640212794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_11
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 63
+        width: 47
+        height: 10
+      alignment: 9
+      pivot: {x: 0.37, y: 2.18}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d8f3b40e1268dd50800000000000000
+      internalID: 6762262721564244185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death_BlankToInk_Character_12
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 47
+        height: 9
+      alignment: 9
+      pivot: {x: 0.37, y: 2.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86cc95ab0c6fe4130800000000000000
+      internalID: 3553048463662500968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e43166be2b0eb6b42bec676f7bf7aa38
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Death_BlankToInk_Character_0: -9084802387649581450
+      Death_BlankToInk_Character_1: 5063341135275324088
+      Death_BlankToInk_Character_10: 7706776088640212794
+      Death_BlankToInk_Character_11: 6762262721564244185
+      Death_BlankToInk_Character_12: 3553048463662500968
+      Death_BlankToInk_Character_2: -3945600954020926747
+      Death_BlankToInk_Character_3: -8683063901984711361
+      Death_BlankToInk_Character_4: -9048535301083627224
+      Death_BlankToInk_Character_5: 3224768483510922897
+      Death_BlankToInk_Character_6: -7514801260165046385
+      Death_BlankToInk_Character_7: -7244350142852149869
+      Death_BlankToInk_Character_8: 2785358606831288745
+      Death_BlankToInk_Character_9: -2191018009437484158
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

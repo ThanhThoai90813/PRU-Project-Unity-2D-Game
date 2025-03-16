@@ -37,6 +37,7 @@ public class Trader1 : NPC, ITalkable
     [SerializeField] 
     private bool canRotate = true;
     private Coroutine checkPlayerDistanceCoroutine;
+    private Animator animator;
 
     private void Start()
     {
@@ -45,7 +46,7 @@ public class Trader1 : NPC, ITalkable
         dialogueController.OnConversationEnded += GiveReward; // Đăng ký sự kiện
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        animator = GetComponent<Animator>();
         // Chạy Coroutine để kiểm tra khoảng cách Player
         checkPlayerDistanceCoroutine = StartCoroutine(CheckPlayerDistance());
     }
@@ -74,7 +75,10 @@ public class Trader1 : NPC, ITalkable
 
     public void Talk(DialogueText dialogueText)
     {
-        //Start Convertation
+        if (animator != null)
+        {
+            animator.SetBool("IsTalking", true);
+        }
         dialogueController.DisplayNextParagraph(dialogueText);
     }
 
@@ -82,7 +86,7 @@ public class Trader1 : NPC, ITalkable
     {
         if (hasReceivedReward)
         {
-            Debug.Log($"NPC {_npcToken} đã trao thưởng trước đó, không trao lại.");
+            //Debug.Log($"NPC {_npcToken} đã trao thưởng trước đó, không trao lại.");
             return;
         }
 
@@ -110,9 +114,14 @@ public class Trader1 : NPC, ITalkable
                 Debug.LogWarning("NotificationUI chưa được gán trong Inspector!");
             }
         }
-
+  
         hasReceivedReward = true;
         DBController.Instance.AddCollectedToken(_npcToken);
+
+        if (animator != null)
+        {
+            animator.SetBool("IsTalking", false);
+        }
     }
 
     private void OnDestroy()

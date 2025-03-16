@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         } }
 
 	Rigidbody2D rb;
-    Animator animator;
+    public Animator animator;
 	
     public bool CanMove { get
         {

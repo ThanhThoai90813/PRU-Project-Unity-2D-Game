@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40.09, y: -4.04, z: 0.082154885}
-  m_LocalScale: {x: 0.7629, y: 0.7866, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.57, y: 0.58770746, z: 0.74714905}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthRestore: 10
+  isHealing: 1
   spinRotationSpeed: {x: 0, y: 180, z: 0}
 --- !u!58 &222108069602327877
 CircleCollider2D:

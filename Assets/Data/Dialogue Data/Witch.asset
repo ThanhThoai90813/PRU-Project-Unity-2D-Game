@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerName: Witch
   paragraphs:
-  - "Ch\xE0o m\u1EEBng \u0111\u1EBFn c\u1EEDa h\xE0ng c\u1EE7a t\xF4i!"
-  - " \u1EDE \u0111\xE2y c\xF3 \u0111\u1EE7 m\u1ECDi th\u1EE9 t\u1EEB v\u0169 kh\xED
-    s\u1EAFc b\xE9n, \xE1o gi\xE1p ch\u1EAFc ch\u1EAFn cho \u0111\u1EBFn nh\u1EEFng
-    v\u1EADt ph\u1EA9m hi\u1EBFm c\xF3 m\xE0 b\u1EA1n kh\xF3 c\xF3 th\u1EC3 t\xECm
-    th\u1EA5y \u1EDF n\u01A1i kh\xE1c. H\xE3y c\u1EE9 tho\u1EA3i m\xE1i xem qua,
-    n\u1EBFu c\u1EA7n g\xEC, \u0111\u1EEBng ng\u1EA1i h\u1ECFi nh\xE9!"
-  - "M\u1ED9t khi \u0111\xE3 mua th\u1EE9 g\xEC t\u1EEB ta, kh\xF4ng c\xF3 chuy\u1EC7n
-    ho\xE0n tr\u1EA3 \u0111\xE2u. Ta kh\xF4ng quan t\xE2m \u0111\u1EBFn nh\u1EEFng
-    l\u1EDDi ph\xE0n n\xE0n hay nh\u1EEFng gi\u1EA5c m\u01A1 k\u1EF3 l\u1EA1 \xE1m
-    \u1EA3nh ng\u01B0\u01A1i sau khi s\u1EED d\u1EE5ng ch\xFAng. L\u1EF1a ch\u1ECDn
-    c\u1EE7a ng\u01B0\u01A1i, h\u1EADu qu\u1EA3 c\u0169ng l\xE0 c\u1EE7a ng\u01B0\u01A1i"
+  - Hmm, a young adventurer, huh? What do you need from me?
+  - Just so you know, I don't take outrageous requests, haha.
+  - "You want information about someone? And even a specific location?? Hmm, that\u2019s
+    going to be a bit tricky."
+  - "Alright, since you went through all the trouble to find me, I'll accept your
+    request. But on one condition\u2014you must fulfill this task for me."
+  - "It's simple. See that castle in the distance? Yes, that one. I need you to go
+    there\u2014how you get in doesn't matter. Just bring me the thing its master
+    is hiding."
+  - Don't worry, its master has gone to the battlefield, taking the elite soldiers
+    with him. Only a few stragglers and some skeletons remain. I also happen to know
+    that the item I need is being guarded by his pet.
+  - "When you complete the task, I promise to give you the information you need.
+    As a little bonus\u2014trust me, I'm reliable\u2014the person you're looking
+    for has a name that starts and ends with 'A,' right?"
+  - Sounds easy, doesn't it? Haha, best of luck!
+  - The road is right ahead. Hurry up and go!

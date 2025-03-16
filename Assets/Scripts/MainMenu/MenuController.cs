@@ -225,14 +225,14 @@ public class MenuController : MonoBehaviour {
     public void newGame()
     {
         DBController.Instance.NewGame();
-        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
+        //LoadingScreenManager.Instance.LoadScene("NewGameCutScene");
     }
 
     //Continue
     public void continueGame()
     {
         DBController.Instance.LoadGame();
-        LoadingScreenManager.Instance.LoadScene(DBController.Instance.CURRENTSCENE);
+        //LoadingScreenManager.Instance.LoadScene(DBController.Instance.CURRENTSCENE);
     }
 
     //Select scene Event

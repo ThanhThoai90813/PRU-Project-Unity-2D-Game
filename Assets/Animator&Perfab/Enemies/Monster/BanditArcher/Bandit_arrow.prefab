@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3087174584652162900}
   - component: {fileID: 1598243154894797048}
   - component: {fileID: 1830710671056393886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bandit_arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
-  lifetime: 2
-  damage: 10
+  lifetime: 3
+  damage: 5
   knockback: {x: -1, y: 0}
+  arrowType: 0
+  arcHeight: 2
+  waveAmplitude: 0.5
+  waveFrequency: 2

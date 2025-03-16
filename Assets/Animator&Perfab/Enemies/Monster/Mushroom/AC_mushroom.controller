@@ -609,9 +609,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isAlive
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: dead
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4891060156364939651}
   m_Solo: 0
@@ -714,8 +711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb56afc3c146844b877e6dd494932c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0
-  fadeDelay: 2.5
+  fadeTime: 1
+  fadeDelay: 1
 --- !u!1107 &8780845910713216164
 AnimatorStateMachine:
   serializedVersion: 6

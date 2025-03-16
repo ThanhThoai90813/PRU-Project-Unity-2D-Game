@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04977e0ef6bac418f11df860efc79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaseRange: 5.77
   detectionRange: 15.84
   meleeRange: 2.42
   shootCooldown: 3
@@ -226,6 +227,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 7833952015221742761, guid: 588043b6db905ec44bd3f5bc589e78de, type: 3}
   firePoint: {fileID: 5050139026680726042}
   firePointOffsetX: 0.5
+  moveSpeed: 6
 --- !u!1 &7482289588830784997
 GameObject:
   m_ObjectHideFlags: 0
