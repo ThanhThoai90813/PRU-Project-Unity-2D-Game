@@ -7323,6 +7323,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19402573ee1af1c4c9b72b9fd456d486, type: 3}
+--- !u!114 &738008493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4394616051259594267, guid: 19402573ee1af1c4c9b72b9fd456d486, type: 3}
+  m_PrefabInstance: {fileID: 738008492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246b1af15523be345bc2eb6f8b920e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &739042841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9974,26 +9985,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatBullet
       objectReference: {fileID: 0}
-    - target: {fileID: 2625389511114188090, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: m_Color.b
-      value: 0.4037736
-      objectReference: {fileID: 0}
-    - target: {fileID: 2625389511114188090, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: m_Color.g
-      value: 0.4037736
-      objectReference: {fileID: 0}
-    - target: {fileID: 2625389511114188090, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4037736
-      objectReference: {fileID: 0}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
       propertyPath: 'waypoints.Array.data[0]'
       value: 
@@ -10008,22 +9999,6 @@ PrefabInstance:
       objectReference: {fileID: 8434991631720487385}
     - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
       propertyPath: 'waypoints.Array.data[3]'
-      value: 
-      objectReference: {fileID: 5145151655675675315}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: 'waypoints.Array.data[4]'
-      value: 
-      objectReference: {fileID: 333255441337668310}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: 'waypoints.Array.data[5]'
-      value: 
-      objectReference: {fileID: 3217223921657542336}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: 'waypoints.Array.data[6]'
-      value: 
-      objectReference: {fileID: 8434991631720487385}
-    - target: {fileID: 5804061843163859599, guid: 3e5b0bede63118447906bcbf068e7534, type: 3}
-      propertyPath: 'waypoints.Array.data[7]'
       value: 
       objectReference: {fileID: 5145151655675675315}
     m_RemovedComponents: []
@@ -23993,6 +23968,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1381653076}
     m_Modifications:
+    - target: {fileID: 1684045683444812813, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
+      propertyPath: noCollidersRemain.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 738008493}
     - target: {fileID: 3336435932872975712, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.316269
@@ -24036,10 +24015,6 @@ PrefabInstance:
     - target: {fileID: 8242379824898746510, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
       propertyPath: m_Name
       value: Chest
-      objectReference: {fileID: 0}
-    - target: {fileID: 8618228384529800483, guid: 9c50d1e4b64050741a2ac9a3701d7417, type: 3}
-      propertyPath: maxQuantity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

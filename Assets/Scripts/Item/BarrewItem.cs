@@ -40,6 +40,8 @@ public class ItemSpawnerOnDeath : MonoBehaviour
 
     private void OnDeathSpawnItems()
     {
+        Debug.Log("OnDeathSpawnItems called on " + gameObject.name);
+        damageable.damageableDeath.RemoveListener(OnDeathSpawnItems);
         if (itemPrefab == null)
         {
             Debug.LogWarning("Item prefab is not assigned in ItemSpawnerOnDeath.");
@@ -47,7 +49,7 @@ public class ItemSpawnerOnDeath : MonoBehaviour
         }
 
         int quantityToSpawn = Random.Range(minQuantity, maxQuantity + 1);
-
+        Debug.Log("Spawning " + quantityToSpawn + " items");
         for (int i = 0; i < quantityToSpawn; i++)
         {
             SpawnItem();

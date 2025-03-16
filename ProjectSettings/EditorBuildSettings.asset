@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ChangeMapCutScene.unity
     guid: fb7ad32348e2f85418c3a65bc7e853f3
   - enabled: 1
+    path: Assets/Scenes/ChangeMap3CutScene.unity
+    guid: 6387cf96afc31684f87a2d16da434a37
+  - enabled: 1
     path: Assets/Scenes/Map1_JungleMap.unity
     guid: e4ffdb43d971cda418f5ab6a2c56a6c5
   - enabled: 1
@@ -23,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2_Village.unity
     guid: 08b2407fdf4fb27419ba02e77f62c2c8
+  - enabled: 1
+    path: Assets/Scenes/Map2_5_WitchHouse.unity
+    guid: e141e1391aace394f80193786f9d32ea
   - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: a1ac28cf5e438e94f93dd87145e64f56
