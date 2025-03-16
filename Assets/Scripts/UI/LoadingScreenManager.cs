@@ -33,6 +33,7 @@ public class LoadingScreenManager : MonoBehaviour
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
+        
         while (!asyncLoad.isDone)
         {
             float realProgress = Mathf.Clamp01(asyncLoad.progress / 0.9f);

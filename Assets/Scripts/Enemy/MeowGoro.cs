@@ -67,6 +67,54 @@ public class MeowGoro : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        damageable = GetComponent<Damageable>();
+        damageable.damageableDeath.AddListener(SpawnChest);
+    }
+    private bool hasSpawnedPortal = false;
+    [SerializeField]
+    private GameObject portalPrefab;
+    private GameObject portalInstance;
+    public void SpawnChest()
+    {
+
+        if (hasSpawnedPortal) return;
+        hasSpawnedPortal = true;
+
+        if (portalPrefab != null)
+        {
+            Vector3 spawnPosition = new Vector3(2484f, 15f, 0f);
+            portalInstance = Instantiate(portalPrefab, spawnPosition, Quaternion.identity);
+            portalInstance.SetActive(true);
+
+            StartCoroutine(FadeInPortal(portalInstance));
+        }
+    }
+    private IEnumerator FadeInPortal(GameObject portal)
+    {
+        SpriteRenderer sprite = portal.GetComponent<SpriteRenderer>();
+        if (sprite != null)
+        {
+            Color color = sprite.color;
+            color.a = 0;
+            sprite.color = color;
+
+            float duration = 7f;
+            float elapsedTime = 0;
+            audioSource.volume = 0f;
+            audioSource.Play();
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float progress = elapsedTime / duration;
+                color.a = Mathf.Lerp(0, 1, elapsedTime / duration);
+                sprite.color = color;
+                audioSource.volume = Mathf.Lerp(0f, 1f, progress);
+                yield return null;
+            }
+        }
+    }
     public bool CanMove
     {
         get
@@ -122,25 +170,35 @@ public class MeowGoro : MonoBehaviour
     {
         HasTarget = attackZone.detectedColliders.Count > 0;
 
+        // Kiểm tra nếu animation hiện tại có tag là "Attack", đặt miễn nhiễm sát thương
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            damageable.isInvincible = true;
+        }
+        else
+        {
+            damageable.isInvincible = false;
+        }
+
         // Giảm AttackCooldown theo thời gian
         if (AttackCooldown > 0)
         {
             AttackCooldown -= Time.deltaTime;
         }
 
-        if (HasTarget) // Nếu phát hiện Player
+        if (HasTarget)
         {
-            target = attackZone.detectedColliders[0].transform; // Lấy vị trí Player
+            target = attackZone.detectedColliders[0].transform;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
             if (distanceToPlayer > attackRange)
             {
-                isChasing = true; // Bắt đầu đuổi
+                isChasing = true;
             }
             else
             {
                 isChasing = false;
-                if (!isAttacking && AttackCooldown <= 0) // Chỉ tấn công khi không đang tấn công và cooldown hết
+                if (!isAttacking && AttackCooldown <= 0)
                 {
                     PerformRandomAttack();
                 }
@@ -152,6 +210,7 @@ public class MeowGoro : MonoBehaviour
             isChasing = false;
         }
     }
+
 
     protected virtual void FixedUpdate()
     {
@@ -190,19 +249,23 @@ public class MeowGoro : MonoBehaviour
 
     public void OnHit(int damage, Vector2 knockback)
     {
-        damageable.Health -= damage;
+        if (!damageable.isInvincible) // Chỉ nhận sát thương nếu không miễn nhiễm
+        {
+            damageable.Health -= damage;
 
-        if (damageable.Health <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            isKnockedBack = true;
-            rb.linearVelocity = knockback;
-            StartCoroutine(ResetKnockback());
+            if (damageable.Health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                isKnockedBack = true;
+                rb.linearVelocity = knockback;
+                StartCoroutine(ResetKnockback());
+            }
         }
     }
+
 
 
     private IEnumerator ResetKnockback()
@@ -230,9 +293,21 @@ public class MeowGoro : MonoBehaviour
         if (target != null)
         {
             targetPosition = target.position; // Lưu lại vị trí mới nhất của Player
+
+            // Xác định hướng của MeowGoro dựa vào vị trí Player
+            float direction = target.position.x - transform.position.x;
+            if (direction > 0)
+            {
+                WalkDirection = WalkableDirection.Right;
+            }
+            else
+            {
+                WalkDirection = WalkableDirection.Left;
+            }
         }
 
         isAttacking = true; // Đánh dấu là đang tấn công
+
         int randomAttack;
         if (damageable.Health <= damageable.MaxHealth * 0.5f) // Nếu máu ≤ 50%
         {
@@ -247,10 +322,11 @@ public class MeowGoro : MonoBehaviour
         animator.SetTrigger("attack");
     }
 
+
     public void OnAttackAnimationEnd()
     {
         isAttacking = false; // Animation kết thúc
-        AttackCooldown = UnityEngine.Random.Range(2.0f, 3.0f); // Đặt cooldown
+        AttackCooldown = UnityEngine.Random.Range(1.0f, 2.5f); // Đặt cooldown
     }
 
     public void Die()

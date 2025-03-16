@@ -15,6 +15,8 @@ public class DBController : Singleton<DBController>
     private Task _currentSaveTask = null;
     private int _currentProfileIndex;
 
+    public static bool OverridePlayerPositionOnLoad = false;
+    public static Vector2 NewPlayerPosition;
     //khai báo getter setter các biến cần lưu
     #region
 
@@ -81,10 +83,20 @@ public class DBController : Singleton<DBController>
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            player.transform.position = _userProfile.ProfileData.playerPosition;
-            Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
+            // Kiểm tra xem có cần override vị trí không
+            if (OverridePlayerPositionOnLoad)
+            {
+                player.transform.position = NewPlayerPosition;
+                Debug.Log("Player position overridden to: " + NewPlayerPosition);
+                OverridePlayerPositionOnLoad = false; // Reset lại sau khi dùng
+            }
+            else
+            {
+                player.transform.position = _userProfile.ProfileData.playerPosition;
+                Debug.Log("Player position restored in new scene: " + _userProfile.ProfileData.playerPosition);
+            }
         }
-        //foreach (Item item in FindObjectsOfType<Item>())
+
         foreach (Item item in FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (IsItemCollected(item.GetToken()))
@@ -345,7 +357,7 @@ public class ProfileData
     public List<int> rewardedNPCs;
     public ProfileData()
     {
-        health = 100;
+        health = 500;
         inventoryData = new InventoryData();
         playerPosition = new Vector2(-46, -5);
         currentScene = "MainMenu";

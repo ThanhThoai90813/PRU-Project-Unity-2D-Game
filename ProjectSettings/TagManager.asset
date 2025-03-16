@@ -13,6 +13,7 @@ TagManager:
   - NPC
   - GruzMother
   - SpawnPoint
+  - Meowgoro
   layers:
   - Default
   - TransparentFX

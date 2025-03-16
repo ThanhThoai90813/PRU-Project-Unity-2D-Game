@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -111,24 +112,32 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public bool Hit(int damage,Vector2 knockback)
+    public bool Hit(int damage, Vector2 knockback)
     {
-        if (IsAlive && !isInvincible || !isCheatInvincible)
+        MeowGoro meowgoro = GetComponent<MeowGoro>();
+
+        if (IsAlive && !isInvincible) // Chỉ nhận sát thương nếu không miễn nhiễm
         {
             float reducedDamage = damage * (1f - damageReductionPercentage / 100f);
             int finalDamage = Mathf.Max(0, (int)reducedDamage);
 
             Health -= finalDamage;
-            isInvincible = true;
+            isInvincible = true; // Kích hoạt miễn nhiễm
             LockVelocity = true;
             animator.SetTrigger(AnimationStrings.hitTrigger);
             damageableHit?.Invoke(finalDamage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, finalDamage);
 
+            StartCoroutine(BecomeTemporarilyInvincible()); // Bắt đầu thời gian miễn nhiễm
+
             return true;
         }
-        //unable to be hit
         return false;
+    }
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        isInvincible = false; // Hết miễn nhiễm, có thể bị đánh tiếp
     }
 
     public bool Heal(int healthRestore)

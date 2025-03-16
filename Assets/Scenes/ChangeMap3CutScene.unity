@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5ce4fb6c191f543a1a62ab644ffddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Map2_5_WitchHouse
+  sceneName: Map3_WitchHouse
+  triggerPosition: {x: 1727, y: -21}
 --- !u!1 &388656919
 GameObject:
   m_ObjectHideFlags: 0

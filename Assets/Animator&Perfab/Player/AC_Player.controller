@@ -390,6 +390,15 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 2512714631957928954}
     m_Position: {x: 570, y: 140, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2937038193306890276}
+    m_Position: {x: 960, y: 120, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3846631516663649674}
+    m_Position: {x: 960, y: 210, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5422189471390809010}
+    m_Position: {x: 960, y: 290, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1934924543051390384}
@@ -408,6 +417,12 @@ AnimatorStateMachine:
   - {fileID: -5011808142686699135}
   m_EntryTransitions: []
   m_StateMachineTransitions:
+  - first: {fileID: 7024603811851527302}
+    second:
+    - {fileID: -8034815692989530033}
+  - first: {fileID: 1127805052421752788}
+    second:
+    - {fileID: 3661018933518011362}
   - first: {fileID: 1934924543051390384}
     second:
     - {fileID: 7186796522920284906}
@@ -417,12 +432,6 @@ AnimatorStateMachine:
     second:
     - {fileID: -7269821594874513705}
     - {fileID: 2262571548092817600}
-  - first: {fileID: 7024603811851527302}
-    second:
-    - {fileID: -8034815692989530033}
-  - first: {fileID: 1127805052421752788}
-    second:
-    - {fileID: 3661018933518011362}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 590, y: 230, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -593,6 +602,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-3846631516663649674
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: player_Idle(nosword)
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 73800f5c71a28f041beb2bddd277ff3a, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-3620278082489426708
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -694,6 +729,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: b4afab6e3a28cf643b5d6729dba2e929, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-2937038193306890276
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: player_die(noSword)
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 088cca8f413cf7c4c8644f8efc492b10, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1465,6 +1526,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &5422189471390809010
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: player_run(noSword)
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: ea3fa49e970ff0641b21fd191fa6f8f7, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &5512118764113210070
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

@@ -3,19 +3,36 @@ using System.Collections;
 
 public class NPCSpawnTrigger : MonoBehaviour
 {
-    public Transform spawnPoint;
-    public GameObject npcPrefab;
-    public Transform landingPoint; // Điểm đáp của NPC
-    private bool hasSpawned = false;
+    public Transform spawnPoint;         // Điểm xuất hiện của NPC
+    public GameObject npcPrefab;         // Prefab của NPC
+    public Transform landingPoint;       // Điểm đáp của NPC
+    private bool hasSpawned = false;     // Kiểm tra xem NPC đã được sinh ra chưa
+    private PlayerController playerController; // Tham chiếu đến PlayerController
+    private GameObject npcInstance;      // Instance của NPC được tạo ra
+
+    private void Start()
+    {
+        // Tìm và lưu tham chiếu đến PlayerController
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerController = player.GetComponent<PlayerController>();
+        }
+        else
+        {
+            Debug.LogWarning("Player not found! Please ensure the player has the 'Player' tag.");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !hasSpawned)
+        if (other.CompareTag("Player") && !hasSpawned && playerController != null)
         {
             hasSpawned = true;
-            GameObject npc = Instantiate(npcPrefab, spawnPoint.position, Quaternion.identity);
-            EnableFairy(npc); // Kích hoạt Fairy
-            StartCoroutine(FairyMovement(npc));
+            npcInstance = Instantiate(npcPrefab, spawnPoint.position, Quaternion.identity);
+            EnableFairy(npcInstance); // Kích hoạt Fairy
+            LockPlayer(); // Khóa hành động của player
+            StartCoroutine(FairyMovement(npcInstance));
         }
     }
 
@@ -49,6 +66,25 @@ public class NPCSpawnTrigger : MonoBehaviour
             elapsedTime += Time.deltaTime;
             npc.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / fallDuration);
             yield return null;
+        }
+
+        // Mở khóa hành động của player sau khi NPC đáp xuống
+        UnlockPlayer();
+    }
+
+    private void LockPlayer()
+    {
+        if (playerController != null && playerController.IsALive)
+        {
+            playerController.animator.SetBool("canMove", false); // Khóa hành động của player
+        }
+    }
+
+    private void UnlockPlayer()
+    {
+        if (playerController != null && playerController.IsALive)
+        {
+            playerController.animator.SetBool("canMove", true); // Mở khóa hành động của player
         }
     }
 }

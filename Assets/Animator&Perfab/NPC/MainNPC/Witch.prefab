@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 905150899243627069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.15, y: 7.15, z: 7.15}
+  m_LocalPosition: {x: 0, y: 1.69, z: 0}
+  m_LocalScale: {x: 4.6, y: 4.6, z: 4.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5189125861281777557}
@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5189125861281777557
 Transform:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.027686298, y: 0.0723415}
+  m_Offset: {x: -0.027686298, y: 0.15299979}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -213,7 +213,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0027932, y: 2.4580994}
+  m_Size: {x: 1.0027932, y: 2.2967827}
   m_EdgeRadius: 0
 --- !u!212 &7074822737163440588
 SpriteRenderer:
@@ -290,7 +290,7 @@ MonoBehaviour:
   rewardQuantities: 
   _npcToken: 1
   notificationUI: {fileID: 0}
-  lookAtPlayerRange: 5
+  lookAtPlayerRange: 11.64
   canRotate: 1
 --- !u!50 &5346155536813064473
 Rigidbody2D:

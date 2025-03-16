@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Map2_Village
+  triggerPosition: {x: 1118, y: -19}
 --- !u!1 &388656919
 GameObject:
   m_ObjectHideFlags: 0
