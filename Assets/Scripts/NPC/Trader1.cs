@@ -41,13 +41,10 @@ public class Trader1 : NPC, ITalkable
 
     private void Start()
     {
-        // Kiểm tra xem NPC này đã trao thưởng chưa khi khởi động
         hasReceivedReward = DBController.Instance.IsItemCollected(_npcToken);
-        dialogueController.OnConversationEnded += GiveReward; // Đăng ký sự kiện
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        // Chạy Coroutine để kiểm tra khoảng cách Player
         checkPlayerDistanceCoroutine = StartCoroutine(CheckPlayerDistance());
     }
     public override void Interact()
@@ -79,10 +76,11 @@ public class Trader1 : NPC, ITalkable
         {
             animator.SetBool("IsTalking", true);
         }
+        dialogueController.SetCurrentNPC(this);
         dialogueController.DisplayNextParagraph(dialogueText);
     }
 
-    private void GiveReward()
+    public void GiveReward()
     {
         if (hasReceivedReward)
         {
@@ -126,8 +124,6 @@ public class Trader1 : NPC, ITalkable
 
     private void OnDestroy()
     {
-        dialogueController.OnConversationEnded -= GiveReward;
-
         if (checkPlayerDistanceCoroutine != null)
         {
             StopCoroutine(checkPlayerDistanceCoroutine);

@@ -296,7 +296,7 @@ public class DBController : Singleton<DBController>
         SaveNow();
 
         //LoadingScreenManager.Instance.LoadScene("NewGameCutScene");
-        LoadingScreenManager.Instance.LoadScene("Map1_JungleMap");
+        LoadingScreenManager.Instance.LoadScene("NewGameCutScene");
 
     }
 
@@ -357,7 +357,7 @@ public class ProfileData
     public List<int> rewardedNPCs;
     public ProfileData()
     {
-        health = 500;
+        health = 300;
         inventoryData = new InventoryData();
         playerPosition = new Vector2(-46, -5);
         currentScene = "MainMenu";

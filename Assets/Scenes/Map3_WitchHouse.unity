@@ -3862,6 +3862,14 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 6622624433774366017}
+    - target: {fileID: 1285848938557460511, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
+      propertyPath: _health
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285848938557460511, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
+      propertyPath: _maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4941399804943417421, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
       propertyPath: pickUpText
       value: 

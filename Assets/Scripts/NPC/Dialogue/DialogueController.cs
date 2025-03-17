@@ -29,6 +29,11 @@ public class DialogueController : MonoBehaviour
     private const string HTML_ALPHA = "<color=#00000000>";
     private const float MAX_TYPE_TIME = 0.1f;
 
+    private Trader1 currentNPC;
+    public void SetCurrentNPC(Trader1 npc)
+    {
+        currentNPC = npc;
+    }
     public void DisplayNextParagraph(DialogueText dialogueText)
     {
         if (isTyping)
@@ -96,6 +101,11 @@ public class DialogueController : MonoBehaviour
             gameObject.SetActive(false);
         }
         StopTypingSound();
+        if (currentNPC != null)
+        {
+            currentNPC.GiveReward();
+            currentNPC = null;
+        }
         OnConversationEnded?.Invoke();
     }
 
