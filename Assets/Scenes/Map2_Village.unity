@@ -9096,6 +9096,14 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 6622624433774366017}
+    - target: {fileID: 1285848938557460511, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
+      propertyPath: _health
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285848938557460511, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
+      propertyPath: _maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4941399804943417421, guid: 95c0229f98baa5142956e28a33606eba, type: 3}
       propertyPath: pickUpText
       value: 
@@ -9219,9 +9227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d02d30d26f3514baa5770fe9562af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 17.5
+  detectionRange: 11
   stopDistance: 1.5
-  moveSpeed: 4.5
+  moveSpeed: 3.5
   idleAnimationName: goatM_idle
   runAnimationName: goatM_walk
 --- !u!50 &938157628
@@ -9250,7 +9258,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &938157629
 MonoBehaviour:
   m_ObjectHideFlags: 0
