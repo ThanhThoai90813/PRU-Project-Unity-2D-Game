@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttackDamage: 10
+  baseAttackDamage: 5
   knockback: {x: 2, y: 0}
 --- !u!61 &9166268485201187497
 BoxCollider2D:
@@ -645,8 +645,9 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 1222222
-  _health: 13333
+  isCheatInvincible: 0
+  _maxHealth: 300
+  _health: 300
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0
