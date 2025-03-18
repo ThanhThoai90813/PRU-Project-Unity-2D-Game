@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Map1_JungleMap
+  triggerPosition: {x: -42, y: -5}
 --- !u!1 &320436572
 GameObject:
   m_ObjectHideFlags: 0

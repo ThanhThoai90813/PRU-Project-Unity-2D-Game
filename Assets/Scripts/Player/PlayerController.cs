@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     Damageable damageable;
     private bool IsDead = false;
     private UIRespawnCheck uiRespawnCheck;
-
+    public float attackCooldown = 7f;
+    private bool canAttack = true;
     public float CurrentMoveSpeed { get
         {
             if (CanMove)
@@ -210,10 +211,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && canAttack)
         {
+            canAttack = false;
             animator.SetTrigger(AnimationStrings.attackTrigger);
+            StartCoroutine(ResetAttackCooldown());
         }
+    }
+    private IEnumerator ResetAttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true; 
     }
     public void OnHit(int damage,Vector2 knockback)
     {

@@ -201,8 +201,9 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 40
+  isCheatInvincible: 0
+  _maxHealth: 200
+  _health: 200
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0
@@ -228,6 +229,8 @@ MonoBehaviour:
   firePoint: {fileID: 8214801102989218217}
   firePointOffsetX: 0.5
   moveSpeed: 4
+  waypoints: []
+  waypointTolerance: 0.5
 --- !u!1 &6049079629737456473
 GameObject:
   m_ObjectHideFlags: 0

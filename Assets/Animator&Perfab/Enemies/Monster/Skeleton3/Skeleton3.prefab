@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttackDamage: 10
+  baseAttackDamage: 15
   knockback: {x: -2, y: 0}
 --- !u!1 &3734555372291278534
 GameObject:
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttackDamage: 10
+  baseAttackDamage: 25
   knockback: {x: -2, y: 0}
 --- !u!1 &8288366860310211294
 GameObject:
@@ -641,8 +641,9 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 40
+  isCheatInvincible: 0
+  _maxHealth: 200
+  _health: 200
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0

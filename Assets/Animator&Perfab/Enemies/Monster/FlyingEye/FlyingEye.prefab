@@ -455,8 +455,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isCheatInvincible: 0
-  _maxHealth: 100
-  _health: 70
+  _maxHealth: 150
+  _health: 150
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0523bdc4bfad89446ba696f6447098ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: 3.5
+  flightSpeed: 4
   biteDetectionZone: {fileID: 2601749887965489389}
   deathCollider: {fileID: 484631317126237814}
   waypoints:
@@ -698,5 +698,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fda515aaf18c14fa42c92f2c0bbbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttackDamage: 5
-  knockback: {x: 0, y: 0}
+  baseAttackDamage: 10
+  knockback: {x: 1, y: 0}
