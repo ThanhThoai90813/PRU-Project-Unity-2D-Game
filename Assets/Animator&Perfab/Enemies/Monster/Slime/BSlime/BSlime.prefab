@@ -238,8 +238,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isCheatInvincible: 0
-  _maxHealth: 159
-  _health: 159
+  _maxHealth: 150
+  _health: 150
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0

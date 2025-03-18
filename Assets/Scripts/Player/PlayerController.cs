@@ -19,40 +19,72 @@ public class PlayerController : MonoBehaviour
     private UIRespawnCheck uiRespawnCheck;
     public float attackCooldown = 7f;
     private bool canAttack = true;
-    public float CurrentMoveSpeed { get
+    public float attackMoveSpeedMultiplier = 0.5f;
+    private bool isAttacking = false;
+    private float maxFallSpeed = 0f; // Tốc độ rơi lớn nhất đạt được
+    public float fallDamageThreshold = -12f; // Ngưỡng tốc độ rơi để bắt đầu gây sát thương
+    public int maxFallDamage = 20; // Sát thương tối đa khi rơi từ độ cao lớn
+
+
+    //public float CurrentMoveSpeed { get
+    //    {
+    //        if (CanMove)
+    //        {
+    //            if (IsMoving && !touchingDirections.IsOnWall)
+    //            {
+    //                if (touchingDirections.IsGrounded)
+    //                {
+    //                    if (IsRunning)
+    //                    {
+    //                        return runSpeed;
+    //                    }
+    //                    else
+    //                    {
+    //                        return walkSpeed;
+    //                    }
+    //                }
+    //                else
+    //                {
+    //                    return airWalkSpeed;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                return 0;
+    //            }
+    //        }     
+    //        else
+    //        {
+    //            return 0;
+    //        }
+    //    }
+    //}
+
+    public float CurrentMoveSpeed
+    {
+        get
         {
             if (CanMove)
             {
                 if (IsMoving && !touchingDirections.IsOnWall)
                 {
-                    if (touchingDirections.IsGrounded)
-                    {
-                        if (IsRunning)
-                        {
-                            return runSpeed;
-                        }
-                        else
-                        {
-                            return walkSpeed;
-                        }
-                    }
-                    else
-                    {
-                        return airWalkSpeed;
-                    }
+                    float baseSpeed = touchingDirections.IsGrounded ?
+                                      (IsRunning ? runSpeed : walkSpeed) : airWalkSpeed;
+
+                    // Giảm tốc độ nếu đang tấn công
+                    return isAttacking ? baseSpeed * attackMoveSpeedMultiplier : baseSpeed;
                 }
                 else
                 {
                     return 0;
                 }
-            }     
+            }
             else
             {
                 return 0;
             }
         }
     }
-
 
     [SerializeField] 
     private bool _isMoving = false;
@@ -138,7 +170,8 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.linearVelocity.y);
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.linearVelocity.y);
-
+        
+        // Điều chỉnh trọng lực khi nhảy và rơi
         if (rb.velocity.y > 0)
         {
             rb.gravityScale = 1.5f;  // Nhảy lên, trọng lực nhẹ hơn
@@ -147,12 +180,20 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 3f;  // Rơi xuống nhanh hơn
         }
+        // Ghi lại tốc độ rơi lớn nhất
+        if (rb.velocity.y < maxFallSpeed)
+        {
+            maxFallSpeed = rb.velocity.y;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-
+        if (moveInput.y < 0)
+        {
+            moveInput.y = 0; 
+        }
         if (IsALive)
         {
             IsMoving = moveInput != Vector2.zero;
@@ -167,6 +208,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground")) // Khi chạm đất
+        {
+            if (maxFallSpeed < fallDamageThreshold) // Kiểm tra tốc độ rơi có vượt quá ngưỡng không
+            {
+                int damage = Mathf.RoundToInt(Mathf.Abs(maxFallSpeed) * 2);
+                damage = Mathf.Clamp(damage, 0, maxFallDamage);
+
+                damageable.Hit(damage, Vector2.zero);
+            }
+            maxFallSpeed = 0f; // Reset lại sau khi tiếp đất
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Vector2 knockbackDir = (transform.position - collision.transform.position).normalized;
@@ -214,10 +267,18 @@ public class PlayerController : MonoBehaviour
         if(context.started && canAttack)
         {
             canAttack = false;
+            isAttacking = true; //Đánh dấu trạng thái đang đánh
             animator.SetTrigger(AnimationStrings.attackTrigger);
             StartCoroutine(ResetAttackCooldown());
+            StartCoroutine(ResetAttackMoveSpeed());
         }
     }
+    private IEnumerator ResetAttackMoveSpeed()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
+    }
+
     private IEnumerator ResetAttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldown);

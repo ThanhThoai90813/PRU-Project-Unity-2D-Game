@@ -583,6 +583,7 @@ MonoBehaviour:
   runSpeed: 7
   airWalkSpeed: 5
   jumpImpulse: 11
+  attackCooldown: 0.5
   _isMoving: 0
   _isRunning: 0
   _isFacingRight: 1
@@ -854,8 +855,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isCheatInvincible: 0
-  _maxHealth: 500
-  _health: 500
+  _maxHealth: 300
+  _health: 300
   _isAlive: 1
   isInvincible: 0
   damageReductionPercentage: 0

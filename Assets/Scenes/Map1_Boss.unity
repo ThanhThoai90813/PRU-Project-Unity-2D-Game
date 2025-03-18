@@ -1790,11 +1790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014940569391295083, guid: f45e196b20910c74bbeed0433130608b, type: 3}
       propertyPath: invincibilityTime
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2014940569391295083, guid: f45e196b20910c74bbeed0433130608b, type: 3}
       propertyPath: damageReductionPercentage
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3021055092217468650, guid: f45e196b20910c74bbeed0433130608b, type: 3}
       propertyPath: m_Name

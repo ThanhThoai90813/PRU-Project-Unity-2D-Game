@@ -32510,7 +32510,7 @@ GameObject:
   - component: {fileID: 1649225717399852903}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Grass
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139764,7 +139764,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -15
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -139783,7 +139783,7 @@ GameObject:
   - component: {fileID: 5763028417038641558}
   m_Layer: 6
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

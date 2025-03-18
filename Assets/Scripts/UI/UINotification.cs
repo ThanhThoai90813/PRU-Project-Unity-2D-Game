@@ -35,7 +35,7 @@ public class UINotification : MonoBehaviour
         }
         var animEx = notificationPanel.GetComponent<Animation>();
         notificationPanel.transform.SetAsLastSibling();
-        animEx.Play("Fade In");
+        animEx.Play("Fade In1");
         notificationText.text = message;
         notificationPanel.SetActive(true);
 

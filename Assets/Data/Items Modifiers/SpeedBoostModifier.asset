@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f884a11b506ee4c9526f17143856af, type: 3}
   m_Name: SpeedBoostModifier
   m_EditorClassIdentifier: 
-  duration: 30
+  duration: 60
   speedIncrease: 2
   buffData: {fileID: 11400000, guid: d62ec30550a23a945b1ba640f54f855c, type: 2}
