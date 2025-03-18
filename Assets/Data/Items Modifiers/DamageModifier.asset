@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0de34419cfaf845b80723fe2359b53, type: 3}
   m_Name: DamageModifier
   m_EditorClassIdentifier: 
-  duration: 30
-  damageIncrease: 15
+  duration: 60
+  damageIncrease: 20
   buffData: {fileID: 11400000, guid: 0622ce0396b58324fbcb8ee43b275506, type: 2}

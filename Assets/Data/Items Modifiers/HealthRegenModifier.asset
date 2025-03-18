@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ded3695f94272c48b23b397fda43c2d, type: 3}
   m_Name: HealthRegenModifier
   m_EditorClassIdentifier: 
-  duration: 20
-  healthPerSecond: 2
+  duration: 30
+  healthPerSecond: 5
   buffData: {fileID: 11400000, guid: 3100293634856e5489fc227f01499e29, type: 2}
